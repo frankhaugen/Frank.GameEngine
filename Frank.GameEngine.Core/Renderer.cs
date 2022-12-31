@@ -30,7 +30,7 @@ public class Renderer : IRenderer
         _primitiveBatch.Begin(PrimitiveType.LineList);
         var polygon = gameObject.Polygon.Translate(gameObject.Position);
 
-        for (int i = 0; i < polygon.Vertices.Length - 1; i++)
+        for (var i = 0; i < polygon.Vertices.Length - 1; i++)
         {
             _primitiveBatch.AddVertex(polygon.Vertices[i], gameObject.Color);
             _primitiveBatch.AddVertex(polygon.Vertices[i + 1], gameObject.Color);
@@ -58,13 +58,13 @@ public class Renderer : IRenderer
             color = Color.White;
         }
 
-        Color[] data = new Color[width * height];
-        for (int i = 0; i < data.Length; i++)
+        var data = new Color[width * height];
+        for (var i = 0; i < data.Length; i++)
         {
             data[i] = color;
         }
 
-        Texture2D texture = new Texture2D(_graphics.GraphicsDevice, width, height);
+        var texture = new Texture2D(_graphics.GraphicsDevice, width, height);
         texture.SetData(data);
         return texture;
     }

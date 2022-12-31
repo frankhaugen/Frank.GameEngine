@@ -135,7 +135,7 @@ public class PrimitiveBatch : IDisposable
 
         // are we starting a new primitive? if so, and there will not be enough room
         // for a whole primitive, flush.
-        bool newPrimitive = ((positionInBuffer % numVertsPerPrimitive) == 0);
+        var newPrimitive = ((positionInBuffer % numVertsPerPrimitive) == 0);
 
         if (newPrimitive &&
             (positionInBuffer + numVertsPerPrimitive) >= vertices.Length)
@@ -188,7 +188,7 @@ public class PrimitiveBatch : IDisposable
         }
 
         // how many primitives will we draw?
-        int primitiveCount = positionInBuffer / numVertsPerPrimitive;
+        var primitiveCount = positionInBuffer / numVertsPerPrimitive;
 
         // submit the draw call to the graphics card
         device.DrawUserPrimitives<VertexPositionColor>(primitiveType, vertices, 0,

@@ -8,12 +8,12 @@ public static class PolygonFactory
 
     public static Polygon GetCircle(Vector2 center, int numSegments, float radius)
     {
-        Vector2[] vertices = new Vector2[numSegments];
-        float angleStep = MathHelper.TwoPi / (float)numSegments;
+        var vertices = new Vector2[numSegments];
+        var angleStep = MathHelper.TwoPi / (float)numSegments;
 
-        for (int i = 0; i < numSegments; i++)
+        for (var i = 0; i < numSegments; i++)
         {
-            float angle = i * angleStep;
+            var angle = i * angleStep;
             vertices[i] = center + radius * new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
         }
 
