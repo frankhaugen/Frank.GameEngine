@@ -1,0 +1,72 @@
+using FluentAssertions;
+using Frank.GameEngine.Core;
+using Microsoft.Xna.Framework;
+
+namespace Frank.GameEngine.Tests;
+
+public static class Vector2Extensions
+{
+    public static void ShouldBeApproximately(this Vector2 actual, Vector2 expected, float delta)
+    {
+        actual.X.Should().BeApproximately(expected.X, delta);
+        actual.Y.Should().BeApproximately(expected.Y, delta);
+    }
+}
+
+public class PhysicsTests
+{
+    [Theory]
+    [InlineData(0, 0, 0, 0, 1, 1f, FluidName.Air, 0, 9.81f, 0, 9.81f)]
+    [InlineData(5, 0, 0, 0, 1, 1f, FluidName.Air, 5, 9.81f, 0, 9.81f)]
+    [InlineData(0, 0, 5, 0, 9, 1f, FluidName.Air, 45, 9.81f, 45, 9.81f)]
+    [InlineData(0, 0, 0, 5, 1, 1f, FluidName.Air, 0, 14.71f, 0, 14.71f)]
+    [InlineData(0, 0, 5, 5, 1, 1f, FluidName.Air, 5, 14.71f, 5, 14.71f)]
+
+    [InlineData(0, 0, 0, 0, 5, 1f, FluidName.Air, 0, 4.9f, 0, 4.9f)]
+    [InlineData(0, 0, 0, 0, 2, 1f, FluidName.Air, 0, 19.6f, 0, 19.6f)]
+    [InlineData(0, 0, 0, 0, 1, 1f, FluidName.Water, 0, 9.81f, 0, 9.81f)]
+    [InlineData(0, 0, 0, 0, 5, 1f, FluidName.Water, 0, 4.9f, 0, 4.9f)]
+
+    [InlineData(0, 0, 0, 0, 2, 1f, FluidName.Water, 0, 19.6f, 0, 19.6f)]
+    [InlineData(0, 0, 0, 0, 8, 2f, FluidName.Air, 0, 78.48f, 0, 78.48f)]
+    [InlineData(0, 0, 0, 0, 7, 0.5f, FluidName.Air, 0, 12.155f, 0, 12.155f)]
+
+    [InlineData(0, 0, -5, -5, 10, 1f, FluidName.Air, -50, -147.1f, -50, -147.1f)]
+    public void Update_Should_Update_Position_And_Velocity(float positionX,
+        float positionY,
+        float velocityX,
+        float velocityY,
+        int elapsedSeconds,
+        float radius,
+        FluidName medium,
+        float expectedPositionX,
+        float expectedPositionY,
+        float expectedVelocityX,
+        float expectedVelocityY)
+    {
+        // Arrange
+        var elapsed = TimeSpan.FromSeconds(elapsedSeconds);
+        var expectedVelocity = new Vector2(expectedVelocityX, expectedVelocityY);
+        var expectedPosition = new Vector2(expectedPositionX, expectedPositionY);
+        var gameObject = new GameObject
+        {
+            Position = new Vector2(positionX, positionY),
+            Velocity = new Vector2(velocityX, velocityY),
+            Mass = 1f,
+            Polygon = PolygonFactory.GetCircle(new Vector2(), 32, radius)
+        };
+        var physics = new Physics(new EnvironmentalFactors { Gravity = 9.81f, Medium = new Fluid(medium) });
+
+        // Act
+        physics.Update(gameObject, elapsed);
+
+        // Assert
+        gameObject.Position.ShouldBeApproximately(expectedPosition, 0.00001f);
+        gameObject.Velocity.ShouldBeApproximately(expectedVelocity, 0.00001f);
+    }
+
+
+
+
+
+}
