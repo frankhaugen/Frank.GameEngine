@@ -15,6 +15,73 @@ public static class Vector2Extensions
 
 public class PhysicsTests
 {
+
+    [Fact]
+    public void CalculateAcceleration_Should_Return_Correct_Acceleration()
+    {
+        // Arrange
+        var environment = new EnvironmentalFactors
+        {
+            Gravity = 9.81f,
+            Medium = new Fluid
+            {
+                Density = 1.225f,
+                Viscosity = 1.81e-5f
+            }
+        };
+        var physics = new Physics(environment);
+        var gameObject = new GameObject
+        {
+            Mass = 1f,
+            Polygon = new Polygon(new Vector2(0, 0), new Vector2(1, 0), new Vector2(1, 1), new Vector2(0, 1)),
+            Velocity = new Vector2(1, 0)
+        };
+
+        // Act
+        var acceleration = physics.CalculateAcceleration(gameObject);
+
+        // Assert
+        acceleration.X.Should().BeApproximately(-0.0000936f, 0.0000001f);
+        acceleration.Y.Should().BeApproximately(9.81f, 0.001f);
+    }
+
+
+    [Fact]
+    public void Update_Should_Update_GameObject_Velocity_And_Position()
+    {
+        // Arrange
+        var environment = new EnvironmentalFactors
+        {
+            Gravity = 9.81f,
+            Medium = new Fluid
+            {
+                Name = FluidName.Air,
+                Density = 1.225f,
+                Viscosity = 1.81e-5f
+            }
+        };
+        var physics = new Physics(environment);
+        var gameObject = new GameObject
+        {
+            Mass = 1f,
+            Polygon = new Polygon(new Vector2(0, 0), new Vector2(1, 0), new Vector2(1, 1), new Vector2(0, 1)),
+            Velocity = new Vector2(1, 0),
+            Position = new Vector2(0, 0)
+        };
+        var elapsed = TimeSpan.FromSeconds(1);
+
+        // Act
+        physics.Update(gameObject, elapsed);
+
+        // Assert
+        gameObject.Velocity.X.Should().BeApproximately(0.819f, 0.001f);
+        gameObject.Velocity.Y.Should().BeApproximately(9.81f, 0.001f);
+        gameObject.Position.X.Should().BeApproximately(0.819f, 0.001f);
+        gameObject.Position.Y.Should().BeApproximately(9.81f, 0.001f);
+    }
+
+
+
     [Theory]
     [InlineData(0, 0, 0, 0, 1, 1f, FluidName.Air, 0, 9.81f, 0, 9.81f)]
     [InlineData(5, 0, 0, 0, 1, 1f, FluidName.Air, 5, 9.81f, 0, 9.81f)]

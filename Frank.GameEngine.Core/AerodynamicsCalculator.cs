@@ -11,6 +11,8 @@ public struct AerodynamicsCalculator
     public static float CalculateCoefficientOfDrag(Polygon polygon, Fluid fluid, Vector2 velocity)
     {
         var dragCoefficient = 0f;
+        if (fluid.Name == FluidName.Vacuum)
+            return dragCoefficient;
         dragCoefficient += CalculateDragCoefficientOfFluid(fluid, velocity.GetMagnitude(), polygon.GetCharacteristicLength());
         dragCoefficient += CalculateDragCoefficientOfPolygon(polygon, velocity);
         return dragCoefficient;

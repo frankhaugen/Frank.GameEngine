@@ -11,7 +11,7 @@ public class Physics : IPhysics
         _environment = environment;
     }
 
-    public void Update(IGameObject gameObject, TimeSpan elapsed)
+    public void UpdateNew(IGameObject gameObject, TimeSpan elapsed)
     {
         var acceleration = CalculateAcceleration(gameObject);
         var velocity = CalculateVelocity(gameObject.Velocity, acceleration, elapsed);
@@ -24,7 +24,37 @@ public class Physics : IPhysics
         gameObject.Position = position;
     }
 
-    private Vector2 CalculateAcceleration(IGameObject gameObject)
+    public void Update(IGameObject gameObject, TimeSpan elapsed)
+    {
+        var gravityAcceleration = new Vector2(0, _environment.Gravity);
+
+        var velocity = gameObject.Velocity;
+        var density = _environment.Medium.Density;
+        var surfaceArea = gameObject.Polygon.Area();
+        var dragCoefficient = AerodynamicsCalculator.CalculateCoefficientOfDrag(gameObject.Polygon, _environment.Medium, velocity);
+        var airResistance = 0.5f * density * velocity.LengthSquared() * surfaceArea * dragCoefficient;
+        var airResistanceVector = new Vector2(-velocity.X * airResistance, -velocity.Y * airResistance);
+
+        var force = airResistanceVector + gravityAcceleration * gameObject.Mass;
+
+        var acceleration = force / gameObject.Mass;
+
+        if (!float.IsNaN(acceleration.X) && !float.IsNaN(acceleration.Y))
+        {
+            gameObject.Velocity += acceleration * (float)elapsed.TotalSeconds;
+        }
+
+        if (!float.IsNaN(gameObject.Velocity.X) && !float.IsNaN(gameObject.Velocity.Y))
+        {
+            gameObject.Position += gameObject.Velocity * (float)elapsed.TotalSeconds;
+        }
+
+        var optimalDirection = gameObject.Polygon.OptimalFlowDirection();
+        var something = DirectionsCalculator.Vector2ToHeadingAndSpeed(optimalDirection);
+        gameObject.Polygon = gameObject.Polygon.RotateToDirection(something.heading);
+    }
+
+    public Vector2 CalculateAcceleration(IGameObject gameObject)
     {
         var accelerationDueToGravity = new Vector2(0, _environment.Gravity);
         var accelerationDueToMedium = CalculateAccelerationDueToMedium(gameObject);
@@ -35,7 +65,7 @@ public class Physics : IPhysics
         return accelleration;
     }
 
-    private Vector2 CalculateAccelerationDueToMedium(IGameObject gameObject)
+    public Vector2 CalculateAccelerationDueToMedium(IGameObject gameObject)
     {
         var area = gameObject.Polygon.Area();
         var drag = CalculateDrag(gameObject);
@@ -48,12 +78,7 @@ public class Physics : IPhysics
     }
 
     private float CalculateDrag(IGameObject gameObject)
-    {
-        var dragCoefficient = AerodynamicsCalculator.CalculateCoefficientOfDrag(gameObject.Polygon, _environment.Medium, gameObject.Velocity);
-        var area = gameObject.Polygon.Area();
-        var velocitySquared = gameObject.Velocity.LengthSquared();
-        return 0.5f * dragCoefficient * area * velocitySquared;
-    }
+        => 0.5f * AerodynamicsCalculator.CalculateCoefficientOfDrag(gameObject.Polygon, _environment.Medium, gameObject.Velocity) * gameObject.Polygon.Area() * gameObject.Velocity.LengthSquared();
 
     private Vector2 CalculateForceDueToDrag(float drag, float area, Vector2 velocity)
     {

@@ -20,7 +20,7 @@ public class MyGame : Game
         var renderer = new Renderer(_graphics);
         var physics = new Physics(new EnvironmentalFactors
         {
-            Gravity = 9.81f,
+            Gravity = -9.81f,
             Medium = new Fluid(FluidName.Air),
             Wind = Vector2.Zero
         });
@@ -35,7 +35,7 @@ public class MyGame : Game
         var gameObject = new GameObject()
         {
             Name = "ArtilleryProjectile",
-            Mass = 100f,
+            Mass = 10f,
             Velocity = position,
             //Velocity = DirectionsCalculator.HeadingAndSpeedToVector2(45f, 1f),
             Color = Color.White,
