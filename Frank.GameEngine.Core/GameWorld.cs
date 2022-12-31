@@ -21,30 +21,33 @@ public class GameWorld : IGameWorld
 
     public void Update(GameTime gameTime)
     {
-        var collissions = new List<Collission>();
+        //var collissions = new List<Collission>();
         foreach (var gameObject in _gameObjects.GameObjects)
         {
+            Console.WriteLine($"{gameObject.Name}, {gameObject.Position}, {gameObject.Velocity}");
+
             _physics.Update(gameObject, gameTime.ElapsedGameTime);
 
-            foreach (var other in _gameObjects.GameObjects)
-            {
-                if (gameObject != other && gameObject.Polygon.Intersects(other.Polygon))
-                {
-                    collissions.Add(new Collission
-                    {
-                        GameObject1 = gameObject.Name,
-                        GameObject2 = other.Name,
-                        // Calculate the force of the collission here
-                    });
-                }
-            }
+            //foreach (var other in _gameObjects.GameObjects)
+            //{
+            //    if (gameObject != other && gameObject.Polygon.Intersects(other.Polygon))
+            //    {
+            //        collissions.Add(new Collission
+            //        {
+            //            GameObject1 = gameObject.Name,
+            //            GameObject2 = other.Name,
+            //            // Calculate the force of the collission here
+            //        });
+            //    }
+            //}
         }
     }
 
     public void Render(GameTime gameTime)
     {
-        foreach (var gameObject in _gameObjects.GameObjects)
+        foreach (var gameObject in _gameObjects.GameObjects.Where(x => !float.IsNaN(x.Position.X) && !float.IsNaN(x.Position.Y)))
         {
+            Console.WriteLine($"{gameObject.Name}, {gameObject.Position}, {gameObject.Velocity}");
             _renderer.Render(gameObject);
         }
     }

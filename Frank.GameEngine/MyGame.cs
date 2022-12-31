@@ -20,8 +20,8 @@ public class MyGame : Game
         var renderer = new Renderer(_graphics);
         var physics = new Physics(new EnvironmentalFactors
         {
-            Gravity = -9.81f,
-            Medium = new Fluid(FluidName.Hydrogen),
+            Gravity = 9.81f,
+            Medium = new Fluid(FluidName.Air),
             Wind = Vector2.Zero
         });
 
@@ -29,26 +29,24 @@ public class MyGame : Game
 
         Window.Title = "My Game";
         IsMouseVisible = true;
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-        base.Initialize();
-    }
-
-    protected override void LoadContent()
-    {
         var position = Vector2.Zero;
-        var position2 = new Vector2(0f, _graphics.PreferredBackBufferHeight / 2f);
+        var position2 = new Vector2(_graphics.PreferredBackBufferWidth / 4f, _graphics.PreferredBackBufferHeight / 2f);
 
         var gameObject = new GameObject()
         {
             Name = "ArtilleryProjectile",
-            Mass = 1f,
-            Velocity = DirectionsCalculator.HeadingAndSpeedToVector2(45f, 100f),
+            Mass = 100f,
+            Velocity = position,
+            //Velocity = DirectionsCalculator.HeadingAndSpeedToVector2(45f, 1f),
             Color = Color.White,
             Position = position2,
             Polygon = PolygonFactory.GetArtilleryShellPolygon(position, 50),
+            CollissionEnabled = true,
+            PhysicsEnebled = true
         };
 
         _gameWorld.AddGameObject(gameObject);
+        base.Initialize();
     }
 
     protected override void Update(GameTime gameTime)

@@ -13,7 +13,7 @@ public static class Vector2Extensions
             {
                 throw new ArgumentException("forceDueToDrag.X is NaN");
             }
-            forceDueToDrag.X = 0;
+            forceDueToDrag.X = 0f;
         }
 
         if (float.IsNaN(forceDueToDrag.Y))
@@ -22,7 +22,7 @@ public static class Vector2Extensions
             {
                 throw new ArgumentException("forceDueToDrag.Y is NaN");
             }
-            forceDueToDrag.Y = 0;
+            forceDueToDrag.Y = 0f;
         }
     }
 

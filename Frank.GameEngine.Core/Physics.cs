@@ -17,6 +17,9 @@ public class Physics : IPhysics
         var velocity = CalculateVelocity(gameObject.Velocity, acceleration, elapsed);
         var position = CalculatePosition(gameObject.Position, velocity, elapsed);
 
+        velocity.EnsureNoNaNs();
+        position.EnsureNoNaNs();
+
         gameObject.Velocity = velocity;
         gameObject.Position = position;
     }
@@ -25,7 +28,11 @@ public class Physics : IPhysics
     {
         var accelerationDueToGravity = new Vector2(0, _environment.Gravity);
         var accelerationDueToMedium = CalculateAccelerationDueToMedium(gameObject);
-        return accelerationDueToGravity + accelerationDueToMedium;
+        var accelleration = accelerationDueToGravity + accelerationDueToMedium;
+
+        accelleration.EnsureNoNaNs();
+
+        return accelleration;
     }
 
     private Vector2 CalculateAccelerationDueToMedium(IGameObject gameObject)
@@ -54,9 +61,9 @@ public class Physics : IPhysics
         var forceDueToDrag = -0.5f * drag * _environment.Medium.Density * area * speed * speed * velocity;
 
         forceDueToDrag.EnsureNoNaNs();
+
         return forceDueToDrag;
     }
-
 
     private Vector2 CalculateVelocity(Vector2 velocity, Vector2 acceleration, TimeSpan elapsed)
     {
