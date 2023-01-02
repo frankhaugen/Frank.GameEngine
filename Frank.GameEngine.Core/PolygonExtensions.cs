@@ -84,6 +84,7 @@ public static class PolygonExtensions
         return dragCoefficient;
     }
 
+    public static float GetArea(this Polygon polygon) => Area(polygon);
     public static float Area(this Polygon polygon)
     {
         // Calculate the area of the polygon using the Shoelace Theorem

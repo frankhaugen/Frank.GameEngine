@@ -21,7 +21,7 @@ public class MyGame : Game
         var physics = new Physics(new EnvironmentalFactors
         {
             Gravity = -9.81f,
-            Medium = new Fluid(FluidName.Air),
+            Medium = new Fluid(FluidName.Hydrogen),
             Wind = Vector2.Zero
         });
 
@@ -29,23 +29,36 @@ public class MyGame : Game
 
         Window.Title = "My Game";
         IsMouseVisible = true;
-        var position = Vector2.Zero;
-        var position2 = new Vector2(_graphics.PreferredBackBufferWidth / 4f, _graphics.PreferredBackBufferHeight / 2f);
+
 
         var gameObject = new GameObject()
         {
             Name = "ArtilleryProjectile",
             Mass = 10f,
-            Velocity = position,
+            Velocity = Vector2.Zero,
+            Direction = Vector2.Zero,
             //Velocity = DirectionsCalculator.HeadingAndSpeedToVector2(45f, 1f),
             Color = Color.White,
-            Position = position2,
-            Polygon = PolygonFactory.GetArtilleryShellPolygon(position, 50),
+            Position = new Vector2(_graphics.PreferredBackBufferWidth / 4f, _graphics.PreferredBackBufferHeight / 2f),
+            Polygon = PolygonFactory.GetArtilleryShellPolygon(50),
             CollissionEnabled = true,
             PhysicsEnebled = true
         };
 
         _gameWorld.AddGameObject(gameObject);
+        _gameWorld.AddGameObject(new GameObject()
+        {
+            Name = "Rock",
+            //Texture = _gameWorld.Renderer.GetTexture(RockType.Granite, 60, 60),
+            Mass = 10f,
+            Velocity = Vector2.Zero,
+            Polygon = PolygonFactory.GetSquare(25),
+            Position = new Vector2(_graphics.PreferredBackBufferWidth / 2f, _graphics.PreferredBackBufferHeight / 2f),
+            CollissionEnabled = true,
+
+            PhysicsEnebled = false
+        })
+            ;
         base.Initialize();
     }
 

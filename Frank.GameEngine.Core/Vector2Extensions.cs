@@ -31,4 +31,16 @@ public static class Vector2Extensions
         // Use the Pythagorean theorem to calculate the magnitude of the vector
         return MathF.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
     }
+
+    public static Vector2 GetNormal(this Vector2 vector)
+    {
+        // Use math to get the normal of the vector
+        return new Vector2(-vector.Y, vector.X);
+    }
+
+    public static Vector2 GetTangent(this Vector2 vector)
+    {
+        // Use math to get the tangent of the vector
+        return new Vector2(vector.Y, -vector.X);
+    }
 }
