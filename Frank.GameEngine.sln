@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Tests", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.2D", "Frank.GameEngine.2D\Frank.GameEngine.2D\Frank.GameEngine.2D.csproj", "{A15F1528-28FD-4171-A594-DFB212DB6FAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Silk", "Frank.GameEngine.Silk\Frank.GameEngine.Silk.csproj", "{084C0C4F-0E35-43F7-82C0-6FB3377EC245}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A15F1528-28FD-4171-A594-DFB212DB6FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A15F1528-28FD-4171-A594-DFB212DB6FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A15F1528-28FD-4171-A594-DFB212DB6FAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{084C0C4F-0E35-43F7-82C0-6FB3377EC245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{084C0C4F-0E35-43F7-82C0-6FB3377EC245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{084C0C4F-0E35-43F7-82C0-6FB3377EC245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{084C0C4F-0E35-43F7-82C0-6FB3377EC245}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

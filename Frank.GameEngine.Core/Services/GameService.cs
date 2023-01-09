@@ -25,6 +25,7 @@ public class GameService : Game
     {
         _graphicsManager.Instanciate(this);
         IsMouseVisible = _options.Value.ShowMouse;
+        
         _graphicsManager.Initialize();
         _ready = true;
 
