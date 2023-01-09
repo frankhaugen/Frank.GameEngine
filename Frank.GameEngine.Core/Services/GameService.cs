@@ -25,6 +25,8 @@ public class GameService : Game
     {
         _graphicsManager.Instanciate(this);
         IsMouseVisible = _options.Value.ShowMouse;
+        IsFixedTimeStep = _options.Value.IsFixedTimeStep;
+        TargetElapsedTime = TimeSpan.FromSeconds(1f / _options.Value.TargetFPS);
         
         _graphicsManager.Initialize();
         _ready = true;

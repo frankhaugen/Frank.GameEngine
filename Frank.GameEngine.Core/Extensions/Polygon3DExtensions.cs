@@ -4,6 +4,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Frank.GameEngine.Core.Extensions;
 
+public static class Polygon2DExtensions
+{
+    
+    public static Polygon2D Translate(this Polygon2D polygon, Vector2 position)
+    {
+        var translatedVertices = polygon.Vertices.Select(vertex => vertex + position).ToArray();
+        return new Polygon2D(translatedVertices);
+    }
+}
+
+
 public static class Polygon3DExtensions
 {
     public static VertexBuffer ToVertexBuffer(this Polygon3D polygon, GraphicsDevice graphicsDevice, Color color)
@@ -27,4 +38,6 @@ public static class Polygon3DExtensions
         polygon.Vertices.Select(vertex => new VertexPositionColor(vertex + position, color)).ToArray();
 
     public static VertexPositionColor ToVertexPositionColor(this Vector3 vertex, Color color) => new VertexPositionColor(vertex, color);
+    
+    public static Polygon2D ToPolygon2D(this Polygon3D polygon) => new Polygon2D(polygon.Vertices.Select(v => new Vector2(v.X, v.Y)).ToArray());
 }

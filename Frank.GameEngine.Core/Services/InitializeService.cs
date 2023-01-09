@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Frank.GameEngine.Core.Services;
 
-public class InitializeService : IInitialize
+public class InitializeService : IInitializeService
 {
     private readonly ILogger<InitializeService> _logger;
 

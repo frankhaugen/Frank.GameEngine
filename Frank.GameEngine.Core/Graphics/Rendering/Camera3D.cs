@@ -20,29 +20,31 @@ public class Camera3D : ICamera3D
         switch (e.Key)
         {
             case Keys.W:
-                Position += Vector3.Forward * 0.1f;
+                Position += Vector3.Forward * 10f;
                 break;
             case Keys.S:
-                Position += Vector3.Backward * 0.1f;
+                Position += Vector3.Backward * 10f;
                 break;
             case Keys.A:
-                Position += Vector3.Left * 0.1f;
+                Position += Vector3.Left * 10f;
                 break;
             case Keys.D:
-                Position += Vector3.Right * 0.1f;
+                Position += Vector3.Right * 10f;
+                break;
+            case Keys.Space:
+                Position += Vector3.Up * 10f;
+                break;
+            case Keys.LeftControl:
+                Position += Vector3.Down * 10f;
                 break;
         }
     }
 
-    public Vector3 Position { get; set; } = Vector3.Forward * 15;
+    public Vector3 Position { get; set; } = Vector3.Forward * -250f;
     public Vector3 Target { get; set; } = Vector3.Zero;
     public Vector3 Up { get; set; } = Vector3.Up;
 
     public Matrix ViewMatrix => Matrix.CreateLookAt(Position, Target, Up);
     public Matrix ProjectionMatrix { get; set; } = Matrix.Identity;
-
-    public void Update()
-    {
-        // Update camera logic goes here
-    }
+    
 }

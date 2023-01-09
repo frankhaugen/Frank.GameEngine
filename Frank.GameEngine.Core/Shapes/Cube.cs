@@ -10,8 +10,9 @@ public class Cube : IShape
     public bool IsWireframe { get; }
     public bool IsVisible { get; }
 
-    public Cube(float size)
+    public Cube(float size, Color color)
     {
+        Color = color;
         // Generate vertices for cube
         var vertices = new[]
         {

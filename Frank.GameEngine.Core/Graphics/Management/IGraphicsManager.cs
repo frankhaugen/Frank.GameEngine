@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Frank.GameEngine.Core.Graphics.Management;
 
-public interface IGraphicsManager : IInitialize
+public interface IGraphicsManager : IInitializeService
 {
     GraphicsDevice GraphicsDevice { get; }
     GraphicsDeviceManager GraphicsDeviceManager { get; }

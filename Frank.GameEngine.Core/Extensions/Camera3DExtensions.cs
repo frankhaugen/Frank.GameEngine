@@ -15,6 +15,9 @@ public static class Camera3DExtensions
         return Matrix.CreatePerspective(width, height, nearPlaneDistance, farPlaneDistance);
     }
     
+    public static void SetTarget(this ICamera3D camera, IGameObject target) => camera.Target = target.Transform.Position;
+    public static void SetTarget(this ICamera3D camera, Vector3 target) => camera.Target = target;
+
     public static Matrix GetView(this ICamera3D camera)
     {
         return Matrix.CreateLookAt(camera.Position, camera.Target, camera.Up);

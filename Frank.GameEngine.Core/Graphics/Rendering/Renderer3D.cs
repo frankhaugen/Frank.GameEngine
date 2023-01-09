@@ -21,8 +21,7 @@ public class Renderer3D : IRenderer
 
     public void Render(IGameObject gameObject)
     {
-        
-        _graphicsManager.GraphicsDeviceManager.GraphicsDevice.Clear(Color.Black);
+        _graphicsManager.GraphicsDeviceManager.GraphicsDevice.Clear(Color.Black.Random());
         _graphicsManager.GraphicsDeviceManager.BeginDraw();
         
         var vertexBuffer = gameObject.GetVertexBuffer(_graphicsManager.GraphicsDevice);
@@ -31,19 +30,20 @@ public class Renderer3D : IRenderer
         _graphicsManager.GraphicsDevice.SetVertexBuffer(vertexBuffer);
         _graphicsManager.GraphicsDevice.Indices = indexBuffer;
         
+        _camera.SetTarget(gameObject);
+        
         var basicEffect = new BasicEffect(_graphicsManager.GraphicsDevice)
         {
             World = gameObject.Transform.GetWorldMatrix(),
             View = _camera.GetView(),
-            Projection = _camera.GetProjection(_options.Value.Resolution.Width, _options.Value.Resolution.Height, 1, 500),
-            // TextureEnabled = true,
+            Projection = _camera.GetProjection(_options.Value.Resolution.Width, _options.Value.Resolution.Height, 1, 10000),
             VertexColorEnabled = true
         };
         
         foreach (var pass in basicEffect.CurrentTechnique.Passes)
         {
             pass.Apply();
-            _graphicsManager.GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.LineList, 0, 0, vertexBuffer.VertexCount, 0, indexBuffer.IndexCount);
+            _graphicsManager.GraphicsDevice.DrawPrimitives(PrimitiveType.TriangleList, 0, vertexBuffer.VertexCount);
         }
         
         _graphicsManager.GraphicsDeviceManager.EndDraw();

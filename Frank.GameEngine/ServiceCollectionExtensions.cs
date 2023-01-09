@@ -42,15 +42,15 @@ internal static class ServiceCollectionExtensions
             .AddSingleton<IDrawService, DrawService>()
             .AddSingleton<IUpdateService, UpdateService>()
             .AddSingleton<IGraphicsManager, GraphicsManager>()
-            // .AddSingleton<IRenderer, Renderer3D>()
-            .AddSingleton<IRenderer, SpriteBatchRenderer>()
+            .AddSingleton<IRenderer, Renderer3D>()
+            // .AddSingleton<IRenderer, SpriteBatchRenderer>()
             .AddSingleton<ICamera3D, Camera3D>()
             .AddSingleton<IInputHandler, InputHandler>()
             .AddSingleton(new PhysicalForces(new GravityForce()))
             .AddSingleton(new GameObjects(new Block(
                 "Me", 
-                new Transform(){Position = Vector3.Zero, Rotation = Quaternion.Identity, Scale = Vector3.One * 10},
-                new Cube(1.0f), 
+                new Transform(){Position = new Vector3(400, 300, 0), Rotation = Quaternion.Identity, Scale = Vector3.One},
+                new Cube(100.0f, Color.Red), 
                 new GameObjectOptions()
                 {
                     IsPhysical = true,

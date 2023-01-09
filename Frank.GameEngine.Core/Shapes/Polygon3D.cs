@@ -8,3 +8,10 @@ public struct Polygon3D
 
 	public Polygon3D(params Vector3[] vertices) => Vertices = vertices;
 }
+
+public struct Polygon2D
+{
+	public Vector2[] Vertices { get; }
+
+	public Polygon2D(params Vector2[] vertices) => Vertices = vertices;
+}

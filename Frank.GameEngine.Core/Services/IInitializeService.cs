@@ -1,6 +1,6 @@
 ﻿namespace Frank.GameEngine.Core.Interfaces;
 
-public interface IInitialize
+public interface IInitializeService
 {
     void Initialize();
 }
