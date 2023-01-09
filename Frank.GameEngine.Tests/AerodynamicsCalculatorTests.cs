@@ -1,10 +1,14 @@
-﻿using Frank.GameEngine.Core.Calculators;
-using Frank.GameEngine.Core.Physics;
+﻿using Frank.GameEngine.Core._2D.Calculators;
+using Frank.GameEngine.Core._2D.Physics;
 
 namespace Frank.GameEngine.Tests
 {
 	public class AerodynamicsCalculatorTests
 	{
+		// Tests for AerodynamicsCalculator that passes and have valid data for the test. And that serve as guards for changes in the code.
+
+
+
 		[Fact]
 		public void CalculateDragCoefficientOfFluid_WhenCalledWithFluidAndVelocityAndCharacteristicLength_ReturnsDragCoefficient()
 		{

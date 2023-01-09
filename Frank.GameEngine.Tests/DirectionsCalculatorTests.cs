@@ -1,4 +1,4 @@
-﻿using Frank.GameEngine.Core.Calculators;
+﻿using Frank.GameEngine.Core._2D.Calculators;
 using Microsoft.Xna.Framework;
 
 namespace Frank.GameEngine.Tests;

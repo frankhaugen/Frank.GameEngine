@@ -1,7 +1,7 @@
 using FluentAssertions;
-using Frank.GameEngine.Core;
-using Frank.GameEngine.Core.Physics;
-using Frank.GameEngine.Core.Shapes;
+using Frank.GameEngine.Core._2D.GameObjects;
+using Frank.GameEngine.Core._2D.Physics;
+using Frank.GameEngine.Core._2D.Shapes;
 using Microsoft.Xna.Framework;
 
 namespace Frank.GameEngine.Tests;
@@ -75,12 +75,7 @@ public class PhysicsTests
 		var environment = new EnvironmentalFactors
 		{
 			Gravity = 9.81f,
-			Medium = new Fluid
-			{
-				Name = FluidName.Air,
-				Density = 1.225f,
-				Viscosity = 1.81e-5f
-			}
+			Medium = new Fluid(FluidName.Air)
 		};
 		var physics = new PhysicsEngine(environment);
 		var gameObject = new GameObject
