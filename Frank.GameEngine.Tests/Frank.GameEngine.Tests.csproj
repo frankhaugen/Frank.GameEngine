@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Frank.GameEngine.2D\Frank.GameEngine.2D\Frank.GameEngine.2D.csproj" />
     <ProjectReference Include="..\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj" />
+    <ProjectReference Include="..\Frank.GameEngine.Lagacy\Frank.GameEngine.Lagacy.csproj" />
   </ItemGroup>
 
 </Project>

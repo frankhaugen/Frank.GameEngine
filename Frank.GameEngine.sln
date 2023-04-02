@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Silk", "Fr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.FirstPrinciples", "Frank.GameEngine.FirstPrinciples\Frank.GameEngine.FirstPrinciples.csproj", "{EC1FC9F4-AFD6-45A3-B76E-5394F3A24DAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Lagacy", "Frank.GameEngine.Lagacy\Frank.GameEngine.Lagacy.csproj", "{7D1679FF-7A0C-4FC1-AE3C-B7EABADF23BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{EC1FC9F4-AFD6-45A3-B76E-5394F3A24DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC1FC9F4-AFD6-45A3-B76E-5394F3A24DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC1FC9F4-AFD6-45A3-B76E-5394F3A24DAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D1679FF-7A0C-4FC1-AE3C-B7EABADF23BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1679FF-7A0C-4FC1-AE3C-B7EABADF23BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1679FF-7A0C-4FC1-AE3C-B7EABADF23BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1679FF-7A0C-4FC1-AE3C-B7EABADF23BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

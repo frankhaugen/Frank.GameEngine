@@ -1,10 +1,10 @@
-﻿using Frank.GameEngine.Core._2D.Calculators;
-using Frank.GameEngine.Core._2D.Comparers;
-using Frank.GameEngine.Core._2D.Extensions;
-using Frank.GameEngine.Core._2D.GameObjects;
-using Frank.GameEngine.Core._2D.Physics;
-using Frank.GameEngine.Core._2D.Physics.Effects;
-using Frank.GameEngine.Core._2D.Shapes;
+﻿using Frank.GameEngine.Lagacy._2d._2D.Calculators;
+using Frank.GameEngine.Lagacy._2d._2D.Comparers;
+using Frank.GameEngine.Lagacy._2d._2D.Extensions;
+using Frank.GameEngine.Lagacy._2d._2D.GameObjects;
+using Frank.GameEngine.Lagacy._2d._2D.Physics;
+using Frank.GameEngine.Lagacy._2d._2D.Physics.Effects;
+using Frank.GameEngine.Lagacy._2d._2D.Shapes;
 using Microsoft.Xna.Framework;
 
 namespace Frank.GameEngine.Tests.Physics.Effects;

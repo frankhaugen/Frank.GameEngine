@@ -1,5 +1,5 @@
-﻿using Frank.GameEngine.Core._2D.Calculators;
-using Frank.GameEngine.Core._2D.Physics;
+﻿using Frank.GameEngine.Lagacy._2d._2D.Calculators;
+using Frank.GameEngine.Lagacy._2d._2D.Physics;
 
 namespace Frank.GameEngine.Tests
 {
