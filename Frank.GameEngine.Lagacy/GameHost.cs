@@ -1,6 +1,6 @@
 ﻿using Frank.GameEngine.Lagacy.OldCore.Services;
 
-namespace Frank.GameEngine;
+namespace Frank.GameEngine.Lagacy;
 
 public class GameHost : BackgroundService
 {

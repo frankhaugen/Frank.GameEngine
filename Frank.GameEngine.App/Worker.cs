@@ -1,20 +1,18 @@
-using System.Numerics;
-
-namespace Frank.GameEngine.Silk;
+namespace Frank.GameEngine.App;
 
 public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;
+    private readonly GameBase _game;
 
-    public Worker(ILogger<Worker> logger)
+    public Worker(ILogger<Worker> logger, GameBase game)
     {
         _logger = logger;
+        _game = game;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var silk = new SilkProgram();
-        
-        silk.Start();
+        _game.Run();
     }
 }

@@ -1,14 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <PackageType>Template</PackageType>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UserSecretsId>dotnet-MonoGame-61db3d38-bece-42b7-8d86-3102a9cba72e</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+      <ProjectReference Include="..\..\Frank.GameEngine\Frank.GameEngine.csproj" />
     </ItemGroup>
     
 </Project>

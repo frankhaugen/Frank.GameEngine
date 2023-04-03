@@ -7,7 +7,7 @@ using Frank.GameEngine.Lagacy.OldCore.Services;
 using Frank.GameEngine.Lagacy.OldCore.Shapes;
 using Microsoft.Xna.Framework;
 
-namespace Frank.GameEngine;
+namespace Frank.GameEngine.Lagacy;
 
 internal class Block : IGameObject
 {
