@@ -1,4 +1,5 @@
-﻿using Frank.GameEngine.Types;
+﻿using Frank.GameEngine.Extensions;
+using Frank.GameEngine.Types;
 
 namespace Frank.GameEngine.Primitives;
 

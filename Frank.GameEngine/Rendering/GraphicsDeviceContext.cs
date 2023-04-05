@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Frank.GameEngine.Rendering;
 
@@ -13,6 +14,8 @@ public class GraphicsDeviceContext : IGraphicsDeviceContext
 
     public bool IsInitialized { get; private set; }
     
+    public GraphicsDevice GraphicsDevice => _graphicsDeviceManager.GraphicsDevice;
+    
     public void Initialize()
     {
         _graphicsDeviceManager.PreferredBackBufferWidth = 800;
@@ -21,7 +24,7 @@ public class GraphicsDeviceContext : IGraphicsDeviceContext
         
         IsInitialized = true;
     }
-    
+
     public void SetResolution(int width, int height)
     {
         _graphicsDeviceManager.PreferredBackBufferWidth = width;

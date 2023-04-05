@@ -1,11 +1,15 @@
-﻿namespace Frank.GameEngine.Rendering;
+﻿using Microsoft.Xna.Framework.Graphics;
+
+namespace Frank.GameEngine.Rendering;
 
 public interface IGraphicsDeviceContext
 {
     bool IsInitialized { get; }
     
-    void Initialize();
+    GraphicsDevice GraphicsDevice { get; }
     
+    void Initialize();
+
     void SetResolution(int width, int height);
     
     void SetFullscreen(bool fullscreen);

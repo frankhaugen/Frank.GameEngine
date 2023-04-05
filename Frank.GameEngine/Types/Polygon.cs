@@ -1,4 +1,6 @@
-﻿namespace Frank.GameEngine.Types;
+﻿using System.Diagnostics;
+
+namespace Frank.GameEngine.Types;
 
 public abstract class Polygon : IPolygon
 {
@@ -8,4 +10,6 @@ public abstract class Polygon : IPolygon
     {
         Vertices = vertices;
     }
+    
+    public override string ToString() => (Vertices.ToString() ?? GetType().FullName) ?? throw new InvalidOperationException();
 }
