@@ -11,4 +11,8 @@
       <ProjectReference Include="..\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="RandomPile\" />
+    </ItemGroup>
+
 </Project>

@@ -28,7 +28,7 @@ public static partial class GraphicsDeviceExtensions
 
     public static void DrawTriangleList(this GraphicsDevice graphicsDevice, Polygon polygon, Color color)
     {
-        var faceList = FaceFactory.CreateParallel(polygon);
+        var faceList = FaceFactory.Create(polygon);
         var triangleList = faceList.Select(x => new VertexPositionColor(x.GetNormal(), color.ToColor())).ToArray();
         graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList, 0, triangleList.Length / PrimitiveType.TriangleList.GetVertexCount());
     }

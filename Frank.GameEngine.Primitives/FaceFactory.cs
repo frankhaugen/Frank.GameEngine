@@ -7,38 +7,32 @@ public static class FaceFactory
 {
     public static Face Create(Vector3 a, Vector3 b, Vector3 c) => new(a, b, c);
 
-    public static IEnumerable<Face> CreateNormal(Polygon polygon, bool parallel = true)
+    public static IEnumerable<Face> Create(Polygon polygon, bool parallel = true)
     {
-        return parallel
-            ? CreateParallel(polygon)
-            : CreateNormal(polygon);
-    }
-
-    public static IEnumerable<Face> CreateNormal(Polygon polygon)
-    {
-        var faces = new List<Face>();
-        for (var i = 0; i < polygon.Length; i++)
+        if (parallel)
         {
-            var a = polygon[i];
-            var b = polygon[(i + 1) % polygon.Length];
-            var c = polygon.Position;
-            faces.Add(new Face(a, b, c));
+            var faces = new ConcurrentBag<Face>();
+            Parallel.For(0, polygon.Length, i =>
+            {
+                var a = polygon[i];
+                var b = polygon[(i + 1) % polygon.Length];
+                var c = polygon.Position;
+                faces.Add(new Face(a, b, c));
+            });
+
+            return faces;
         }
-
-        return faces;
-    }
-
-    public static IEnumerable<Face> CreateParallel(Polygon polygon)
-    {
-        var faces = new ConcurrentBag<Face>();
-        Parallel.For(0, polygon.Length, i =>
+        else
         {
-            var a = polygon[i];
-            var b = polygon[(i + 1) % polygon.Length];
-            var c = polygon.Position;
-            faces.Add(new Face(a, b, c));
-        });
-
-        return faces;
+            var faces = new List<Face>();
+            for (var i = 0; i < polygon.Length; i++)
+            {
+                var a = polygon[i];
+                var b = polygon[(i + 1) % polygon.Length];
+                var c = polygon.Position;
+                faces.Add(new Face(a, b, c));
+            }
+            return faces;
+        }
     }
 }

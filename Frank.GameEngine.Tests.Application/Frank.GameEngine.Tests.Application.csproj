@@ -17,4 +17,8 @@
         <Link>.dockerignore</Link>
       </Content>
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Frank.GameEngine.Rendering.MonoGame\Frank.GameEngine.Rendering.MonoGame.csproj" />
+    </ItemGroup>
 </Project>

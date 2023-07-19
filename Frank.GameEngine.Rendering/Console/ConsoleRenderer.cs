@@ -13,7 +13,10 @@ public class ConsoleRenderer : IRenderer
         _viewport = new Viewport(new Vector3(width, height, 0));
     }
 
-    public void Render(Scene scene) => throw new NotImplementedException();
+    public void Render(Scene scene)
+    {
+        Render(scene, System.Console.WriteLine);
+    }
 
     public void Render(Scene scene, Action<string> callback)
     {

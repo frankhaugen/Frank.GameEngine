@@ -14,12 +14,12 @@ public class FaceFactoryBenchmark
     [Benchmark]
     public void Parallel()
     {
-        var result = FaceFactory.CreateParallel(_polygon);
+        var result = FaceFactory.Create(_polygon);
     }
 
     [Benchmark]
     public void Normal()
     {
-        var result = FaceFactory.CreateNormal(_polygon);
+        var result = FaceFactory.Create(_polygon, false);
     }
 }

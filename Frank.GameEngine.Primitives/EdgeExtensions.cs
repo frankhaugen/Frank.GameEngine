@@ -4,6 +4,28 @@ namespace Frank.GameEngine.Primitives;
 
 public static class EdgeExtensions
 {
+    
+    public static Vector3 GetMidpoint(this Edge edge) => new((edge.A.X + edge.B.X) / 2, (edge.A.Y + edge.B.Y) / 2, (edge.A.Z + edge.B.Z) / 2);
+    
+    public static Vector3 GetDirection(this Edge edge) => new(edge.B.X - edge.A.X, edge.B.Y - edge.A.Y, edge.B.Z - edge.A.Z);
+    
+    public static float GetLength(this Edge edge) => Vector3.Distance(edge.A, edge.B);
+    
+    public static float GetCharacteristicLength(this IEnumerable<Edge> edges)
+    {
+        var edgeArray = edges as Edge[] ?? edges.ToArray();
+        var sumOfSquaredLengths = edgeArray.Sum(edge => edge.GetLength() * edge.GetLength());
+        return MathF.Sqrt(sumOfSquaredLengths / edgeArray.Length);
+    }
+    
+    public static Vector3 GetNormal(this Edge edge) => Vector3.Normalize(Vector3.Cross(edge.GetDirection(), Vector3.UnitZ));
+    
+    public static Vector3 GetNormal(this Edge edge, Vector3 point) => Vector3.Normalize(Vector3.Cross(edge.GetDirection(), point - edge.A));
+    
+    public static Vector3 GetNormal(this Edge edge, Edge other) => Vector3.Normalize(Vector3.Cross(edge.GetDirection(), other.GetDirection()));
+    
+    public static Vector3 GetTangent(this Edge edge) => Vector3.Normalize(Vector3.Cross(edge.GetDirection(), Vector3.UnitZ));
+    
     public static bool Intersect(this Edge edge, Edge other, out Vector3? intersectionPoint)
     {
         intersectionPoint = new Vector3(0, 0, 0);
