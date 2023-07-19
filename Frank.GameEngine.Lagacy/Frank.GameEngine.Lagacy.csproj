@@ -11,14 +11,13 @@
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
         <PackageReference Include="MonoGame.Framework.DesktopGL " Version="3.8.1.303" />
         <PackageReference Include="MonoGame.Extended.Input" Version="3.8.0" />
-<!--        <PackageReference Include="MonoGame.Shapes" Version="0.8.0" />-->
         <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
         <PackageReference Include="Frank.Libraries.Calculators" Version="4.0.9" />
+        <PackageReference Include="Silk.NET" Version="2.17.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Include="2d\Properties\launchSettings.json" />
-    </ItemGroup>
+
+
 
     <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
         <Message Text="Restoring dotnet tools" Importance="High" />

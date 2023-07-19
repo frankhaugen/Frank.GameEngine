@@ -1,0 +1,33 @@
+﻿namespace Frank.GameEngine.Lagacy.A.OldCore.Input.Sources.Voice;
+
+public enum VoiceCommand
+{
+    SwitchWeapon,
+    Resume,
+    Pause,
+    StandUp,
+    Interact,
+    Fire,
+    MoveLeft,
+    MoveRight,
+    MoveForward,
+    MoveBackward,
+    TurnLeft,
+    TurnRight,
+    TurnAround,
+    Jump,
+    Crouch,
+    Reload,
+    UseItem,
+    ToggleFlashlight,
+    ToggleMap,
+    OpenMenu,
+    CloseMenu,
+    SelectMenuOption,
+    PauseGame,
+    QuitGame,
+    Save,
+    Options,
+    Map,
+    Inventory,
+}

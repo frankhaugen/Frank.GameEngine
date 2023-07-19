@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <EmbeddedResource Include="Models/*" CopyToOutputDirectory="PreserveNewest" />
+        <EmbeddedResource Include="Shaders/*" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Shaders\" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
+    </ItemGroup>
+</Project>
