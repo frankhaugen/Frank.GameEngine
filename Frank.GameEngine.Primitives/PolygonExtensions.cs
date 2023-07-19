@@ -34,4 +34,14 @@ public static class PolygonExtensions
         }
         return new Polygon(vertices);
     }
+    
+    public static Polygon GetCopy(this Polygon polygon)
+    {
+        var vertices = new Vector3[polygon.Length];
+        for (var i = 0; i < polygon.Length; i++)
+        {
+            vertices[i] = polygon[i];
+        }
+        return new Polygon(vertices);
+    }
 }

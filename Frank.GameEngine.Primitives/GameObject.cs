@@ -11,6 +11,8 @@ public class GameObject
     public Transform Transform { get; set; } = new();
 
     public Shape Shape { get; set; } = new();
+    
+    public Rigidbody Rigidbody { get; set; } = new();
 
     public override string ToString() => $"{Name} - {Shape}";
 }

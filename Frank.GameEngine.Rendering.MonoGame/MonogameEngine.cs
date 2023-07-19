@@ -31,9 +31,8 @@ public class MonogameEngine : Game
         var transform = TransformFactory.CreateTransform();
         var gameObject = GameObjectFactory.CreateGameObject(transform, shape, "Test Object");
         var camera = new Camera();
-        var scene = new Scene("Test Scene");
+        var scene = new Scene("Test Scene", camera);
         scene.GameObjects.Add(gameObject);
-        scene.Camera = camera;
 
         _gameEngine.InputManager.OnKeyboardKeyPress(x =>
         {

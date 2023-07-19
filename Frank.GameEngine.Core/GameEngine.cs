@@ -1,4 +1,5 @@
 using Frank.GameEngine.Input;
+using Frank.GameEngine.Physics;
 using Frank.GameEngine.Primitives;
 using Frank.GameEngine.Rendering;
 
@@ -13,6 +14,8 @@ public class GameEngine
     public SceneManager SceneManager { get; } = new();
 
     public InputManager InputManager { get; } = new();
+    
+    public PhysicsEngine PhysicsEngine { get; } = new();
 
     public Scene? CurrentScene => SceneManager.CurrentScene;
 
@@ -30,7 +33,10 @@ public class GameEngine
 
     public void Update(UpdateArgs args)
     {
-
+        if (CurrentScene is null)
+            return;
+        
+        PhysicsEngine.Update(CurrentScene, args.ElapsedTime);
     }
 
     public void Draw()

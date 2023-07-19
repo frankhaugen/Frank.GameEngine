@@ -15,7 +15,11 @@ public class ConsoleRenderer : IRenderer
 
     public void Render(Scene scene)
     {
-        Render(scene, System.Console.WriteLine);
+        Render(scene, x =>
+        {
+            System.Console.Clear();
+            System.Console.WriteLine(x);
+        });
     }
 
     public void Render(Scene scene, Action<string> callback)

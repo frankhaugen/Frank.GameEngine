@@ -4,9 +4,9 @@ namespace Frank.GameEngine.Primitives;
 
 public static class TransformExtensions
 {
-    public static void Translate(this Transform transform, Vector3 position)
+    public static void Translate(this Transform transform, Vector3 direction)
     {
-        transform.Position += position;
+        transform.Position += direction;
     }
 
     public static void Rotate(this Transform transform, Vector3 radians)

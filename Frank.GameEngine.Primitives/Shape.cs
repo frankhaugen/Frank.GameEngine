@@ -9,4 +9,5 @@ public class Shape
     public Color Color { get; set; } = Color.White;
 
     public override string ToString() => $"{Polygon}";
+
 }

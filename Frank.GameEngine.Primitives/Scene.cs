@@ -4,10 +4,11 @@ namespace Frank.GameEngine.Primitives;
 
 public class Scene
 {
-    public Scene(string name)
+    public Scene(string name, Camera camera)
     {
         Name = name;
         Id = Guid.NewGuid();
+        Camera = camera;
     }
 
     public string Name { get; }

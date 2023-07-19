@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj" />
+      <ProjectReference Include="..\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj" />
       <ProjectReference Include="..\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj" />
     </ItemGroup>
 

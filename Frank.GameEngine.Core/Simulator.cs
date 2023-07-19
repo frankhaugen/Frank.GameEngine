@@ -8,9 +8,23 @@ public class Simulator
     private bool _stopSimulation;
 
     /// <summary>
+    /// Creates a new instance of the Simulator class
+    /// </summary>
+    /// <param name="action">The action to run each iteration</param>
+    public Simulator(Action<TimeSpan> action)
+    {
+        Action = action;
+    }
+
+    /// <summary>
     /// The total running time of the simulation
     /// </summary>
     public TimeSpan TotalRunningTime { get; private set; } = TimeSpan.Zero;
+
+    /// <summary>
+    /// The maximum running time of the simulation
+    /// </summary>
+    public TimeSpan MaxRunningTime { get; set; } = TimeSpan.FromMinutes(1);
 
     /// <summary>
     /// The speed of the simulation (1 = realtime), 0 and below is infinite speed
@@ -21,6 +35,11 @@ public class Simulator
     /// The time between each iteration
     /// </summary>
     public TimeSpan TimeIncrement { get; set; } = TimeSpan.FromSeconds(1);
+    
+    /// <summary>
+    /// The action to run each iteration
+    /// </summary>
+    public Action<TimeSpan> Action { get; }
 
     /// <summary>
     /// Stops the simulation
@@ -31,8 +50,7 @@ public class Simulator
     /// Runs the simulation for the specified number of iterations
     /// </summary>
     /// <param name="iterations"></param>
-    /// <param name="action"></param>
-    public void Run(int iterations, Action<TimeSpan> action)
+    public void Run(int iterations)
     {
         for (var i = 0; i < iterations; i++)
         {
@@ -41,7 +59,7 @@ public class Simulator
                 _stopSimulation = false;
                 break;
             }
-            Run(action);
+            Tick();
         }
     }
 
@@ -50,16 +68,16 @@ public class Simulator
     /// </summary>
     /// <param name="timeSpan"></param>
     /// <param name="action"></param>
-    public void Run(TimeSpan timeSpan, Action<TimeSpan> action)
+    public void Start()
     {
-        while (TotalRunningTime < timeSpan)
+        while (TotalRunningTime < MaxRunningTime)
         {
             if (_stopSimulation)
             {
                 _stopSimulation = false;
                 break;
             }
-            Run(action);
+            Tick();
         }
     }
 
@@ -67,13 +85,13 @@ public class Simulator
     /// Runs one iteration of the simulation and increments the time by the TimeIncrement
     /// </summary>
     /// <param name="action"></param>
-    public void Run(Action<TimeSpan> action)
+    public void Tick()
     {
         TotalRunningTime += TimeIncrement;
         if (SimulationSpeed > 0)
         {
             Task.Delay(TimeIncrement / SimulationSpeed).Wait();
         }
-        action.Invoke(TotalRunningTime);
+        Action.Invoke(TotalRunningTime);
     }
 }

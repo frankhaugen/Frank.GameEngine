@@ -1,7 +1,14 @@
 using Frank.GameEngine.Tests.Application;
 
-IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services => { services.AddHostedService<ConsoleRendererWorker>(); })
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureLogging(x => x.ClearProviders())
+    .ConfigureServices(services =>
+    {
+        
+        services.AddHostedService<ConsoleRendererWorker>();
+        
+        
+    })
     .Build();
 
 host.Run();

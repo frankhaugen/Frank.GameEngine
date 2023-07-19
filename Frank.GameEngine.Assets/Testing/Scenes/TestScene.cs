@@ -5,7 +5,7 @@ namespace Frank.GameEngine.Assets.Testing.Scenes;
 
 public class BasicTestScene : Scene
 {
-    public BasicTestScene() : base("Test Scene")
+    public BasicTestScene() : base("Test Scene", new Camera())
     {
         var shape = ShapeFactory.CreateCube(Color.Chartreuse, 5f);
         var transform = TransformFactory.CreateTransform();
@@ -18,7 +18,7 @@ public class BasicTestScene : Scene
 
 public class TeapotTestScene : Scene
 {
-    public TeapotTestScene() : base("Teapot Test Scene")
+    public TeapotTestScene() : base("Teapot Test Scene", new Camera())
     {
         var polygon = ModelsAssets.GetTeapot();
         var shape = new Shape() { Polygon = polygon, Color = Color.Chartreuse };
