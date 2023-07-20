@@ -4,6 +4,12 @@ namespace Frank.GameEngine.Primitives;
 
 public static class ShapeExtensions
 {
+    /// <summary>
+    /// Gets the transformed shape.
+    /// </summary>
+    /// <param name="shape"></param>
+    /// <param name="transform"></param>
+    /// <returns></returns>
     public static Shape GetTransformedShape(this Shape shape, Transform transform)
     {
         var polygon = shape.Polygon;
@@ -16,6 +22,12 @@ public static class ShapeExtensions
         return transformedShape;
     }
     
+    /// <summary>
+    /// Gets the transformed shape.
+    /// </summary>
+    /// <param name="shape"></param>
+    /// <param name="transform"></param>
+    /// <returns></returns>
     public static Shape Transform(this Shape shape, Transform transform)
     {
         var transformedShape = shape.GetCopy();
@@ -28,6 +40,11 @@ public static class ShapeExtensions
         return transformedShape;
     }
 
+    /// <summary>
+    /// Gets a copy of the shape with the same polygon and color.
+    /// </summary>
+    /// <param name="shape"></param>
+    /// <returns></returns>
     public static Shape GetCopy(this Shape shape)
     {
         return new Shape()
@@ -37,6 +54,12 @@ public static class ShapeExtensions
         };
     }
     
+    /// <summary>
+    /// Moves the shape the specified amount in the specified direction.
+    /// </summary>
+    /// <param name="shape"></param>
+    /// <param name="position"></param>
+    /// <returns></returns>
     public static Shape Translate(this Shape shape, Vector3 position)
     {
         return new Shape()
@@ -46,6 +69,12 @@ public static class ShapeExtensions
         };
     }
 
+    /// <summary>
+    /// Rotates the shape the specified amount.
+    /// </summary>
+    /// <param name="shape"></param>
+    /// <param name="rotation"></param>
+    /// <returns></returns>
     public static Shape Rotate(this Shape shape, Quaternion rotation)
     {
         return new Shape()
@@ -55,6 +84,12 @@ public static class ShapeExtensions
         };
     }
 
+    /// <summary>
+    /// Scales the shape the specified amount. 
+    /// </summary>
+    /// <param name="shape"></param>
+    /// <param name="scale"></param>
+    /// <returns></returns>
     public static Shape Scale(this Shape shape, float scale)
     {
         return new Shape()

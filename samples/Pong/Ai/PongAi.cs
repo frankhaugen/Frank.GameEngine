@@ -1,14 +1,15 @@
 ﻿using Frank.GameEngine.Primitives;
+using Pong.GameObjects;
 using System.Numerics;
 
 namespace Pong.Ai;
 
 public class PongAi
 {
-    private readonly GameObject _paddle;
+    private readonly ComputerPaddle _paddle;
     private readonly GameObject _target;
 
-    public PongAi(GameObject paddle, GameObject target)
+    public PongAi(ComputerPaddle paddle, GameObject target)
     {
         _paddle = paddle;
         _target = target;

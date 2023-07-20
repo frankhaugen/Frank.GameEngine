@@ -8,8 +8,8 @@ public class LeftWall : GameObject
 {
     public LeftWall()
     {
-        Transform.Position = new Vector3(-120, 0, 0);
-        Shape.Polygon = PolygonFactory.CreateCube(10, 100, 0);
+        Transform.Position = new Vector3(3, 3, 0);
+        Shape.Polygon = PolygonFactory.CreateCube(2, 94, 0);
         Shape.Color = Color.White;
     }
 }

@@ -1,13 +1,26 @@
 using System.Drawing;
-using System.Numerics;
 
 namespace Frank.GameEngine.Primitives;
 
+/// <summary>
+/// Represents a shape. A shape is polygon with a color.
+/// </summary>
 public class Shape
 {
-    public Polygon Polygon { get; set; } = new(Array.Empty<Vector3>());
+    /// <summary>
+    /// A polygon is a shape of vertices.
+    /// </summary>
+    public Polygon Polygon { get; set; } = new();
+    
+    /// <summary>
+    /// The color of the shape.
+    /// </summary>
     public Color Color { get; set; } = Color.White;
 
+    /// <summary>
+    /// Gets a string representation of the shape.
+    /// </summary>
+    /// <returns></returns>
     public override string ToString() => $"{Polygon}";
 
 }

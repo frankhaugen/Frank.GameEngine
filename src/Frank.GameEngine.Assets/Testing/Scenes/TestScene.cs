@@ -10,9 +10,7 @@ public class BasicTestScene : Scene
         var shape = ShapeFactory.CreateCube(Color.Chartreuse, 5f);
         var transform = TransformFactory.CreateTransform();
         var gameObject = GameObjectFactory.CreateGameObject(transform, shape, "Test Object");
-        var camera = new Camera();
         GameObjects.Add(gameObject);
-        Camera = camera;
     }
 }
 
@@ -24,9 +22,7 @@ public class TeapotTestScene : Scene
         var shape = new Shape() { Polygon = polygon, Color = Color.Chartreuse };
         var transform = TransformFactory.CreateTransform();
         var gameObject = GameObjectFactory.CreateGameObject(transform, shape, "Test Object");
-        var camera = new Camera();
         GameObjects.Add(gameObject);
-        Camera = camera;
     }
 }
 

@@ -2,6 +2,9 @@
 
 namespace Frank.GameEngine.Primitives;
 
+/// <summary>
+/// Represents a collision between two objects.
+/// </summary>
 public static class Constants
 {
     /// <summary>
@@ -58,32 +61,63 @@ public static class Constants
         public const decimal PlancksConstant = 6.62607015e-34M;
     }
 
+    /// <summary>
+    /// The MathConstants class provides constants that are commonly used in mathematics.
+    /// </summary>
     public static class MathConstants
     {
+        /// <summary>
+        /// The value of pi divided by two.
+        /// </summary>
         public const float PiOver2 = (float)(Math.PI / 2.0);
+        
+        /// <summary>
+        /// Pi divided by four.
+        /// </summary>
         public const float PiOver4 = (float)(Math.PI / 4.0);
+        
+        /// <summary>
+        /// The value of pi times two.
+        /// </summary>
         public const float TwoPi = (float)(Math.PI * 2.0);
 
+        /// <summary>
+        /// Epsilon is the smallest value that a float can have different from zero.
+        /// </summary>
         public const float Epsilon = 1.192092896e-07f;
 
+        /// <summary>
+        /// The value of pi divided by 180.
+        /// </summary>
         public const float Deg2Rad = (float)(Math.PI / 180.0);
 
+        /// <summary>
+        /// The value of 180 divided by pi.
+        /// </summary>
         public const float Rad2Deg = (float)(180.0 / Math.PI);
 
+        /// <summary>
+        /// Infinity is a constant value that represents positive infinity.
+        /// </summary>
         public const float Infinity = float.PositiveInfinity;
 
+        /// <summary>
+        /// NegativeInfinity is a constant value that represents negative infinity.
+        /// </summary>
         public const float NegativeInfinity = float.NegativeInfinity;
-
-        public const float Deg2Rad2 = 0.0174532924f;
-
-        public const float Rad2Deg2 = 57.29578f;
     }
 
     public static class PhysicsConstants
     {
+        /// <summary>
+        /// The energy released per gram of gunpowder in joules.
+        /// </summary>
         public const float GunpowderEnergyPerGramInJoules = 3000;
     }
-
+    
+    /// <summary>
+    /// The AspectRatioConstants class provides constants that are specific to aspect ratios and commonly used in physics and mathematics.
+    /// </summary>
     public static class AspectRatioConstants
     {
         public const float Landscape = 1.333f;
@@ -98,8 +132,14 @@ public static class Constants
         public const float SuperUltrawide = 3.37f;
     }
 
+    /// <summary>
+    /// The VectorConstants class provides constants that are specific to vectors and commonly used in physics and mathematics.
+    /// </summary>
     public static class VectorConstants
     {
+        /// <summary>
+        /// The Vector3Constants class provides constants that are specific to Vector3 and commonly used in physics and mathematics.
+        /// </summary>
         public static class PhysicsConstants
         {
             public static readonly Vector3 EarthGravity = Down * TerrestrialConstants.EarthGravity;

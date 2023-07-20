@@ -10,11 +10,11 @@ public class PongBoard : Scene
         
     }
 
-    public PlayerPaddle Player { get; }
+    public PlayerPaddle Player { get; set; }
     
-    public ComputerPaddle Computer { get; }
+    public ComputerPaddle Computer { get; set; }
     
-    public Ball Ball { get; }
+    public Ball Ball { get; set; }
     
-    public ScoreBoard ScoreBoard { get; }
+    public ScoreBoard ScoreBoard { get; set; } = new();
 }

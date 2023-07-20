@@ -8,8 +8,8 @@ public class Ball : GameObject
 {
     public Ball()
     {
-        Transform.Position = new Vector3(0, 0, 0);
-        Shape.Polygon = PolygonFactory.CreateCircle(10, 16);
+        Transform.Position = new Vector3(100, 50, 0);
+        Shape.Polygon = PolygonFactory.CreateCircle(2, 6);
         Shape.Color = Color.White;
     }
 }

@@ -9,4 +9,6 @@ public class ScoreBoard
     public void PlayerScored() => PlayerScore++;
 
     public void ComputerScored() => ComputerScore++;
+    
+    public override string ToString() => $"Player: {PlayerScore:000}\nComputer: {ComputerScore:000}";
 }

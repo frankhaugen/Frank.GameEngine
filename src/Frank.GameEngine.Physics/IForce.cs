@@ -3,6 +3,9 @@ using System.Numerics;
 
 namespace Frank.GameEngine.Physics;
 
+/// <summary>
+/// A force is something that can be applied to a game object to change its velocity.
+/// </summary>
 public interface IForce
 {
     /// <summary>

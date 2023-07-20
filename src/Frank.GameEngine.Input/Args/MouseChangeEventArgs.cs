@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using System.Runtime.InteropServices.JavaScript;
 
 namespace Frank.GameEngine.Input.Args;
 

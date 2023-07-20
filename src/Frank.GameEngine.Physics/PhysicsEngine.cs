@@ -1,4 +1,5 @@
 using Frank.GameEngine.Primitives;
+using System.Numerics;
 
 namespace Frank.GameEngine.Physics;
 
@@ -21,6 +22,8 @@ public class PhysicsEngine
             }
             
             gameObject.Transform.Translate(gameObject.Rigidbody.Velocity * (float)deltaTime.TotalSeconds);
+            
+            gameObject.Rigidbody.Velocity = Vector3.Zero;
         }
     }
 }

@@ -2,10 +2,25 @@ using System.Numerics;
 
 namespace Frank.GameEngine.Primitives;
 
+/// <summary>
+/// Factory for creating polygons of various known shapes.
+/// </summary>
 public static class PolygonFactory
 {
+    /// <summary>
+    /// Creates a polygon that is a cube with the specified size.
+    /// </summary>
+    /// <param name="size"></param>
+    /// <returns></returns>
     public static Polygon CreateCube(float size) => CreateCube(size, size, size);
-
+    
+    /// <summary>
+    /// Creates a polygon that is a cube with the specified width, height, and depth.
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <param name="depth"></param>
+    /// <returns></returns>
     public static Polygon CreateCube(float width, float height, float depth)
     {
         var polygon = new Vector3[8];
@@ -20,6 +35,12 @@ public static class PolygonFactory
         return new Polygon(polygon);
     }
 
+    /// <summary>
+    /// Creates a polygon that is a sphere with the specified radius and number of segments.
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <param name="segments"></param>
+    /// <returns></returns>
     public static Polygon CreateSphere(float radius, int segments)
     {
         var polygon = new Vector3[segments * segments];
@@ -36,7 +57,14 @@ public static class PolygonFactory
 
         return new Polygon(polygon);
     }
-
+    
+    /// <summary>
+    /// Creates a polygon that is a cylinder with the specified radius, height, and number of segments.
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <param name="height"></param>
+    /// <param name="segments"></param>
+    /// <returns></returns>
     public static Polygon CreateCylinder(float radius, float height, int segments)
     {
         var polygon = new Vector3[segments * 2];
@@ -50,7 +78,14 @@ public static class PolygonFactory
 
         return new Polygon(polygon);
     }
-
+    
+    /// <summary>
+    /// Creates a polygon that is a cone with the specified radius, height, and number of segments.
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <param name="height"></param>
+    /// <param name="segments"></param>
+    /// <returns></returns>
     public static Polygon CreateCone(float radius, float height, int segments)
     {
         var polygon = new Vector3[segments + 1];
@@ -64,7 +99,13 @@ public static class PolygonFactory
         polygon[segments] = new Vector3(0, 0, height);
         return new Polygon(polygon);
     }
-
+    
+    /// <summary>
+    /// Creates a polygon that is a pyramid with the specified width and height.
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <returns></returns>
     public static Polygon CreatePyramid(float width, float height)
     {
         var polygon = new Vector3[5];
@@ -76,6 +117,12 @@ public static class PolygonFactory
         return new Polygon(polygon);
     }
 
+    /// <summary>
+    /// Creates a polygon that is a rectangle with the specified width and height.
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <returns></returns>
     public static Polygon CreateRectangle(float width, float height)
     {
         var polygon = new Vector3[4];
@@ -86,6 +133,12 @@ public static class PolygonFactory
         return new Polygon(polygon);
     }
 
+    /// <summary>
+    /// Creates a polygon that is a circle with the specified radius and number of sides.
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <param name="sides"></param>
+    /// <returns></returns>
     public static Polygon CreateCircle(float radius, int sides)
     {
         var polygon = new Vector3[sides];
@@ -99,6 +152,12 @@ public static class PolygonFactory
         return new Polygon(polygon);
     }
 
+    /// <summary>
+    /// Creates a polygon that is a triangle with the specified width and height.
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <returns></returns>
     public static Polygon CreateTriangle(float width, float height)
     {
         var polygon = new Vector3[3];
@@ -108,6 +167,11 @@ public static class PolygonFactory
         return new Polygon(polygon);
     }
 
+    /// <summary>
+    /// Creates a polygon that is a hexagon with the specified radius.
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <returns></returns>
     public static Polygon CreateHexagon(float radius)
     {
         var polygon = new Vector3[6];
@@ -119,9 +183,4 @@ public static class PolygonFactory
         }
         return new Polygon(polygon);
     }
-
-    // public static Polygon CreateRagdoll(float scale = 1f)
-    // {
-    //
-    // }
 }

@@ -3,16 +3,21 @@ using System.Numerics;
 
 namespace Frank.GameEngine.Physics;
 
-public class CollisionDetector
+public class CollisionDetector : ICollisionDetector
 {
-    public static IEnumerable<(GameObject, GameObject)> DetectCollisions(Scene scene)
+    /// <summary>
+    /// Detects collisions between game objects in a scene.
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <returns></returns>
+    public IEnumerable<(GameObject, GameObject)> DetectCollisions(Scene scene)
     {
         var polygons = scene.GameObjects.Select(gameObject => gameObject.Shape.Polygon).ToList();
         var collisions = DetectCollisions(polygons);
         return collisions.Select(collision => (scene.GameObjects.First(gameObject => gameObject.Shape.Polygon == collision.Item1), scene.GameObjects.First(gameObject => gameObject.Shape.Polygon == collision.Item2)));
     }
 
-    public static List<(Polygon, Polygon)> DetectCollisions(List<Polygon> polygons)
+    private static IEnumerable<(Polygon, Polygon)> DetectCollisions(List<Polygon> polygons)
     {
         if (!HasVectors(polygons)) return new List<(Polygon, Polygon)>();
         var potentialCollisions = BroadPhase(polygons);
@@ -59,8 +64,8 @@ public class CollisionDetector
 
     private static bool DoBoundingBoxesIntersect(Polygon poly1, Polygon poly2)
     {
-        (Vector3 min1, Vector3 max1) = GetBoundingBox(poly1);
-        (Vector3 min2, Vector3 max2) = GetBoundingBox(poly2);
+        var (min1, max1) = GetBoundingBox(poly1);
+        var (min2, max2) = GetBoundingBox(poly2);
 
         if (IsPolygon2D(poly1)) // Checking 2D bounding box intersection
         {
@@ -71,7 +76,6 @@ public class CollisionDetector
             return min1.X <= max2.X && max1.X >= min2.X && min1.Y <= max2.Y && max1.Y >= min2.Y && min1.Z <= max2.Z && max1.Z >= min2.Z;
         }
     }
-
 
     private static (Vector3, Vector3) GetBoundingBox(Polygon polygon)
     {

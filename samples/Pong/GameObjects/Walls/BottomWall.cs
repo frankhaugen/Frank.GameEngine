@@ -8,8 +8,8 @@ public class BottomWall : GameObject
 {
     public BottomWall()
     {
-        Transform.Position = new Vector3(0, -90, 0);
-        Shape.Polygon = PolygonFactory.CreateCube(240, 10, 0);
+        Transform.Position = new Vector3(3, 3, 0);
+        Shape.Polygon = PolygonFactory.CreateCube(234, 2, 0);
         Shape.Color = Color.White;
     }
 }

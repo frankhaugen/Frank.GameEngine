@@ -13,9 +13,9 @@ public class SvgRenderer : IRenderer
 
     public void Render(Scene scene, Action<string> callback)
     {
-        var svg = new SvgBuilder(_options, scene.SceneSize)
+        var svg = new SvgBuilder(_options, scene.Size)
             .WithGridLines()
-            .WithBackground(Color.Transparent)
+            .WithBackground(scene.BackgroundColor)
             .WithShapes(scene.GetTransformedShapes())
             .WithLegend()
             .Build();
