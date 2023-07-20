@@ -14,9 +14,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj" />
       <ProjectReference Include="..\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj" />
-    </ItemGroup>
-    
-    <ItemGroup>
       <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
     </ItemGroup>
 </Project>

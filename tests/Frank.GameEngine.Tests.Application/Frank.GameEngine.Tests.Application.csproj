@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj" />
-      <ProjectReference Include="..\Frank.GameEngine.Rendering.MonoGame\Frank.GameEngine.Rendering.MonoGame.csproj" />
+      <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj" />
+      <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.MonoGame\Frank.GameEngine.Rendering.MonoGame.csproj" />
     </ItemGroup>
 </Project>

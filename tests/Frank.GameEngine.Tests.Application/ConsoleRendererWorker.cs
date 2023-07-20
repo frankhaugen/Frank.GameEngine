@@ -1,5 +1,6 @@
 using Frank.GameEngine.Assets.Testing.Scenes;
 using Frank.GameEngine.Core;
+using Frank.GameEngine.Input;
 using Frank.GameEngine.Rendering.Console;
 using SharpHook.Native;
 using System.Numerics;
@@ -33,24 +34,24 @@ public class ConsoleRendererWorker : BackgroundService
         {   
             switch (data)
             {
-                case { KeyCode: KeyCode.VcW }:
+                case { KeyboardKey: KeyboardKey.W }:
                     playerGameObject.Transform.Position += Vector3.UnitY;
                     break;
-                case { KeyCode: KeyCode.VcS }:
+                case { KeyboardKey: KeyboardKey.S }:
                     playerGameObject.Transform.Position -= Vector3.UnitY;
                     break;
-                case { KeyCode: KeyCode.VcA }:
+                case { KeyboardKey: KeyboardKey.A }:
                     playerGameObject.Transform.Position -= Vector3.UnitX;
                     break;
-                case { KeyCode: KeyCode.VcD }:
+                case { KeyboardKey: KeyboardKey.D }:
                     playerGameObject.Transform.Position += Vector3.UnitX;
                     break;
                 
-                case { KeyCode: KeyCode.VcSpace }:
+                case { KeyboardKey: KeyboardKey.Space }:
                     playerGameObject.Transform.Position = startPosition;
                     break;
                 
-                case { KeyCode: KeyCode.VcEscape }:
+                case { KeyboardKey: KeyboardKey.Escape }:
                     Environment.Exit(0);
                     break;
             }

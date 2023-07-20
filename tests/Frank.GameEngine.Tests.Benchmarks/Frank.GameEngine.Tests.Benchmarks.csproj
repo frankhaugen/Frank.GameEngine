@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.6" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,15 +18,10 @@
     <ItemGroup>
         <EmbeddedResource Remove="BenchmarkDotNet.Artifacts\**" />
     </ItemGroup>
-
-
+    
     <ItemGroup>
-      <ProjectReference Include="..\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj" />
-      <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
+      <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj" />
+      <ProjectReference Include="..\..\src\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj" />
-      <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
-    </ItemGroup>
+    
 </Project>

@@ -1,3 +1,4 @@
+using Frank.GameEngine.Input;
 using Frank.GameEngine.Primitives;
 using Microsoft.Xna.Framework;
 using SharpHook.Native;
@@ -36,7 +37,7 @@ public class MonogameEngine : Game
 
         _gameEngine.InputManager.OnKeyboardKeyPress(x =>
         {
-            if (x.KeyCode == KeyCode.VcEscape)
+            if (x.KeyboardKey == KeyboardKey.Escape)
                 Exit();
         });
 
