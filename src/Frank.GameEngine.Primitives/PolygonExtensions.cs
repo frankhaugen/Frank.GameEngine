@@ -20,6 +20,50 @@ public static class PolygonExtensions
 
         return new Polygon(vertices);
     }
+    
+    /// <summary>
+    /// Determines if the polygon intersects with another polygon.
+    /// </summary>
+    /// <param name="polygon"></param>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public static bool Intersect(this Polygon polygon, Polygon other)
+    {
+        var edges = polygon.Edges;
+        var otherEdges = other.Edges;
+        var isColliding = false;
+        
+        
+        Parallel.ForEach(edges, edge =>
+        {
+            if (edge.Intersect(otherEdges))
+            {
+                isColliding = true;
+            } 
+        });
+        
+        return isColliding;
+    }
+    
+    /// <summary>
+    /// Determines if the polygon intersects with another polygon.
+    /// </summary>
+    /// <param name="polygon"></param>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public static IEnumerable<Vector3> GetIntersectionPoints(this Polygon polygon, Polygon other)
+    {
+        var edges = polygon.Edges;
+        var otherEdges = other.Edges;
+        IEnumerable<Vector3> intersectionPoints = new List<Vector3>();
+        
+        Parallel.ForEach(edges, edge =>
+        {
+            intersectionPoints = edge.GetIntersectionPoints(otherEdges);
+        });
+        
+        return intersectionPoints;
+    }
 
     /// <summary>
     /// Rotates the polygon the specified amount.

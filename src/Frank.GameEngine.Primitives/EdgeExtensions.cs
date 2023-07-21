@@ -57,6 +57,44 @@ public static class EdgeExtensions
     /// <param name="edge"></param>
     /// <returns></returns>
     public static Vector3 GetTangent(this Edge edge) => Vector3.Normalize(Vector3.Cross(edge.GetDirection(), Vector3.UnitZ));
+
+    /// <summary>
+    /// Gets the intersection point of two edges.
+    /// </summary>
+    /// <param name="edge"></param>
+    /// <param name="otherEdges"></param>
+    /// <returns></returns>
+    public static bool Intersect(this Edge edge, IEnumerable<Edge> otherEdges)
+    {
+        var isIntersecting = false;
+        Parallel.ForEach(otherEdges, otherEdge =>
+        {
+            if (edge.Intersect(otherEdge, out _))
+            {
+                isIntersecting = true;
+            }
+        });
+        
+        return isIntersecting;
+    }
+    
+    /// <summary>
+    /// Gets the intersection point of two edges.
+    /// </summary>
+    /// <param name="edge"></param>
+    /// <param name="otherEdges"></param>
+    /// <returns></returns>
+    public static IEnumerable<Vector3> GetIntersectionPoints(this Edge edge, IEnumerable<Edge> otherEdges)
+    {
+        List<Vector3> intersectionPoints = new();
+        
+        Parallel.ForEach(otherEdges, otherEdge =>
+        {
+            if (edge.Intersect(otherEdge, out var point) && point.HasValue) intersectionPoints.Add(point.Value);
+        });
+        
+        return intersectionPoints;
+    }
     
     /// <summary>
     /// Gets the intersection point of two edges. If the edges do not intersect, the intersection point is null.

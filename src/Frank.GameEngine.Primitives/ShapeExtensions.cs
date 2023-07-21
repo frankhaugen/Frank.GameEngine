@@ -23,6 +23,22 @@ public static class ShapeExtensions
     }
     
     /// <summary>
+    /// Gets the collision between two shapes.
+    /// </summary>
+    /// <param name="shape"></param>
+    /// <param name="otherShape"></param>
+    /// <returns></returns>
+    public static bool Intersect(this Shape shape, Shape otherShape) => shape.Polygon.Intersect(otherShape.Polygon);
+    
+    /// <summary>
+    /// Gets the intersection points between two shapes.
+    /// </summary>
+    /// <param name="shape"></param>
+    /// <param name="otherShape"></param>
+    /// <returns></returns>
+    public static IEnumerable<Vector3> GetIntersectionPoints(this Shape shape, Shape otherShape) => shape.Polygon.GetIntersectionPoints(otherShape.Polygon);
+
+    /// <summary>
     /// Gets the transformed shape.
     /// </summary>
     /// <param name="shape"></param>

@@ -13,6 +13,11 @@ public class Rigidbody
     public Vector3 Velocity { get; set; } = Vector3.Zero;
     
     /// <summary>
+    /// If true, the object will bounce off of other objects when it collides with them.
+    /// </summary>
+    public bool IsBouncy { get; set; }
+    
+    /// <summary>
     /// The mass of the object.
     /// </summary>
     public float Mass { get; set; } = 1f;

@@ -3,18 +3,24 @@ using System.Numerics;
 
 namespace Frank.GameEngine.Physics;
 
-public class CollisionDetector : ICollisionDetector
+public class CollisionDetector : ICollisionHandler
 {
+    public void HandleCollisions(Scene scene)
+    {
+        
+    }
+    
     /// <summary>
     /// Detects collisions between game objects in a scene.
     /// </summary>
     /// <param name="scene"></param>
     /// <returns></returns>
-    public IEnumerable<(GameObject, GameObject)> DetectCollisions(Scene scene)
+    public IEnumerable<Collision> DetectCollisions(Scene scene)
     {
         var polygons = scene.GameObjects.Select(gameObject => gameObject.Shape.Polygon).ToList();
         var collisions = DetectCollisions(polygons);
-        return collisions.Select(collision => (scene.GameObjects.First(gameObject => gameObject.Shape.Polygon == collision.Item1), scene.GameObjects.First(gameObject => gameObject.Shape.Polygon == collision.Item2)));
+        var gameObjects = collisions.Select(collision => (scene.GameObjects.First(gameObject => gameObject.Shape.Polygon == collision.Item1), scene.GameObjects.First(gameObject => gameObject.Shape.Polygon == collision.Item2)));
+        return default;
     }
 
     private static IEnumerable<(Polygon, Polygon)> DetectCollisions(List<Polygon> polygons)
@@ -93,4 +99,5 @@ public class CollisionDetector : ICollisionDetector
     private static bool IsPolygon2D(Polygon polygon) => polygon.All(vertex => vertex.Z == 0);
 
     private static bool DoPolygonsIntersect(Polygon poly1, Polygon poly2) => poly1.Edges.Any(edge1 => poly2.Edges.Any(edge2 => edge1.Intersect(edge2, out _)));
+
 }
