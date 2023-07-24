@@ -7,8 +7,9 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <EmbeddedResource Include="Models/*" CopyToOutputDirectory="PreserveNewest" />
-        <EmbeddedResource Include="Shaders/*" CopyToOutputDirectory="PreserveNewest" />
+        <AdditionalFiles Include="Models/*" CopyToOutputDirectory="PreserveNewest" />
+        <AdditionalFiles Include="Shaders/*" CopyToOutputDirectory="PreserveNewest" />
+        <AdditionalFiles Include="Audio/Midi/Songs/*" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
     
     <ItemGroup>
@@ -18,4 +19,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <Analyzer Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\bin\Debug\net7.0\Frank.GameEngine.Generators.AssetsGenerator.dll" />
+    </ItemGroup>
+    
 </Project>

@@ -39,6 +39,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{DCB3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong", "samples\Pong\Pong.csproj", "{50DE555A-B7AB-4DAF-9A41-AA83DF753A2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Audio", "src\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj", "{A715DF20-B4FE-466F-A3DA-815E801BBC29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{BB51F8B0-7C26-4932-AEF0-97C488B7B674}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Generators.AssetsGenerator", "tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj", "{57E80E77-4083-499D-B1BA-129980C4180E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +97,14 @@ Global
 		{50DE555A-B7AB-4DAF-9A41-AA83DF753A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50DE555A-B7AB-4DAF-9A41-AA83DF753A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50DE555A-B7AB-4DAF-9A41-AA83DF753A2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A715DF20-B4FE-466F-A3DA-815E801BBC29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A715DF20-B4FE-466F-A3DA-815E801BBC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A715DF20-B4FE-466F-A3DA-815E801BBC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A715DF20-B4FE-466F-A3DA-815E801BBC29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57E80E77-4083-499D-B1BA-129980C4180E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E80E77-4083-499D-B1BA-129980C4180E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E80E77-4083-499D-B1BA-129980C4180E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E80E77-4083-499D-B1BA-129980C4180E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,5 +124,7 @@ Global
 		{3BD65062-6075-4E9F-B9CC-9CCD4B42DBA6} = {2F986BD9-1239-4145-8A1C-2E6FDC81F91B}
 		{7C0C0B98-583C-48A4-A065-4644CFF70051} = {2F986BD9-1239-4145-8A1C-2E6FDC81F91B}
 		{50DE555A-B7AB-4DAF-9A41-AA83DF753A2E} = {DCB384B7-FA8B-4DEB-B722-9311599CE0D6}
+		{A715DF20-B4FE-466F-A3DA-815E801BBC29} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
+		{57E80E77-4083-499D-B1BA-129980C4180E} = {BB51F8B0-7C26-4932-AEF0-97C488B7B674}
 	EndGlobalSection
 EndGlobal

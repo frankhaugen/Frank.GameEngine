@@ -5,10 +5,13 @@ namespace Frank.GameEngine.Physics;
 
 public class PhysicsEngine
 {
+    private readonly ICollisionHandler _collisionHandler;
+    
     public List<IForce> Forces { get; } = new();
 
-    public PhysicsEngine()
+    public PhysicsEngine(ICollisionHandler collisionHandler)
     {
+        _collisionHandler = collisionHandler;
     }
 
     public void Update(Scene scene, TimeSpan deltaTime)
@@ -25,5 +28,7 @@ public class PhysicsEngine
             
             gameObject.Rigidbody.Velocity = Vector3.Zero;
         }
+        
+        _collisionHandler.HandleCollisions(scene);
     }
 }

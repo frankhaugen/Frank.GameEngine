@@ -1,5 +1,8 @@
-﻿using Frank.GameEngine.Core;
+﻿using Frank.GameEngine.Audio.Console;
+using Frank.GameEngine.Audio.Midi;
+using Frank.GameEngine.Core;
 using Frank.GameEngine.Input;
+using Frank.GameEngine.Physics;
 using Frank.GameEngine.Primitives;
 using Frank.GameEngine.Rendering.Console;
 using Pong.Ai;
@@ -8,7 +11,7 @@ using Pong.Scenes;
 using System.Numerics;
 
 var renderer = new ConsoleRenderer(240, 4);
-var engine = new GameEngine();
+var engine = new GameEngine(new PhysicsEngine(new NullCollisionHandler()), new ConsoleAudioPlayer(new TuneLibrary()));
 var camera = new Camera();
 
 var playerMoveSpeed = 0.5f;

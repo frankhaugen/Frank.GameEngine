@@ -1,8 +1,10 @@
 using Frank.GameEngine.Assets.Testing.Scenes;
+using Frank.GameEngine.Audio;
+using Frank.GameEngine.Audio.Console;
 using Frank.GameEngine.Core;
 using Frank.GameEngine.Input;
+using Frank.GameEngine.Physics;
 using Frank.GameEngine.Rendering.Console;
-using SharpHook.Native;
 using System.Numerics;
 
 namespace Frank.GameEngine.Tests.Application;
@@ -19,7 +21,24 @@ public class ConsoleRendererWorker : BackgroundService
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var renderer = new ConsoleRenderer(128, 4);
-        var engine = new Core.GameEngine();
+        var tune = new Tune()
+        {
+            new Note(Tone.B, Duration.QUARTER),
+            new Note(Tone.A, Duration.QUARTER),
+            new Note(Tone.GbelowC, Duration.QUARTER),
+            new Note(Tone.A, Duration.QUARTER),
+            new Note(Tone.B, Duration.QUARTER),
+            new Note(Tone.B, Duration.QUARTER),
+            new Note(Tone.B, Duration.HALF),
+            new Note(Tone.A, Duration.QUARTER),
+            new Note(Tone.A, Duration.QUARTER),
+            new Note(Tone.A, Duration.HALF),
+            new Note(Tone.B, Duration.QUARTER),
+            new Note(Tone.D, Duration.QUARTER),
+            new Note(Tone.D, Duration.HALF)
+        };
+
+        var engine = new Core.GameEngine(new PhysicsEngine(new NullCollisionHandler()), AudioPlayerFactory.CreateConsoleAudioPlayer(tune));
         var testScene = new BasicTestScene();
         var startPosition = new Vector3(15, 5, 0);
 
