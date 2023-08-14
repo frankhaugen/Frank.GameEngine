@@ -3,12 +3,12 @@ using System.Drawing;
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
-/// A factory for creating shapes of known types.
+///     A factory for creating shapes of known types.
 /// </summary>
 public static class ShapeFactory
 {
     /// <summary>
-    /// Creates a sphere.
+    ///     Creates a sphere.
     /// </summary>
     /// <param name="color"></param>
     /// <param name="radius"></param>
@@ -25,7 +25,7 @@ public static class ShapeFactory
     }
 
     /// <summary>
-    /// Creates a cube.
+    ///     Creates a cube.
     /// </summary>
     /// <param name="color"></param>
     /// <param name="size"></param>
@@ -41,7 +41,7 @@ public static class ShapeFactory
     }
 
     /// <summary>
-    /// Creates a cylinder.
+    ///     Creates a cylinder.
     /// </summary>
     /// <param name="color"></param>
     /// <param name="radius"></param>
@@ -59,7 +59,7 @@ public static class ShapeFactory
     }
 
     /// <summary>
-    /// Creates a cone.
+    ///     Creates a cone.
     /// </summary>
     /// <param name="color"></param>
     /// <param name="radius"></param>
@@ -77,7 +77,7 @@ public static class ShapeFactory
     }
 
     /// <summary>
-    /// Creates a pyramid.
+    ///     Creates a pyramid.
     /// </summary>
     /// <param name="color"></param>
     /// <param name="radius"></param>

@@ -2,20 +2,20 @@ using System.Numerics;
 
 namespace Frank.GameEngine.Primitives;
 
-/// <summary>
-/// Factory for creating polygons of various known shapes.
-/// </summary>
-public static class PolygonFactory
+public static partial class PolygonFactory
 {
     /// <summary>
-    /// Creates a polygon that is a cube with the specified size.
+    ///     Creates a polygon that is a cube with the specified size.
     /// </summary>
     /// <param name="size"></param>
     /// <returns></returns>
-    public static Polygon CreateCube(float size) => CreateCube(size, size, size);
-    
+    public static Polygon CreateCube(float size)
+    {
+        return CreateCube(size, size, size);
+    }
+
     /// <summary>
-    /// Creates a polygon that is a cube with the specified width, height, and depth.
+    ///     Creates a polygon that is a cube with the specified width, height, and depth.
     /// </summary>
     /// <param name="width"></param>
     /// <param name="height"></param>
@@ -36,7 +36,7 @@ public static class PolygonFactory
     }
 
     /// <summary>
-    /// Creates a polygon that is a sphere with the specified radius and number of segments.
+    ///     Creates a polygon that is a sphere with the specified radius and number of segments.
     /// </summary>
     /// <param name="radius"></param>
     /// <param name="segments"></param>
@@ -51,15 +51,16 @@ public static class PolygonFactory
             for (var j = 0; j < segments; j++)
             {
                 var angle2 = step * j;
-                polygon[i * segments + j] = new Vector3((float)Math.Cos(angle) * (float)Math.Cos(angle2) * radius, (float)Math.Sin(angle) * (float)Math.Cos(angle2) * radius, (float)Math.Sin(angle2) * radius);
+                polygon[i * segments + j] = new Vector3((float)Math.Cos(angle) * (float)Math.Cos(angle2) * radius,
+                    (float)Math.Sin(angle) * (float)Math.Cos(angle2) * radius, (float)Math.Sin(angle2) * radius);
             }
         }
 
         return new Polygon(polygon);
     }
-    
+
     /// <summary>
-    /// Creates a polygon that is a cylinder with the specified radius, height, and number of segments.
+    ///     Creates a polygon that is a cylinder with the specified radius, height, and number of segments.
     /// </summary>
     /// <param name="radius"></param>
     /// <param name="height"></param>
@@ -73,14 +74,15 @@ public static class PolygonFactory
         {
             var angle = step * i;
             polygon[i] = new Vector3((float)Math.Cos(angle) * radius, (float)Math.Sin(angle) * radius, 0);
-            polygon[i + segments] = new Vector3((float)Math.Cos(angle) * radius, (float)Math.Sin(angle) * radius, height);
+            polygon[i + segments] =
+                new Vector3((float)Math.Cos(angle) * radius, (float)Math.Sin(angle) * radius, height);
         }
 
         return new Polygon(polygon);
     }
-    
+
     /// <summary>
-    /// Creates a polygon that is a cone with the specified radius, height, and number of segments.
+    ///     Creates a polygon that is a cone with the specified radius, height, and number of segments.
     /// </summary>
     /// <param name="radius"></param>
     /// <param name="height"></param>
@@ -99,9 +101,9 @@ public static class PolygonFactory
         polygon[segments] = new Vector3(0, 0, height);
         return new Polygon(polygon);
     }
-    
+
     /// <summary>
-    /// Creates a polygon that is a pyramid with the specified width and height.
+    ///     Creates a polygon that is a pyramid with the specified width and height.
     /// </summary>
     /// <param name="width"></param>
     /// <param name="height"></param>
@@ -114,73 +116,6 @@ public static class PolygonFactory
         polygon[2] = new Vector3(width, height, 0);
         polygon[3] = new Vector3(0, height, 0);
         polygon[4] = new Vector3(width / 2, height / 2, height);
-        return new Polygon(polygon);
-    }
-
-    /// <summary>
-    /// Creates a polygon that is a rectangle with the specified width and height.
-    /// </summary>
-    /// <param name="width"></param>
-    /// <param name="height"></param>
-    /// <returns></returns>
-    public static Polygon CreateRectangle(float width, float height)
-    {
-        var polygon = new Vector3[4];
-        polygon[0] = new Vector3(0, 0, 0);
-        polygon[1] = new Vector3(width, 0, 0);
-        polygon[2] = new Vector3(width, height, 0);
-        polygon[3] = new Vector3(0, height, 0);
-        return new Polygon(polygon);
-    }
-
-    /// <summary>
-    /// Creates a polygon that is a circle with the specified radius and number of sides.
-    /// </summary>
-    /// <param name="radius"></param>
-    /// <param name="sides"></param>
-    /// <returns></returns>
-    public static Polygon CreateCircle(float radius, int sides)
-    {
-        var polygon = new Vector3[sides];
-        var step = (float)(Math.PI * 2 / sides);
-        for (var i = 0; i < sides; i++)
-        {
-            var angle = step * i;
-            polygon[i] = new Vector3((float)Math.Cos(angle) * radius, (float)Math.Sin(angle) * radius, 0);
-        }
-
-        return new Polygon(polygon);
-    }
-
-    /// <summary>
-    /// Creates a polygon that is a triangle with the specified width and height.
-    /// </summary>
-    /// <param name="width"></param>
-    /// <param name="height"></param>
-    /// <returns></returns>
-    public static Polygon CreateTriangle(float width, float height)
-    {
-        var polygon = new Vector3[3];
-        polygon[0] = new Vector3(0, 0, 0);
-        polygon[1] = new Vector3(width, 0, 0);
-        polygon[2] = new Vector3(width / 2, height, 0);
-        return new Polygon(polygon);
-    }
-
-    /// <summary>
-    /// Creates a polygon that is a hexagon with the specified radius.
-    /// </summary>
-    /// <param name="radius"></param>
-    /// <returns></returns>
-    public static Polygon CreateHexagon(float radius)
-    {
-        var polygon = new Vector3[6];
-        const float step = (float)(Math.PI * 2 / 6);
-        for (var i = 0; i < 6; i++)
-        {
-            var angle = step * i;
-            polygon[i] = new Vector3((float)Math.Cos(angle) * radius, (float)Math.Sin(angle) * radius, 0);
-        }
         return new Polygon(polygon);
     }
 }

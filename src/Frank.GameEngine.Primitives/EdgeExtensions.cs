@@ -5,35 +5,48 @@ namespace Frank.GameEngine.Primitives;
 public static class EdgeExtensions
 {
     /// <summary>
-    /// Gets the midpoint of the edge.
+    ///     Gets the midpoint of the edge.
     /// </summary>
     /// <param name="edge"></param>
     /// <returns></returns>
-    public static Vector3 GetMidpoint(this Edge edge) => new((edge.A.X + edge.B.X) / 2, (edge.A.Y + edge.B.Y) / 2, (edge.A.Z + edge.B.Z) / 2);
-    
+    public static Vector3 GetMidpoint(this Edge edge)
+    {
+        return new Vector3((edge.A.X + edge.B.X) / 2, (edge.A.Y + edge.B.Y) / 2, (edge.A.Z + edge.B.Z) / 2);
+    }
+
     /// <summary>
-    /// Gets the direction of the edge. The direction is a vector that points from the start of the edge to the end of the edge.
+    ///     Gets the direction of the edge. The direction is a vector that points from the start of the edge to the end of the
+    ///     edge.
     /// </summary>
     /// <param name="edge"></param>
     /// <returns></returns>
-    public static Vector3 GetDirection(this Edge edge) => new(edge.B.X - edge.A.X, edge.B.Y - edge.A.Y, edge.B.Z - edge.A.Z);
-    
+    public static Vector3 GetDirection(this Edge edge)
+    {
+        return new Vector3(edge.B.X - edge.A.X, edge.B.Y - edge.A.Y, edge.B.Z - edge.A.Z);
+    }
+
     /// <summary>
-    /// Gets the length of the edge (the distance between the start and end points).
+    ///     Gets the length of the edge (the distance between the start and end points).
     /// </summary>
     /// <param name="edge"></param>
     /// <returns></returns>
-    public static float GetLength(this Edge edge) => Vector3.Distance(edge.A, edge.B);
-    
+    public static float GetLength(this Edge edge)
+    {
+        return Vector3.Distance(edge.A, edge.B);
+    }
+
     /// <summary>
-    /// Gets the angle of the edge. The angle is the angle between the start and end points.
+    ///     Gets the angle of the edge. The angle is the angle between the start and end points.
     /// </summary>
     /// <param name="edge"></param>
     /// <returns></returns>
-    public static float GetAngle(this Edge edge) => MathF.Atan2(edge.B.Y - edge.A.Y, edge.B.X - edge.A.X);
-    
+    public static float GetAngle(this Edge edge)
+    {
+        return MathF.Atan2(edge.B.Y - edge.A.Y, edge.B.X - edge.A.X);
+    }
+
     /// <summary>
-    /// Gets the characteristic length of the edge. The characteristic length is the average length of the edge.
+    ///     Gets the characteristic length of the edge. The characteristic length is the average length of the edge.
     /// </summary>
     /// <param name="edges"></param>
     /// <returns></returns>
@@ -43,23 +56,29 @@ public static class EdgeExtensions
         var sumOfSquaredLengths = edgeArray.Sum(edge => edge.GetLength() * edge.GetLength());
         return MathF.Sqrt(sumOfSquaredLengths / edgeArray.Length);
     }
-    
-    /// <summary>
-    /// Gets the normal of the edge. The normal is a vector that is perpendicular to the edge.
-    /// </summary>
-    /// <param name="edge"></param>
-    /// <returns></returns>
-    public static Vector3 GetNormal(this Edge edge) => Vector3.Normalize(Vector3.Cross(edge.GetDirection(), Vector3.UnitZ));
-    
-    /// <summary>
-    /// Gets the tangent of the edge. The tangent is a vector that is perpendicular to the normal of the edge.
-    /// </summary>
-    /// <param name="edge"></param>
-    /// <returns></returns>
-    public static Vector3 GetTangent(this Edge edge) => Vector3.Normalize(Vector3.Cross(edge.GetDirection(), Vector3.UnitZ));
 
     /// <summary>
-    /// Gets the intersection point of two edges.
+    ///     Gets the normal of the edge. The normal is a vector that is perpendicular to the edge.
+    /// </summary>
+    /// <param name="edge"></param>
+    /// <returns></returns>
+    public static Vector3 GetNormal(this Edge edge)
+    {
+        return Vector3.Normalize(Vector3.Cross(edge.GetDirection(), Vector3.UnitZ));
+    }
+
+    /// <summary>
+    ///     Gets the tangent of the edge. The tangent is a vector that is perpendicular to the normal of the edge.
+    /// </summary>
+    /// <param name="edge"></param>
+    /// <returns></returns>
+    public static Vector3 GetTangent(this Edge edge)
+    {
+        return Vector3.Normalize(Vector3.Cross(edge.GetDirection(), Vector3.UnitZ));
+    }
+
+    /// <summary>
+    ///     Gets the intersection point of two edges.
     /// </summary>
     /// <param name="edge"></param>
     /// <param name="otherEdges"></param>
@@ -69,17 +88,14 @@ public static class EdgeExtensions
         var isIntersecting = false;
         Parallel.ForEach(otherEdges, otherEdge =>
         {
-            if (edge.Intersect(otherEdge, out _))
-            {
-                isIntersecting = true;
-            }
+            if (edge.Intersect(otherEdge, out _)) isIntersecting = true;
         });
-        
+
         return isIntersecting;
     }
-    
+
     /// <summary>
-    /// Gets the intersection point of two edges.
+    ///     Gets the intersection point of two edges.
     /// </summary>
     /// <param name="edge"></param>
     /// <param name="otherEdges"></param>
@@ -87,17 +103,17 @@ public static class EdgeExtensions
     public static IEnumerable<Vector3> GetIntersectionPoints(this Edge edge, IEnumerable<Edge> otherEdges)
     {
         List<Vector3> intersectionPoints = new();
-        
+
         Parallel.ForEach(otherEdges, otherEdge =>
         {
             if (edge.Intersect(otherEdge, out var point) && point.HasValue) intersectionPoints.Add(point.Value);
         });
-        
+
         return intersectionPoints;
     }
-    
+
     /// <summary>
-    /// Gets the intersection point of two edges. If the edges do not intersect, the intersection point is null.
+    ///     Gets the intersection point of two edges. If the edges do not intersect, the intersection point is null.
     /// </summary>
     /// <param name="edge"></param>
     /// <param name="other"></param>
@@ -118,7 +134,7 @@ public static class EdgeExtensions
         var ndb = Vector3.Normalize(db);
 
         var dp = Vector3.Dot(nda, ndb);
-        if (Math.Abs(dp - 1f) < 0.0001f || Math.Abs(dp + 1f) < 0.0001f)// lines are parallel
+        if (Math.Abs(dp - 1f) < 0.0001f || Math.Abs(dp + 1f) < 0.0001f) // lines are parallel
             return false;
 
         var c = Vector3.Cross(da, db);
@@ -137,5 +153,34 @@ public static class EdgeExtensions
         intersectionPoint = new Vector3(edge.A.X + t1 * da.X, edge.A.Y + t1 * da.Y, edge.A.Z + t1 * da.Z);
 
         return true;
+    }
+    
+    /// <summary>
+    ///    Gets the point on the edge at the given parameter t. t = 0 is the start point and t = 1 is the end point.
+    /// </summary>
+    /// <param name="edge"></param>
+    /// <param name="t">The parameter t. t = 0 is the start point and t = 1 is the end point.</param>
+    /// <returns></returns>
+    public static Vector3 GetPoint(this Edge edge, float t = 0.5f) => new(edge.A.X + t * (edge.B.X - edge.A.X), edge.A.Y + t * (edge.B.Y - edge.A.Y), edge.A.Z + t * (edge.B.Z - edge.A.Z));
+
+    /// <summary>
+    ///    Gets the points on the edge at the given parameter t. t = 0 is the start point and t = 1 is the end point.
+    /// </summary>
+    /// <param name="edge"></param>
+    /// <param name="step"></param>
+    /// <returns></returns>
+    public static IEnumerable<Vector3> GetPoints(this Edge edge, float step = 1f)
+    {
+        var points = new List<Vector3>();
+        var length = edge.GetLength();
+        var numberOfPoints = (int) MathF.Ceiling(length / step);
+        var stepSize = 1f / numberOfPoints;
+        for (var i = 0; i <= numberOfPoints; i++)
+        {
+            var t = i * stepSize;
+            points.Add(edge.GetPoint(t));
+        }
+
+        return points;
     }
 }

@@ -2,8 +2,8 @@
 
 public enum MineralType
 {
-	Coal,
-	Iron,
-	Gold,
-	Diamond
+    Coal,
+    Iron,
+    Gold,
+    Diamond
 }

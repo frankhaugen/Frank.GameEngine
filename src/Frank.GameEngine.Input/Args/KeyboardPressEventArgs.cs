@@ -1,6 +1,4 @@
-﻿using Frank.GameEngine.Input.Converters;
-
-namespace Frank.GameEngine.Input.Args;
+﻿namespace Frank.GameEngine.Input.Args;
 
 public class KeyboardPressEventArgs : KeyboardEventArgs
 {

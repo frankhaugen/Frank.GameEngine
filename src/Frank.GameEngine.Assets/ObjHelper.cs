@@ -19,13 +19,15 @@ internal static class ObjHelper
             switch (parts[0])
             {
                 case "v":
-                    polygon.Vertices.Add(new Vector3(float.Parse(parts[1]), float.Parse(parts[2]), float.Parse(parts[3])));
+                    polygon.Vertices.Add(new Vector3(float.Parse(parts[1]), float.Parse(parts[2]),
+                        float.Parse(parts[3])));
                     break;
                 case "vt":
                     polygon.Uvs.Add(new Vector2(float.Parse(parts[1]), float.Parse(parts[2])));
                     break;
                 case "vn":
-                    polygon.Normals.Add(new Vector3(float.Parse(parts[1]), float.Parse(parts[2]), float.Parse(parts[3])));
+                    polygon.Normals.Add(
+                        new Vector3(float.Parse(parts[1]), float.Parse(parts[2]), float.Parse(parts[3])));
                     break;
                 case "f":
                     // polygon.Faces.Add(new Face(float.Parse(parts[1]), parts[2], parts[3]));

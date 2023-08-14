@@ -1,21 +1,25 @@
-﻿using Frank.GameEngine.Audio.Console;
+﻿using System.Numerics;
+using Frank.GameEngine.Audio.Console;
 using Frank.GameEngine.Audio.Midi;
 using Frank.GameEngine.Core;
 using Frank.GameEngine.Input;
 using Frank.GameEngine.Physics;
 using Frank.GameEngine.Primitives;
-using Frank.GameEngine.Rendering.Console;
+using Frank.GameEngine.Rendering.RayLib;
+using Pong;
 using Pong.Ai;
 using Pong.GameObjects;
 using Pong.Scenes;
-using System.Numerics;
 
-var renderer = new ConsoleRenderer(240, 4);
-var engine = new GameEngine(new PhysicsEngine(new NullCollisionHandler()), new ConsoleAudioPlayer(new TuneLibrary()));
+var renderer = new RayLibRenderer();
+var physics = new PhysicsEngine(new NullCollisionHandler());
+
+physics.Forces.Add(new DragForce(1f));
+
+var engine = new GameEngine(physics, new ConsoleAudioPlayer(new TuneLibrary()));
 var camera = new Camera();
 
-var playerMoveSpeed = 0.5f;
-
+var playerMoveSpeed = GameConstants.PaddleSpeed;
 
 var scene = new PongBoard(camera);
 scene.Player = new PlayerPaddle();
@@ -41,20 +45,16 @@ engine.InputManager.OnKeyboardKeyPress(data =>
     switch (data)
     {
         case { KeyboardKey: KeyboardKey.W }:
-            scene.Player.MoveUp(playerMoveSpeed);
-            break;
-        case { KeyboardKey: KeyboardKey.S }:
             scene.Player.MoveDown(playerMoveSpeed);
             break;
-        case { KeyboardKey: KeyboardKey.A }:
-            scene.Player.MoveLeft(playerMoveSpeed);
+        case { KeyboardKey: KeyboardKey.S }:
+            scene.Player.MoveUp(playerMoveSpeed);
             break;
-        case { KeyboardKey: KeyboardKey.D }:
-            scene.Player.MoveRight(playerMoveSpeed);
-            break;
+
         case { KeyboardKey: KeyboardKey.Space }:
             scene.Player.Transform.Position = Vector3.Zero;
             break;
+
         case { KeyboardKey: KeyboardKey.Escape }:
             Environment.Exit(0);
             break;
@@ -63,16 +63,14 @@ engine.InputManager.OnKeyboardKeyPress(data =>
 
 engine.Initialize(renderer);
 
+var totalTime = TimeSpan.Zero;
+
 var simulator = new Simulator(deltaTime =>
 {
+    totalTime += deltaTime;
     ai.Update();
-    engine.Update(new UpdateArgs(deltaTime, TimeSpan.Zero));
+    engine.Update(new UpdateArgs(deltaTime, totalTime));
     engine.Draw();
-
-    Console.WriteLine($"{scene.ScoreBoard}");
-    Console.WriteLine($"Player Position: {scene.Player.Transform.Position}");
-    Console.WriteLine($"Computer Position: {scene.Computer.Transform.Position}");
-    Console.WriteLine($"Ball Position: {scene.Ball.Transform.Position}");
 })
 {
     SimulationSpeed = 1f,

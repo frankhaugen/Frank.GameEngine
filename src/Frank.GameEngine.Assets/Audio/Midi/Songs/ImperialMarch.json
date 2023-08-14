@@ -6,52 +6,136 @@
       "Instrument": "ElectricBassPick",
       "Channel": 1,
       "Notes": [
-        { "Note": "G2", "Duration": "Half" },
-        { "Note": "G2", "Duration": "Half" },
-        { "Note": "G2", "Duration": "Half" },
-        { "Note": "Eb2", "Duration": "Eighth" },
-        { "Note": "G2", "Duration": "Eighth" },
-        { "Note": "D2", "Duration": "Half" },
-        { "Note": "D2", "Duration": "Half" }
+        {
+          "Note": "G2",
+          "Duration": "Half"
+        },
+        {
+          "Note": "G2",
+          "Duration": "Half"
+        },
+        {
+          "Note": "G2",
+          "Duration": "Half"
+        },
+        {
+          "Note": "Eb2",
+          "Duration": "Eighth"
+        },
+        {
+          "Note": "G2",
+          "Duration": "Eighth"
+        },
+        {
+          "Note": "D2",
+          "Duration": "Half"
+        },
+        {
+          "Note": "D2",
+          "Duration": "Half"
+        }
       ]
     },
     {
       "Instrument": "Trumpet",
       "Channel": 2,
       "Notes": [
-        { "Note": "G4", "Duration": "Half" },
-        { "Note": "G4", "Duration": "Half" },
-        { "Note": "G4", "Duration": "Half" },
-        { "Note": "Eb4", "Duration": "Eighth" },
-        { "Note": "G4", "Duration": "Eighth" },
-        { "Note": "D4", "Duration": "Half" },
-        { "Note": "D4", "Duration": "Half" }
+        {
+          "Note": "G4",
+          "Duration": "Half"
+        },
+        {
+          "Note": "G4",
+          "Duration": "Half"
+        },
+        {
+          "Note": "G4",
+          "Duration": "Half"
+        },
+        {
+          "Note": "Eb4",
+          "Duration": "Eighth"
+        },
+        {
+          "Note": "G4",
+          "Duration": "Eighth"
+        },
+        {
+          "Note": "D4",
+          "Duration": "Half"
+        },
+        {
+          "Note": "D4",
+          "Duration": "Half"
+        }
       ]
     },
     {
       "Instrument": "FrenchHorn",
       "Channel": 3,
       "Notes": [
-        { "Note": "G3", "Duration": "Half" },
-        { "Note": "G3", "Duration": "Half" },
-        { "Note": "G3", "Duration": "Half" },
-        { "Note": "Eb3", "Duration": "Eighth" },
-        { "Note": "G3", "Duration": "Eighth" },
-        { "Note": "D3", "Duration": "Half" },
-        { "Note": "D3", "Duration": "Half" }
+        {
+          "Note": "G3",
+          "Duration": "Half"
+        },
+        {
+          "Note": "G3",
+          "Duration": "Half"
+        },
+        {
+          "Note": "G3",
+          "Duration": "Half"
+        },
+        {
+          "Note": "Eb3",
+          "Duration": "Eighth"
+        },
+        {
+          "Note": "G3",
+          "Duration": "Eighth"
+        },
+        {
+          "Note": "D3",
+          "Duration": "Half"
+        },
+        {
+          "Note": "D3",
+          "Duration": "Half"
+        }
       ]
     },
     {
       "Instrument": "Timpani",
       "Channel": 4,
       "Notes": [
-        { "Note": "G1", "Duration": "Half" },
-        { "Note": "G1", "Duration": "Half" },
-        { "Note": "G1", "Duration": "Half" },
-        { "Note": "Eb1", "Duration": "Eighth" },
-        { "Note": "G1", "Duration": "Eighth" },
-        { "Note": "D1", "Duration": "Half" },
-        { "Note": "D1", "Duration": "Half" }
+        {
+          "Note": "G1",
+          "Duration": "Half"
+        },
+        {
+          "Note": "G1",
+          "Duration": "Half"
+        },
+        {
+          "Note": "G1",
+          "Duration": "Half"
+        },
+        {
+          "Note": "Eb1",
+          "Duration": "Eighth"
+        },
+        {
+          "Note": "G1",
+          "Duration": "Eighth"
+        },
+        {
+          "Note": "D1",
+          "Duration": "Half"
+        },
+        {
+          "Note": "D1",
+          "Duration": "Half"
+        }
       ]
     }
   ]

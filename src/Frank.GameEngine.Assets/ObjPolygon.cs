@@ -1,5 +1,5 @@
-using Frank.GameEngine.Primitives;
 using System.Numerics;
+using Frank.GameEngine.Primitives;
 
 namespace Frank.GameEngine.Assets;
 

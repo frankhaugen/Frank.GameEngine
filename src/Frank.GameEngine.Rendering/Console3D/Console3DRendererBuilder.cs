@@ -1,5 +1,5 @@
-﻿using Frank.GameEngine.Primitives;
-using System.Text;
+﻿using System.Text;
+using Frank.GameEngine.Primitives;
 
 namespace Frank.GameEngine.Rendering.Console3D;
 
@@ -9,21 +9,18 @@ public class Console3DRendererBuilder
 
     public Console3DRendererBuilder WithShapes(IEnumerable<Shape> shapes)
     {
-        foreach (var shape in shapes)
-        {
-            WithShape(shape);
-        }
+        foreach (var shape in shapes) WithShape(shape);
         return this;
     }
 
     public Console3DRendererBuilder WithShape(Shape shape)
     {
-
         return this;
     }
 
 
-
-
-    public string Build() => _builder.ToString();
+    public string Build()
+    {
+        return _builder.ToString();
+    }
 }

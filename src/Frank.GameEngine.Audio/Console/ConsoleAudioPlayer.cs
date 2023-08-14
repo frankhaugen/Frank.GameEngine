@@ -15,23 +15,19 @@ public class ConsoleAudioPlayer : IAudioPlayer
 
     public void Play(int soundId)
     {
+        if (!_tunes.ContainsKey(soundId)) return;
         var tune = _tunes[soundId];
         foreach (var n in tune)
-        {
             if (n.NoteTone == Tone.REST)
                 Thread.Sleep((int)n.NoteDuration);
             else
                 System.Console.Beep((int)n.NoteTone, (int)n.NoteDuration);
-        }
     }
 
     public void PlayLooping(int soundId)
     {
         _isLooping = true;
-        while (_isLooping)
-        {
-            Play(soundId);
-        }
+        while (_isLooping) Play(soundId);
     }
 
     public void Stop()

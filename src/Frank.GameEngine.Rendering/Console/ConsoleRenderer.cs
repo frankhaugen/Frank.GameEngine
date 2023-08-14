@@ -1,5 +1,5 @@
-using Frank.GameEngine.Primitives;
 using System.Numerics;
+using Frank.GameEngine.Primitives;
 
 namespace Frank.GameEngine.Rendering.Console;
 
@@ -44,10 +44,7 @@ public class ConsoleRenderer : IRenderer
 
     private void DrawPolygon(Polygon polygon, string pixel = "#")
     {
-        foreach (var vertex in polygon)
-        {
-            _viewport.SetPixel(vertex, pixel);
-        }
+        foreach (var vertex in polygon) _viewport.SetPixel(vertex, pixel);
     }
 
     private void DrawLines(Polygon polygon)
@@ -58,6 +55,7 @@ public class ConsoleRenderer : IRenderer
             _viewport.DrawLine(edge, pixel);
         }
     }
+
     private void DrawLinesV1(Polygon polygon)
     {
         for (var i = 0; i < polygon.Length - 1; i++)
@@ -66,7 +64,7 @@ public class ConsoleRenderer : IRenderer
             var pixel = DetermineLinePixelFromAngle(edge);
             _viewport.DrawLine(edge, pixel);
         }
-        
+
         // Draw line from last vertex to first
         var finaleEdge = new Edge(polygon[^1], polygon[0]);
         var finalPixel = DetermineLinePixelFromAngle(finaleEdge);

@@ -10,76 +10,76 @@ public static class SongFactory
             Composer = "Patty and Mildred J. Hill",
             Tracks = new List<MidiTrack>
             {
-                new MidiTrack
+                new()
                 {
                     Channel = 1,
                     Instrument = MidiInstrument.AcousticGrandPiano,
                     Notes = new List<MidiNote>
                     {
-                        new MidiNote { Note = Note.C4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.F4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Half }
+                        new() { Note = Note.C4, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.E4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Half },
+                        new() { Note = Note.E4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Half },
+                        new() { Note = Note.G4, Duration = Duration.Quarter },
+                        new() { Note = Note.G4, Duration = Duration.Quarter },
+                        new() { Note = Note.F4, Duration = Duration.Quarter },
+                        new() { Note = Note.E4, Duration = Duration.Half }
                     }
                 },
-                new MidiTrack
+                new()
                 {
                     Channel = 2,
                     Instrument = MidiInstrument.Flute,
                     Notes = new List<MidiNote>
                     {
-                        new MidiNote { Note = Note.Rest, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.Rest, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.F4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.B3, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Half }
+                        new() { Note = Note.Rest, Duration = Duration.Quarter },
+                        new() { Note = Note.Rest, Duration = Duration.Quarter },
+                        new() { Note = Note.G4, Duration = Duration.Quarter },
+                        new() { Note = Note.G4, Duration = Duration.Quarter },
+                        new() { Note = Note.F4, Duration = Duration.Quarter },
+                        new() { Note = Note.E4, Duration = Duration.Half },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Quarter },
+                        new() { Note = Note.B3, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Half }
                     }
                 },
-                new MidiTrack
+                new()
                 {
                     Channel = 3,
                     Instrument = MidiInstrument.Violin,
                     Notes = new List<MidiNote>
                     {
-                        new MidiNote { Note = Note.Rest, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.Rest, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.Rest, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.B3, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.D4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.C4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.F4, Duration = Duration.Quarter },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Half }
+                        new() { Note = Note.Rest, Duration = Duration.Quarter },
+                        new() { Note = Note.Rest, Duration = Duration.Quarter },
+                        new() { Note = Note.Rest, Duration = Duration.Quarter },
+                        new() { Note = Note.E4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Quarter },
+                        new() { Note = Note.B3, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Half },
+                        new() { Note = Note.C4, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.E4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Half },
+                        new() { Note = Note.E4, Duration = Duration.Quarter },
+                        new() { Note = Note.D4, Duration = Duration.Quarter },
+                        new() { Note = Note.C4, Duration = Duration.Half },
+                        new() { Note = Note.G4, Duration = Duration.Quarter },
+                        new() { Note = Note.G4, Duration = Duration.Quarter },
+                        new() { Note = Note.F4, Duration = Duration.Quarter },
+                        new() { Note = Note.E4, Duration = Duration.Half }
                     }
                 }
             }
@@ -96,26 +96,26 @@ public static class SongFactory
             Composer = "Randy Edelman",
             Tracks = new List<MidiTrack>
             {
-                new MidiTrack
+                new()
                 {
                     Channel = 1,
                     Instrument = MidiInstrument.ElectricGuitarClean,
                     Notes = new List<MidiNote>
                     {
-                        new MidiNote { Note = Note.G4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.F4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.F4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.G4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.F4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.E4, Duration = Duration.Half },
-                        new MidiNote { Note = Note.F4, Duration = Duration.Half },
+                        new() { Note = Note.G4, Duration = Duration.Half },
+                        new() { Note = Note.G4, Duration = Duration.Half },
+                        new() { Note = Note.G4, Duration = Duration.Half },
+                        new() { Note = Note.F4, Duration = Duration.Half },
+                        new() { Note = Note.E4, Duration = Duration.Half },
+                        new() { Note = Note.F4, Duration = Duration.Half },
+                        new() { Note = Note.G4, Duration = Duration.Half },
+                        new() { Note = Note.G4, Duration = Duration.Half },
+                        new() { Note = Note.G4, Duration = Duration.Half },
+                        new() { Note = Note.F4, Duration = Duration.Half },
+                        new() { Note = Note.E4, Duration = Duration.Half },
+                        new() { Note = Note.F4, Duration = Duration.Half }
                     }
-                },
+                }
                 // ... Add other tracks for more instruments
             }
         };
@@ -125,50 +125,50 @@ public static class SongFactory
 
     public static MidiSong CreateJingleBellsSong()
     {
-        return new MidiSong()
+        return new MidiSong
         {
             Name = "Jingle Bells",
             Composer = "James Lord Pierpont",
             Tracks = new List<MidiTrack>
             {
                 // Melody
-                new MidiTrack
+                new()
                 {
                     Channel = 1,
                     Instrument = MidiInstrument.Violin,
                     Notes = new List<MidiNote>
                     {
-                        new MidiNote {Note = Note.E4, Duration = Duration.Eighth},
-                        new MidiNote {Note = Note.E4, Duration = Duration.Eighth},
-                        new MidiNote {Note = Note.E4, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.E4, Duration = Duration.Eighth},
-                        new MidiNote {Note = Note.E4, Duration = Duration.Eighth},
-                        new MidiNote {Note = Note.E4, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.E4, Duration = Duration.Eighth},
-                        new MidiNote {Note = Note.G4, Duration = Duration.Eighth},
-                        new MidiNote {Note = Note.C4, Duration = Duration.Eighth},
-                        new MidiNote {Note = Note.D4, Duration = Duration.Eighth},
-                        new MidiNote {Note = Note.E4, Duration = Duration.Quarter},
+                        new() { Note = Note.E4, Duration = Duration.Eighth },
+                        new() { Note = Note.E4, Duration = Duration.Eighth },
+                        new() { Note = Note.E4, Duration = Duration.Quarter },
+                        new() { Note = Note.E4, Duration = Duration.Eighth },
+                        new() { Note = Note.E4, Duration = Duration.Eighth },
+                        new() { Note = Note.E4, Duration = Duration.Quarter },
+                        new() { Note = Note.E4, Duration = Duration.Eighth },
+                        new() { Note = Note.G4, Duration = Duration.Eighth },
+                        new() { Note = Note.C4, Duration = Duration.Eighth },
+                        new() { Note = Note.D4, Duration = Duration.Eighth },
+                        new() { Note = Note.E4, Duration = Duration.Quarter }
                     }
                 },
                 // Bass line
-                new MidiTrack
+                new()
                 {
                     Channel = 2,
                     Instrument = MidiInstrument.AcousticBass,
                     Notes = new List<MidiNote>
                     {
-                        new MidiNote {Note = Note.E2, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.E2, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.E2, Duration = Duration.Half},
-                        new MidiNote {Note = Note.E2, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.E2, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.E2, Duration = Duration.Half},
-                        new MidiNote {Note = Note.E2, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.G2, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.C2, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.D2, Duration = Duration.Quarter},
-                        new MidiNote {Note = Note.E2, Duration = Duration.Half},
+                        new() { Note = Note.E2, Duration = Duration.Quarter },
+                        new() { Note = Note.E2, Duration = Duration.Quarter },
+                        new() { Note = Note.E2, Duration = Duration.Half },
+                        new() { Note = Note.E2, Duration = Duration.Quarter },
+                        new() { Note = Note.E2, Duration = Duration.Quarter },
+                        new() { Note = Note.E2, Duration = Duration.Half },
+                        new() { Note = Note.E2, Duration = Duration.Quarter },
+                        new() { Note = Note.G2, Duration = Duration.Quarter },
+                        new() { Note = Note.C2, Duration = Duration.Quarter },
+                        new() { Note = Note.D2, Duration = Duration.Quarter },
+                        new() { Note = Note.E2, Duration = Duration.Half }
                     }
                 }
             }

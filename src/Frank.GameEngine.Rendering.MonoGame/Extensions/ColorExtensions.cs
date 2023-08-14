@@ -4,7 +4,7 @@ namespace Frank.GameEngine.Rendering.MonoGame.Extensions;
 
 public static class ColorExtensions
 {
-    public static Microsoft.Xna.Framework.Color ToColor(this System.Drawing.Color color)
+    public static Color ToColor(this System.Drawing.Color color)
     {
         return new Color(color.R, color.G, color.B, color.A);
     }

@@ -1,7 +1,6 @@
 using Frank.GameEngine.Input;
 using Frank.GameEngine.Primitives;
 using Microsoft.Xna.Framework;
-using SharpHook.Native;
 using Color = System.Drawing.Color;
 
 namespace Frank.GameEngine.Rendering.MonoGame;

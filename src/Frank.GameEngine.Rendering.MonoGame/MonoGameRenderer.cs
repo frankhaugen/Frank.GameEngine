@@ -9,7 +9,10 @@ public class MonoGameRenderer : IRenderer
 {
     private readonly IGraphicsDeviceContext _graphicsDeviceContext;
 
-    public MonoGameRenderer(IGraphicsDeviceContext graphicsDeviceContext) => _graphicsDeviceContext = graphicsDeviceContext;
+    public MonoGameRenderer(IGraphicsDeviceContext graphicsDeviceContext)
+    {
+        _graphicsDeviceContext = graphicsDeviceContext;
+    }
 
     public void Render(Scene scene)
     {
@@ -19,21 +22,23 @@ public class MonoGameRenderer : IRenderer
         foreach (var pass in effect.CurrentTechnique.Passes)
         {
             pass.Apply();
-            foreach (var shape in shapes)
-            {
-                _graphicsDeviceContext.GraphicsDevice.Draw(shape);
-            }
+            foreach (var shape in shapes) _graphicsDeviceContext.GraphicsDevice.Draw(shape);
         }
     }
 
-    public void Render(Scene scene, Action<string> callback) => throw new NotImplementedException();
+    public void Render(Scene scene, Action<string> callback)
+    {
+        throw new NotImplementedException();
+    }
 
-    private BasicEffect CreateBasicEffect(Camera camera) =>
-        new(_graphicsDeviceContext.GraphicsDevice)
+    private BasicEffect CreateBasicEffect(Camera camera)
+    {
+        return new BasicEffect(_graphicsDeviceContext.GraphicsDevice)
         {
             VertexColorEnabled = true,
             World = Matrix.Identity,
             View = camera.GetViewMatrix(),
             Projection = camera.GetProjectionMatrix()
         };
+    }
 }

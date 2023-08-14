@@ -2,6 +2,6 @@
 
 public enum MaterialType
 {
-	Rock,
-	Mineral
+    Rock,
+    Mineral
 }

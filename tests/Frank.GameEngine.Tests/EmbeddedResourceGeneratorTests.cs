@@ -1,10 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using Frank.GameEngine.Assets;
 using Frank.GameEngine.Generators.AssetsGenerator;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using Xunit.Abstractions;
 
 namespace Frank.GameEngine.Tests;
@@ -19,6 +20,13 @@ public class EmbeddedResourceGeneratorTests
     }
 
     [Fact]
+    public void Use()
+    {
+        var thing = AdditionalResources.Models.teapot;
+        _outputHelper.WriteLine(thing.Length.ToString());
+    }
+
+    [Fact]
     public void Generate()
     {
         var inputCompilation = CSharpCompilation.Create("compilation",
@@ -30,12 +38,28 @@ public class EmbeddedResourceGeneratorTests
         var generators = new ISourceGenerator[] { generator };
         var additionalFiles = new[]
         {
-            new AnalyzerAdditionalText(@"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Models\Teapot.obj", SourceText.From("Hello world")),
-            new AnalyzerAdditionalText(@"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Models\Bob\MtL\Teapot.mtl", SourceText.From("Hello world")),
-            new AnalyzerAdditionalText(@"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Sap\Bob\MtL\Teapot.mtl", SourceText.From("Hello world")),
+            new AnalyzerAdditionalText(@"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Teapot.obj",
+                SourceText.From("Hello world")),
+            new AnalyzerAdditionalText(
+                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Models\Teapot.obj",
+                SourceText.From("Hello world")),
+            new AnalyzerAdditionalText(
+                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Models\My Hole\State.obj",
+                SourceText.From("Hello world")),
+            new AnalyzerAdditionalText(
+                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Models\Bob\MtL\Teapot.mtl",
+                SourceText.From("Hello world")),
+            new AnalyzerAdditionalText(
+                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Sap\Bob\MtL\Teapot.mtl",
+                SourceText.From("Hello world")),
+            new AnalyzerAdditionalText(
+                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Sap\Bob\MtL\Ashpot.mtl",
+                SourceText.From("Hello world"))
         };
 
-        CSharpGeneratorDriver.Create(generators, optionsProvider: new TestOptionsProvider(), additionalTexts: additionalFiles).RunGeneratorsAndUpdateCompilation(inputCompilation, out var outputCompilation, out var diagnostics);
+        CSharpGeneratorDriver
+            .Create(generators, optionsProvider: new TestOptionsProvider(), additionalTexts: additionalFiles)
+            .RunGeneratorsAndUpdateCompilation(inputCompilation, out var outputCompilation, out var diagnostics);
 
         _outputHelper.WriteLine(string.Join(Environment.NewLine, diagnostics.Select(x => x.GetMessage())));
         var syntaxTree = outputCompilation.SyntaxTrees.ElementAt(1);
@@ -57,7 +81,10 @@ file class AnalyzerAdditionalText : AdditionalText
 
     public override string Path { get; }
 
-    public override SourceText GetText(CancellationToken cancellationToken = default) => _content;
+    public override SourceText GetText(CancellationToken cancellationToken = default)
+    {
+        return _content;
+    }
 }
 
 file class TestOptionsProvider : AnalyzerConfigOptionsProvider
@@ -72,9 +99,15 @@ file class TestOptionsProvider : AnalyzerConfigOptionsProvider
 
     public override AnalyzerConfigOptions GlobalOptions => _options;
 
-    public override AnalyzerConfigOptions GetOptions(SyntaxTree tree) => _options;
+    public override AnalyzerConfigOptions GetOptions(SyntaxTree tree)
+    {
+        return _options;
+    }
 
-    public override AnalyzerConfigOptions GetOptions(AdditionalText textFile) => _options;
+    public override AnalyzerConfigOptions GetOptions(AdditionalText textFile)
+    {
+        return _options;
+    }
 }
 
 file class TestAnalyzerConfigOptions : AnalyzerConfigOptions

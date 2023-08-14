@@ -2,10 +2,6 @@
 
 public class MidiSong
 {
-    public List<MidiTrack> Tracks { get; set; }
-    public string Name { get; set; }
-    public string Composer { get; set; }
-
     public MidiSong(string name, string composer)
     {
         Name = name;
@@ -16,4 +12,8 @@ public class MidiSong
     public MidiSong()
     {
     }
+
+    public List<MidiTrack> Tracks { get; set; }
+    public string Name { get; set; }
+    public string Composer { get; set; }
 }

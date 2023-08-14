@@ -13,13 +13,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj" />
-      <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.MonoGame\Frank.GameEngine.Rendering.MonoGame.csproj" />
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj"/>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.MonoGame\Frank.GameEngine.Rendering.MonoGame.csproj"/>
     </ItemGroup>
 </Project>

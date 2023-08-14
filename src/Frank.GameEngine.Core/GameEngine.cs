@@ -1,9 +1,9 @@
-using Frank.GameEngine.Audio;
 using Frank.GameEngine.Audio.Ogg;
 using Frank.GameEngine.Input;
 using Frank.GameEngine.Physics;
 using Frank.GameEngine.Primitives;
 using Frank.GameEngine.Rendering;
+using Microsoft.Extensions.Logging;
 
 namespace Frank.GameEngine.Core;
 
@@ -17,14 +17,16 @@ public class GameEngine
         AudioPlayer = audioPlayer;
     }
 
-    public bool IsInitialized { get; private set; } = false;
+    public ILoggerProvider? LoggerProvider { get; set; }
+
+    public bool IsInitialized { get; private set; }
 
     public SceneManager SceneManager { get; } = new();
 
     public InputManager InputManager { get; } = new();
-    
+
     public PhysicsEngine PhysicsEngine { get; }
-    
+
     public IAudioPlayer AudioPlayer { get; }
 
     public Scene? CurrentScene => SceneManager.CurrentScene;
@@ -35,7 +37,7 @@ public class GameEngine
             throw new Exception("No scene has been set.");
 
         _renderer = renderer;
-        
+
         new Thread(() => AudioPlayer.PlayLooping(0)).Start();
 
         new Thread(() => InputManager.Start()).Start();
@@ -47,7 +49,7 @@ public class GameEngine
     {
         if (CurrentScene is null)
             return;
-        
+
         PhysicsEngine.Update(CurrentScene, args.ElapsedTime);
     }
 

@@ -12,7 +12,10 @@ public static partial class GraphicsDeviceExtensions
         return texture;
     }
 
-    public static Texture2D GenerateTexture2D(this GraphicsDevice graphicsDevice, Color color) => graphicsDevice.GenerateTexture2D(graphicsDevice.GenerateRenderTarget2D());
+    public static Texture2D GenerateTexture2D(this GraphicsDevice graphicsDevice, Color color)
+    {
+        return graphicsDevice.GenerateTexture2D(graphicsDevice.GenerateRenderTarget2D());
+    }
 
     public static Texture2D GenerateTexture2D(this GraphicsDevice graphicsDevice, RenderTarget2D renderTarget)
     {
@@ -27,5 +30,8 @@ public static partial class GraphicsDeviceExtensions
         return texture;
     }
 
-    public static RenderTarget2D GenerateRenderTarget2D(this GraphicsDevice graphicsDevice) => new(graphicsDevice, 128, 128, false, SurfaceFormat.Color, DepthFormat.Depth24);
+    public static RenderTarget2D GenerateRenderTarget2D(this GraphicsDevice graphicsDevice)
+    {
+        return new RenderTarget2D(graphicsDevice, 128, 128, false, SurfaceFormat.Color, DepthFormat.Depth24);
+    }
 }

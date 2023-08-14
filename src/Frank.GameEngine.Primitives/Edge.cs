@@ -3,7 +3,7 @@ using System.Numerics;
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
-/// Represents a line between two points.
+///     Represents a line between two points.
 /// </summary>
 /// <param name="A"></param>
 /// <param name="B"></param>

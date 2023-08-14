@@ -3,14 +3,14 @@ using System.Numerics;
 namespace Frank.GameEngine.Physics;
 
 /// <summary>
-/// A force is something that can be applied to a game object to change its velocity.
+///     A force is something that can be applied to a game object to change its velocity.
 /// </summary>
 public static class ForceHelper
 {
-    const double DegToRad = Math.PI / 180.0;
+    private const double DegToRad = Math.PI / 180.0;
 
     /// <summary>
-    /// Gets the initial velocity of an object given a force, mass, and direction.
+    ///     Gets the initial velocity of an object given a force, mass, and direction.
     /// </summary>
     /// <param name="force"></param>
     /// <param name="mass"></param>
@@ -24,38 +24,50 @@ public static class ForceHelper
     }
 
     /// <summary>
-    /// Calculates the force (velocity change) to apply to something given a direction and magnitude.
+    ///     Calculates the force (velocity change) to apply to something given a direction and magnitude.
     /// </summary>
     /// <param name="direction"></param>
     /// <param name="magnitude"></param>
     /// <param name="deltaTime"></param>
     /// <returns></returns>
-    public static Vector3 CalculateForce(Vector3 direction, float magnitude , TimeSpan deltaTime) => direction * magnitude * deltaTime.Seconds;
-    
+    public static Vector3 CalculateForce(Vector3 direction, float magnitude, TimeSpan deltaTime)
+    {
+        return direction * magnitude * deltaTime.Seconds;
+    }
+
     /// <summary>
-    /// Calculates the force (velocity change) to apply to something given a direction and magnitude.
+    ///     Calculates the force (velocity change) to apply to something given a direction and magnitude.
     /// </summary>
     /// <param name="vector"></param>
     /// <param name="force"></param>
     /// <returns></returns>
-    public static Vector3 ApplyForce(Vector3 vector, Vector3 force) => vector + force;
+    public static Vector3 ApplyForce(Vector3 vector, Vector3 force)
+    {
+        return vector + force;
+    }
 
     /// <summary>
-    /// Calculates the force (velocity change) to apply to something given a direction and magnitude.
+    ///     Calculates the force (velocity change) to apply to something given a direction and magnitude.
     /// </summary>
     /// <param name="vector"></param>
     /// <param name="force"></param>
     /// <param name="mass"></param>
     /// <returns></returns>
-    public static Vector3 ApplyForce(Vector3 vector, Vector3 force, float mass) => vector + force / mass;
+    public static Vector3 ApplyForce(Vector3 vector, Vector3 force, float mass)
+    {
+        return vector + force / mass;
+    }
 
     /// <summary>
-    /// Calculates the force (velocity change) to apply to something given a direction and magnitude.
+    ///     Calculates the force (velocity change) to apply to something given a direction and magnitude.
     /// </summary>
     /// <param name="vector"></param>
     /// <param name="force"></param>
     /// <param name="mass"></param>
     /// <param name="deltaTime"></param>
     /// <returns></returns>
-    public static Vector3 ApplyForce(Vector3 vector, Vector3 force, float mass, TimeSpan deltaTime) => vector + force / mass * deltaTime.Seconds;
+    public static Vector3 ApplyForce(Vector3 vector, Vector3 force, float mass, TimeSpan deltaTime)
+    {
+        return vector + force / mass * deltaTime.Seconds;
+    }
 }

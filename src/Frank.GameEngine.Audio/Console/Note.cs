@@ -5,7 +5,7 @@ public struct Note
     public Note(Tone frequency, Duration time)
     {
         NoteTone = frequency;
-        NoteDuration  = time;
+        NoteDuration = time;
     }
 
     public Tone NoteTone { get; }

@@ -10,18 +10,20 @@ public static class RandomExtensions
         var index = random.Next(0, values.Length);
         return (T)values.GetValue(index);
     }
-    
+
     /// <summary>
-    /// Gets a random direction vector and multiplies it by the force.
+    ///     Gets a random direction vector and multiplies it by the force.
     /// </summary>
     /// <param name="random"></param>
     /// <param name="force"></param>
     /// <returns></returns>
-    public static Vector3 NextDirection(this Random random, float force) 
-        => random.NextDirection() * force;
-    
+    public static Vector3 NextDirection(this Random random, float force)
+    {
+        return random.NextDirection() * force;
+    }
+
     /// <summary>
-    /// Gets a random direction vector.
+    ///     Gets a random direction vector.
     /// </summary>
     /// <param name="random"></param>
     /// <returns></returns>

@@ -1,6 +1,6 @@
-﻿using Frank.GameEngine.Primitives;
+﻿using System.Numerics;
+using Frank.GameEngine.Primitives;
 using Pong.GameObjects;
-using System.Numerics;
 
 namespace Pong.Ai;
 

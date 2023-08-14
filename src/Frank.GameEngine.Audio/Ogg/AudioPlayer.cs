@@ -7,13 +7,16 @@ public class AudioPlayer : IAudioPlayer
 {
     private readonly ClipLibrary _clipLibrary;
 
-    public AudioPlayer(ClipLibrary clipLibrary) => _clipLibrary = clipLibrary;
+    public AudioPlayer(ClipLibrary clipLibrary)
+    {
+        _clipLibrary = clipLibrary;
+    }
 
     public void Play(int clipId)
     {
         using var waveOut = new WaveOutEvent();
         using var reader = new VorbisWaveReader(new MemoryStream(_clipLibrary[clipId].Bytes));
-        
+
         waveOut.Init(reader);
         waveOut.PlaybackStopped += (s, e) =>
         {
@@ -21,7 +24,6 @@ public class AudioPlayer : IAudioPlayer
             reader.Dispose();
         };
         waveOut.Play();
-        
     }
 
     public void PlayLooping(int soundId)
@@ -34,5 +36,3 @@ public class AudioPlayer : IAudioPlayer
         throw new NotImplementedException();
     }
 }
-
-    

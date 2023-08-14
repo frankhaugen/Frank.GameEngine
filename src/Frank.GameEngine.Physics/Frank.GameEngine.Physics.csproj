@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
+        <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
     </ItemGroup>
 
 

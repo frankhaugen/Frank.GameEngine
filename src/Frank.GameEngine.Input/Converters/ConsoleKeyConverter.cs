@@ -4,8 +4,9 @@ namespace Frank.GameEngine.Input.Converters;
 
 public static class ConsoleKeyConverter
 {
-    public static ConsoleKey ToConsoleKey(this KeyCode keyCode) =>
-        keyCode switch
+    public static ConsoleKey ToConsoleKey(this KeyCode keyCode)
+    {
+        return keyCode switch
         {
             KeyCode.VcEscape => ConsoleKey.Escape,
             KeyCode.VcF1 => ConsoleKey.F1,
@@ -107,4 +108,5 @@ public static class ConsoleKeyConverter
             KeyCode.VcMinus => ConsoleKey.OemMinus,
             _ => throw new ArgumentOutOfRangeException(nameof(keyCode), keyCode, null)
         };
+    }
 }

@@ -3,12 +3,12 @@ using System.Drawing;
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
-/// Creates game objects.
+///     Creates game objects.
 /// </summary>
 public static class GameObjectFactory
 {
     /// <summary>
-    /// Creates a game object with the specified transform, shape, and name.
+    ///     Creates a game object with the specified transform, shape, and name.
     /// </summary>
     /// <param name="transform"></param>
     /// <param name="shape"></param>
@@ -26,7 +26,7 @@ public static class GameObjectFactory
     }
 
     /// <summary>
-    /// Creates a game object with all default values.
+    ///     Creates a game object with all default values.
     /// </summary>
     /// <returns></returns>
     public static GameObject CreateGameObject()
@@ -38,5 +38,4 @@ public static class GameObjectFactory
         };
         return gameObject;
     }
-
 }

@@ -2,8 +2,8 @@
 
 public enum RockType
 {
-	Granite,
-	Limestone,
-	Sandstone,
-	Slate
+    Granite,
+    Limestone,
+    Sandstone,
+    Slate
 }

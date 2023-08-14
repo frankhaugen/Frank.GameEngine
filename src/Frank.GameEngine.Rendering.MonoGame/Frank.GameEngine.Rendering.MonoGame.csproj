@@ -5,15 +5,15 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303"/>
-        <PackageReference Include="SharpHook" Version="4.2.1" />
+        <PackageReference Include="SharpHook" Version="4.2.1"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-      <ProjectReference Include="..\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj" />
-      <ProjectReference Include="..\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj" />
-      <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
+        <ProjectReference Include="..\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj"/>
+        <ProjectReference Include="..\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj"/>
+        <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
     </ItemGroup>
 </Project>

@@ -12,12 +12,8 @@ internal class ViewportV1
         _buffer = new char[(int)size.X + 2, (int)size.Y + 2];
 
         for (var y = 0; y < size.Y; y++)
-        {
-            for (var x = 0; x < size.X; x++)
-            {
-                _buffer[x, y] = ' ';
-            }
-        }
+        for (var x = 0; x < size.X; x++)
+            _buffer[x, y] = ' ';
 
         CreateBorder();
     }
@@ -45,12 +41,8 @@ internal class ViewportV1
     public void Clear()
     {
         for (var y = 0; y < _buffer.GetLength(1); y++)
-        {
-            for (var x = 0; x < _buffer.GetLength(0); x++)
-            {
-                _buffer[x, y] = ' ';
-            }
-        }
+        for (var x = 0; x < _buffer.GetLength(0); x++)
+            _buffer[x, y] = ' ';
 
         CreateBorder();
     }
@@ -61,9 +53,7 @@ internal class ViewportV1
         var y = (int)vector.Y;
 
         if (x >= 0 && x < _buffer.GetLength(0) && y >= 0 && y < _buffer.GetLength(1))
-        {
             _buffer[x, _buffer.GetLength(1) - y - 1] = pixel;
-        }
     }
 
     public override string ToString()
@@ -72,10 +62,7 @@ internal class ViewportV1
 
         for (var y = 0; y < _buffer.GetLength(1); y++)
         {
-            for (var x = 0; x < _buffer.GetLength(0); x++)
-            {
-                builder.Append(_buffer[x, y]);
-            }
+            for (var x = 0; x < _buffer.GetLength(0); x++) builder.Append(_buffer[x, y]);
 
             builder.AppendLine();
         }

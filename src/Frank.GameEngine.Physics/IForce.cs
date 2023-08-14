@@ -1,15 +1,15 @@
-using Frank.GameEngine.Primitives;
 using System.Numerics;
+using Frank.GameEngine.Primitives;
 
 namespace Frank.GameEngine.Physics;
 
 /// <summary>
-/// A force is something that can be applied to a game object to change its velocity.
+///     A force is something that can be applied to a game object to change its velocity.
 /// </summary>
 public interface IForce
 {
     /// <summary>
-    /// Calculates the force (velocity change) to apply to something
+    ///     Calculates the force (velocity change) to apply to something
     /// </summary>
     /// <param name="gameObject"></param>
     /// <param name="deltaTime"></param>

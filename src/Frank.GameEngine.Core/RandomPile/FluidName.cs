@@ -2,14 +2,14 @@
 
 public enum FluidName
 {
-	Air,
-	Water,
-	CarbonDioxide,
-	Helium,
-	Hydrogen,
-	Nitrogen,
-	Oxygen,
-	Propane,
-	Steam,
-	Vacuum
+    Air,
+    Water,
+    CarbonDioxide,
+    Helium,
+    Hydrogen,
+    Nitrogen,
+    Oxygen,
+    Propane,
+    Steam,
+    Vacuum
 }

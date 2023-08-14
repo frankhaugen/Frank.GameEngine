@@ -3,7 +3,7 @@ using System.Numerics;
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
-/// Represents a face between three points.
+///     Represents a face between three points.
 /// </summary>
 /// <param name="A"></param>
 /// <param name="B"></param>

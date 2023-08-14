@@ -1,12 +1,13 @@
 using Frank.GameEngine.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Color = System.Drawing.Color;
 
 namespace Frank.GameEngine.Rendering.MonoGame.Extensions;
 
 public static class EdgeExtensions
 {
-    public static VertexPositionColor[] ToVertexPositionColors(this IEnumerable<Edge> edges, System.Drawing.Color color)
+    public static VertexPositionColor[] ToVertexPositionColors(this IEnumerable<Edge> edges, Color color)
     {
         var edgesArray = edges.ToArray();
         var lineList = new VertexPositionColor[edgesArray.Length * 2];

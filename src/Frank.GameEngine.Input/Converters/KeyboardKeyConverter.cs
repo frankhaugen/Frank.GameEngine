@@ -4,8 +4,9 @@ namespace Frank.GameEngine.Input.Converters;
 
 public static class KeyboardKeyConverter
 {
-    public static KeyboardKey ConvertTo(KeyCode keyCode) =>
-        keyCode switch
+    public static KeyboardKey ConvertTo(KeyCode keyCode)
+    {
+        return keyCode switch
         {
             KeyCode.VcEnter => KeyboardKey.Enter,
             KeyCode.VcEscape => KeyboardKey.Escape,
@@ -91,13 +92,13 @@ public static class KeyboardKeyConverter
             KeyCode.VcNumPad7 => KeyboardKey.NumPad7,
             KeyCode.VcNumPad8 => KeyboardKey.NumPad8,
             KeyCode.VcNumPad9 => KeyboardKey.NumPad9,
-            
+
             KeyCode.VcCapsLock => KeyboardKey.CapsLock,
             KeyCode.VcPageUp => KeyboardKey.PageUp,
             KeyCode.VcPageDown => KeyboardKey.PageDown,
             KeyCode.VcEnd => KeyboardKey.End,
             KeyCode.VcHome => KeyboardKey.Home,
-            
+
             KeyCode.VcLeft => KeyboardKey.Left,
             KeyCode.VcUp => KeyboardKey.Up,
             KeyCode.VcRight => KeyboardKey.Right,
@@ -113,14 +114,14 @@ public static class KeyboardKeyConverter
             KeyCode.VcNumPadSubtract => KeyboardKey.Subtract,
             KeyCode.VcNumPadSeparator => KeyboardKey.Separator,
             KeyCode.VcNumPadComma => KeyboardKey.Decimal,
-            
+
             KeyCode.VcLeftShift => KeyboardKey.LeftShift,
             KeyCode.VcLeftControl => KeyboardKey.LeftControl,
             KeyCode.VcLeftAlt => KeyboardKey.LeftAlt,
             KeyCode.VcRightShift => KeyboardKey.RightShift,
             KeyCode.VcRightControl => KeyboardKey.RightControl,
             KeyCode.VcRightAlt => KeyboardKey.RightAlt,
-            
+
             KeyCode.VcVolumeUp => KeyboardKey.VolumeUp,
             KeyCode.VcVolumeDown => KeyboardKey.VolumeDown,
             KeyCode.VcVolumeMute => KeyboardKey.VolumeMute,
@@ -128,7 +129,8 @@ public static class KeyboardKeyConverter
             KeyCode.VcMediaPrevious => KeyboardKey.MediaPreviousTrack,
             KeyCode.VcMediaStop => KeyboardKey.MediaStop,
             KeyCode.VcMediaPlay => KeyboardKey.MediaPlayPause,
-            
-            _ => throw new ArgumentOutOfRangeException(nameof(keyCode), keyCode, null)
+
+            _ => KeyboardKey.None
         };
+    }
 }

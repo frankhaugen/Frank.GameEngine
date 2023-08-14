@@ -2,6 +2,37 @@
 
 public class PhysicsX
 {
+    public double g { get; set; }
+
+    public double tInc { get; set; }
+
+    public double time { get; set; }
+
+    public S s { get; set; } = new();
+
+
+    public double Height { get; set; }
+
+    public double Width { get; set; }
+
+    public double Length { get; set; }
+
+    public double Z { get; set; }
+
+    public double Y { get; set; }
+
+    public double X { get; set; }
+
+    public double Yb { get; set; }
+
+    public double L { get; set; }
+
+    public double Gamma { get; set; }
+
+    public double Vm { get; set; }
+
+    public double Alpha { get; set; }
+
     //----------------------------------------------------------------------------------------------------//
     // Initialize the global variables required for the simulation.
     //----------------------------------------------------------------------------------------------------//
@@ -28,37 +59,6 @@ public class PhysicsX
         tInc = 0.05d; // seconds
         g = 9.8d; // m/(s*s)
     }
-
-    public double g { get; set; }
-
-    public double tInc { get; set; }
-
-    public double time { get; set; }
-
-    public S s { get; set; } = new S();
-
-
-    public double Height { get; set; }
-
-    public double Width { get; set; }
-
-    public double Length { get; set; }
-
-    public double Z { get; set; }
-
-    public double Y { get; set; }
-
-    public double X { get; set; }
-
-    public double Yb { get; set; }
-
-    public double L { get; set; }
-
-    public double Gamma { get; set; }
-
-    public double Vm { get; set; }
-
-    public double Alpha { get; set; }
 
     //----------------------------------------------------------------------------------------------------//
     // This function steps the simulation ahead in time. This is where the kinematic properties
@@ -99,7 +99,7 @@ public class PhysicsX
 
         // Now we can calculate the position vector at this time
         s.i = Vm * cosX * time + xe;
-        s.j = (Yb + L * cos(Alpha * 3.14 / 180)) + (Vm * cosY * time) - (0.5 * g * time * time);
+        s.j = Yb + L * cos(Alpha * 3.14 / 180) + Vm * cosY * time - 0.5 * g * time * time;
         s.k = Vm * cosZ * time + ze;
 
         // Check for collision with target
@@ -121,9 +121,9 @@ public class PhysicsX
         // A better approach is to look at the previous time step's position data
         // and to check the line from the previous postion to the current position
         // to see if that line intersects the target bounding box.
-        if ((s.i >= tx1 && s.i <= tx2) &&
-            (s.j >= ty1 && s.j <= ty2) &&
-            (s.k >= tz1 && s.k <= tz2))
+        if (s.i >= tx1 && s.i <= tx2 &&
+            s.j >= ty1 && s.j <= ty2 &&
+            s.k >= tz1 && s.k <= tz2)
             return 1;
 
         // Check for collision with ground (x-z plane)
@@ -138,7 +138,13 @@ public class PhysicsX
         return 0;
     }
 
-    private double sin(double value) => Math.Sin(value);
+    private double sin(double value)
+    {
+        return Math.Sin(value);
+    }
 
-    private double cos(double value) => Math.Cos(value);
+    private double cos(double value)
+    {
+        return Math.Cos(value);
+    }
 }

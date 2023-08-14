@@ -7,14 +7,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj" />
-      <ProjectReference Include="..\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj" />
-      <ProjectReference Include="..\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj" />
-      <ProjectReference Include="..\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj" />
+        <ProjectReference Include="..\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj"/>
+        <ProjectReference Include="..\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj"/>
+        <ProjectReference Include="..\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj"/>
+        <ProjectReference Include="..\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="RandomPile\" />
+        <Folder Include="RandomPile\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0"/>
     </ItemGroup>
 
 </Project>

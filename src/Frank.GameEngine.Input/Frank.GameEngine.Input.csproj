@@ -7,6 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="SharpHook" Version="4.2.1" />
+        <PackageReference Include="SharpHook" Version="4.2.1"/>
     </ItemGroup>
 </Project>

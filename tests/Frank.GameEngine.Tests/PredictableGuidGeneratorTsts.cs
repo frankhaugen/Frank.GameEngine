@@ -11,7 +11,7 @@ public class PredictableGuidGeneratorTsts
     {
         _outputHelper = outputHelper;
     }
-    
+
     [Fact]
     public void GenerateGuidsFromDefaults()
     {
@@ -20,7 +20,7 @@ public class PredictableGuidGeneratorTsts
         _outputHelper.WriteLine(guid.ToString());
         Assert.Equal("6f460c1a-755d-d8e4-ad67-65d5f519dbc8", guid.ToString());
     }
-    
+
     [Fact]
     public void GenerateGuidsFromSeed()
     {
@@ -28,7 +28,7 @@ public class PredictableGuidGeneratorTsts
         var guid = generator.GenerateGuid();
         _outputHelper.WriteLine(guid.ToString());
         Assert.Equal("6f460c1a-755d-d8e4-ad67-65d5f519dbc8", guid.ToString());
-        
+
         _outputHelper.WriteLine(generator.GenerateGuid().ToString());
         _outputHelper.WriteLine(generator.GenerateGuid().ToString());
         _outputHelper.WriteLine(generator.GenerateGuid().ToString());

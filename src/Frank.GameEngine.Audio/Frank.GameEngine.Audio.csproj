@@ -8,15 +8,14 @@
 
 
     <ItemGroup>
-      <PackageReference Include="NAudio" Version="2.1.0" />
-      <PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
+        <PackageReference Include="NAudio" Version="2.1.0"/>
+        <PackageReference Include="NAudio.Vorbis" Version="1.5.0"/>
     </ItemGroup>
 
 
     <ItemGroup>
-        <InternalsVisibleTo Include="Frank.GameEngine.Tests" />
+        <InternalsVisibleTo Include="Frank.GameEngine.Tests"/>
     </ItemGroup>
-
 
 
 </Project>

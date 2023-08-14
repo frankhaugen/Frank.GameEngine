@@ -11,6 +11,9 @@ public abstract class KeyboardEventArgs
     public KeyboardKey KeyboardKey { get; }
 
     public DateTimeOffset EventTime { get; }
-    
-    public override string ToString() => $"{KeyboardKey} pressed at {EventTime}";
+
+    public override string ToString()
+    {
+        return $"{KeyboardKey} pressed at {EventTime}";
+    }
 }

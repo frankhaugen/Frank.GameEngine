@@ -1,7 +1,7 @@
-using Frank.GameEngine.Primitives;
 using System.Drawing;
 using System.Numerics;
 using System.Text;
+using Frank.GameEngine.Primitives;
 
 namespace Frank.GameEngine.Rendering.ThreeJsRenderer;
 
@@ -24,10 +24,25 @@ public class ThreeJsRendererBuilder
         return this;
     }
 
-    public static string CreateJsPushMesh(Shape shape) => $"meshes.push(CreateMesh({CreateJsPolygon(shape.Polygon)}, {CreateJsColor(shape.Color)}));";
-    public static string CreateJsColor(Color color) => $"0x{color.R:X2}{color.G:X2}{color.B:X2}";
-    private static string CreateJsPolygon(IEnumerable<Vector3> polygon) => $"[{string.Join(", ", polygon.Select(CreateJsVector3))}]";
-    private static string CreateJsVector3(Vector3 vector3) => $"new THREE.Vector3({vector3.X}, {vector3.Y}, {vector3.Z})";
+    public static string CreateJsPushMesh(Shape shape)
+    {
+        return $"meshes.push(CreateMesh({CreateJsPolygon(shape.Polygon)}, {CreateJsColor(shape.Color)}));";
+    }
+
+    public static string CreateJsColor(Color color)
+    {
+        return $"0x{color.R:X2}{color.G:X2}{color.B:X2}";
+    }
+
+    private static string CreateJsPolygon(IEnumerable<Vector3> polygon)
+    {
+        return $"[{string.Join(", ", polygon.Select(CreateJsVector3))}]";
+    }
+
+    private static string CreateJsVector3(Vector3 vector3)
+    {
+        return $"new THREE.Vector3({vector3.X}, {vector3.Y}, {vector3.Z})";
+    }
 
     public ThreeJsRendererBuilder WithImports()
     {
@@ -57,16 +72,16 @@ public class ThreeJsRendererBuilder
     {
         _stringBuilder.AppendLine(
             $$"""
-            function CreateMesh(vertices, color) {
-                var geometry = CreateGeometry(vertices);
-                var material = new THREE.MeshBasicMaterial({
-                    color: color,
-                    wireframe: {{wireframe.ToString().ToLower()}} // Make it a wireframe
-                });
-                material.side = THREE.DoubleSide;
-                return new THREE.Mesh(geometry, material);
-            }
-            """);
+              function CreateMesh(vertices, color) {
+                  var geometry = CreateGeometry(vertices);
+                  var material = new THREE.MeshBasicMaterial({
+                      color: color,
+                      wireframe: {{wireframe.ToString().ToLower()}} // Make it a wireframe
+                  });
+                  material.side = THREE.DoubleSide;
+                  return new THREE.Mesh(geometry, material);
+              }
+              """);
         return this;
     }
 
@@ -86,15 +101,15 @@ public class ThreeJsRendererBuilder
     public ThreeJsRendererBuilder WithCreateCameraFunction(Camera camera)
     {
         _stringBuilder.AppendLine(
-              $$"""
+            $$"""
               function CreateCamera() {
                 var camera = new THREE.PerspectiveCamera({{camera.FieldOfView}}, {{camera.AspectRatio}}, {{camera.NearPlaneDistance}}, {{camera.FarPlaneDistance}});
                 camera.position.x = {{camera.Position.X}};
                 camera.position.y = {{camera.Position.Y}};
                 camera.position.z = {{camera.Position.Z}};
-
+              
                 camera.lookAt({{CreateJsVector3(camera.Target)}});
-
+              
                 return camera;
               }
               """);
@@ -104,20 +119,20 @@ public class ThreeJsRendererBuilder
     public ThreeJsRendererBuilder WithCreateSceneFunction()
     {
         _stringBuilder.AppendLine(
-            $$"""
+            """
             function CreateScene() {
                 const width = window.innerWidth - 20;
                 const height = window.innerHeight - 20;;
-
+            
                 var camera = CreateCamera();
                 var renderer = CreateRenderer(width, height);
                 var scene = new THREE.Scene();
                 var meshes = CreateMeshes();
-
+            
                 for (var i = 0; i < meshes.length; i++) {
                     scene.add(meshes[i]);
                 }
-
+            
                 renderer.render(scene, camera);
             }
             """);
@@ -130,5 +145,8 @@ public class ThreeJsRendererBuilder
         return this;
     }
 
-    public string Build() => _stringBuilder.ToString();
+    public string Build()
+    {
+        return _stringBuilder.ToString();
+    }
 }

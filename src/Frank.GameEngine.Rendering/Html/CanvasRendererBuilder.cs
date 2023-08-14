@@ -1,5 +1,5 @@
-﻿using Frank.GameEngine.Primitives;
-using System.Text;
+﻿using System.Text;
+using Frank.GameEngine.Primitives;
 
 namespace Frank.GameEngine.Rendering.Html;
 
@@ -14,7 +14,6 @@ public class CanvasRendererBuilder
         _builder.AppendLine("<script>");
         return this;
     }
-
 
 
     public CanvasRendererBuilder WithShapes(IEnumerable<Shape> shapes)

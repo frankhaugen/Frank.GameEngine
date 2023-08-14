@@ -3,12 +3,12 @@ using System.Numerics;
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
-/// Factory for creating transforms.
+///     Factory for creating transforms.
 /// </summary>
 public static class TransformFactory
 {
     /// <summary>
-    /// Creates a transform with the default values.
+    ///     Creates a transform with the default values.
     /// </summary>
     /// <returns></returns>
     public static Transform CreateTransform()
@@ -23,7 +23,7 @@ public static class TransformFactory
     }
 
     /// <summary>
-    /// Creates a transform with the specified position and scale.
+    ///     Creates a transform with the specified position and scale.
     /// </summary>
     /// <param name="position"></param>
     /// <param name="scale"></param>
@@ -40,7 +40,7 @@ public static class TransformFactory
     }
 
     /// <summary>
-    /// Creates a transform with the specified position and rotation.
+    ///     Creates a transform with the specified position and rotation.
     /// </summary>
     /// <param name="position"></param>
     /// <param name="rotation"></param>

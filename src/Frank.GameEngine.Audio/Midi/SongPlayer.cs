@@ -13,18 +13,14 @@ public class SongPlayer : ISongPlayer
 
     public async Task PlaySong(MidiSong song)
     {
-        await Parallel.ForEachAsync(song.Tracks, async (track, cancellationToken) => { 
-            await PlayTrack(_midiOut, track);
-        });
+        await Parallel.ForEachAsync(song.Tracks,
+            async (track, cancellationToken) => { await PlayTrack(_midiOut, track); });
     }
 
     private async Task PlayTrack(MidiOut midiOut, MidiTrack track)
     {
         _midiOut.Send(MidiMessage.ChangePatch((int)track.Instrument, track.Channel).RawData);
-        foreach (var note in track.Notes)
-        {
-            await PlayNote(midiOut, (int)note.Note, (int)note.Duration, track.Channel);
-        }
+        foreach (var note in track.Notes) await PlayNote(midiOut, (int)note.Note, (int)note.Duration, track.Channel);
     }
 
     private async Task PlayNote(MidiOut midiOut, int note, int duration, int channel)

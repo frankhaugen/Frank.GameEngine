@@ -1,38 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
 
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="6.11.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.6.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.0-preview-23364-03" />
-    <PackageReference Include="xunit" Version="2.5.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="6.0.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="6.11.0"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.6.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.0-preview-23364-03"/>
+        <PackageReference Include="xunit" Version="2.5.0"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.5.0">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector" Version="6.0.0">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
 
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj" />
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj" />
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj" />
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj" />
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj" />
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj" />
-    <ProjectReference Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj"/>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj"/>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj"/>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj"/>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj"/>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj"/>
+        <ProjectReference Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj"/>
+    </ItemGroup>
+
 
 </Project>
