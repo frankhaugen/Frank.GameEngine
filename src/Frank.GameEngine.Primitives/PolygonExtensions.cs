@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Numerics;
 
 namespace Frank.GameEngine.Primitives;
@@ -49,9 +50,17 @@ public static class PolygonExtensions
     {
         var edges = polygon.Edges;
         var otherEdges = other.Edges;
-        IEnumerable<Vector3> intersectionPoints = new List<Vector3>();
+        var intersectionPoints = new ConcurrentBag<Vector3>();
 
-        Parallel.ForEach(edges, edge => { intersectionPoints = edge.GetIntersectionPoints(otherEdges); });
+        Parallel.ForEach(edges, edge =>
+        {
+            var edgeIntersectionPoints = edge.GetIntersectionPoints(otherEdges);
+            foreach (var edgeIntersectionPoint in edgeIntersectionPoints)
+            {
+                if (intersectionPoints.Contains(edgeIntersectionPoint)) continue;
+                intersectionPoints.Add(edgeIntersectionPoint);
+            }
+        });
 
         return intersectionPoints;
     }

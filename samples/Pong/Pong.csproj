@@ -2,20 +2,14 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net7.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
     </PropertyGroup>
 
-
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj"/>
+      <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj" />
     </ItemGroup>
 
-
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj" />
+    </ItemGroup>
+    
 </Project>

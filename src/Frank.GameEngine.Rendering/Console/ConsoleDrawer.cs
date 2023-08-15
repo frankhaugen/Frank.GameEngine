@@ -54,7 +54,13 @@ public class ConsoleDrawer
         return this;
     }
     
-    public ConsoleDrawer WithLines(Polygon polygon, CharColor charColor)
+    /// <summary>
+    ///    Draws the edges of the polygon to the buffer. This is useful for drawing the buffer to the console after all pixels have been set.
+    /// </summary>
+    /// <param name="polygon"></param>
+    /// <param name="charColor"></param>
+    /// <returns></returns>
+    public ConsoleDrawer WithEdges(Polygon polygon, CharColor charColor)
     {
         var edges = polygon.Edges;
         foreach (var edge in edges)

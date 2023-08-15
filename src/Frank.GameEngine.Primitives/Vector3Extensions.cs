@@ -81,4 +81,20 @@ public static class Vector3Extensions
     {
         return new Vector2(vector.X, vector.Y);
     }
+    
+    /// <summary>
+    ///    Converts the vector to a Vector2 by dropping the Z component.
+    /// </summary>
+    /// <param name="vector"></param>
+    /// <param name="format"></param>
+    /// <returns></returns>
+    public static string ToString(this Vector3 vector, string format) => $"({vector.X.ToString(format)}|{vector.Y.ToString(format)}|{vector.Z.ToString(format)})";
+    
+    /// <summary>
+    ///   Converts the vectors to a string by dropping the Z component.
+    /// </summary>
+    /// <param name="vectors"></param>
+    /// <param name="format"></param>
+    /// <returns></returns>
+    public static string ToString(this IEnumerable<Vector3> vectors, string format) => $"{string.Join("\n", vectors.Select(v => ToString(v, format)))}";
 }
