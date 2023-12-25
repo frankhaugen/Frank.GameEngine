@@ -10,4 +10,9 @@
         <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
     </ItemGroup>
 
+
+    <ItemGroup>
+      <PackageReference Include="SadConsole" Version="9.2.2" />
+    </ItemGroup>
+
 </Project>

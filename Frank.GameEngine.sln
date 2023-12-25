@@ -9,12 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SolutionFiles", "_Solution
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md
-		samples\Directory.Build.props = samples\Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Assets", "src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj", "{4D50FA7A-B250-4C84-BB15-9E8D2BA40932}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0181DE93-EF1F-4E15-85BB-E057599F24D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Core", "src\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj", "{3550D009-D493-4E8C-81AD-5AB3D886D9A8}"
 EndProject
@@ -28,27 +25,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Rendering"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Rendering.MonoGame", "src\Frank.GameEngine.Rendering.MonoGame\Frank.GameEngine.Rendering.MonoGame.csproj", "{C2314668-ECFD-4AE2-8784-68B091DCC97F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2F986BD9-1239-4145-8A1C-2E6FDC81F91B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Tests", "tests\Frank.GameEngine.Tests\Frank.GameEngine.Tests.csproj", "{911CB182-7F85-4029-B562-98B3E8D74142}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Tests.Application", "tests\Frank.GameEngine.Tests.Application\Frank.GameEngine.Tests.Application.csproj", "{3BD65062-6075-4E9F-B9CC-9CCD4B42DBA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Tests.Benchmarks", "tests\Frank.GameEngine.Tests.Benchmarks\Frank.GameEngine.Tests.Benchmarks.csproj", "{7C0C0B98-583C-48A4-A065-4644CFF70051}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{DCB384B7-FA8B-4DEB-B722-9311599CE0D6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong", "samples\Pong\Pong.csproj", "{50DE555A-B7AB-4DAF-9A41-AA83DF753A2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Samples.Pong", "samples\Frank.GameEngine.Samples.Pong\Frank.GameEngine.Samples.Pong.csproj", "{50DE555A-B7AB-4DAF-9A41-AA83DF753A2E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Audio", "src\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj", "{A715DF20-B4FE-466F-A3DA-815E801BBC29}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{BB51F8B0-7C26-4932-AEF0-97C488B7B674}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Generators.AssetsGenerator", "tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj", "{57E80E77-4083-499D-B1BA-129980C4180E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Rendering.RayLib", "src\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj", "{EDBA52B6-B6A9-4AFE-8538-C3A906B29EC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncingBall", "samples\BouncingBall\BouncingBall.csproj", "{9853A7CF-B2D6-4528-BD7D-051E58177BFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Samples.BouncingBall", "samples\Frank.GameEngine.Samples.BouncingBall\Frank.GameEngine.Samples.BouncingBall.csproj", "{9853A7CF-B2D6-4528-BD7D-051E58177BFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Samples.Battleship", "samples\Frank.GameEngine.Samples.Battleship\Frank.GameEngine.Samples.Battleship.csproj", "{566C8B98-12D1-45F4-B706-1DB2D7E5E400}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{8C8E95E2-E96E-4336-BB8A-A5605580E75F}"
+	ProjectSection(SolutionItems) = preProject
+		samples\Directory.Build.props = samples\Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,6 +116,10 @@ Global
 		{9853A7CF-B2D6-4528-BD7D-051E58177BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9853A7CF-B2D6-4528-BD7D-051E58177BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9853A7CF-B2D6-4528-BD7D-051E58177BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{566C8B98-12D1-45F4-B706-1DB2D7E5E400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566C8B98-12D1-45F4-B706-1DB2D7E5E400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566C8B98-12D1-45F4-B706-1DB2D7E5E400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566C8B98-12D1-45F4-B706-1DB2D7E5E400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,20 +128,6 @@ Global
 		SolutionGuid = {675386CD-40E8-46F1-94A9-2CF62E8080E3}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3550D009-D493-4E8C-81AD-5AB3D886D9A8} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
-		{4D50FA7A-B250-4C84-BB15-9E8D2BA40932} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
-		{0C1BA117-4062-46C8-B657-BA4A49DBE863} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
-		{E4202ECF-C6CE-485D-802D-5ABB9A652F03} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
-		{6B793605-B164-480A-829F-DC7CD1C613BD} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
-		{A81B8CDE-B04A-4A1F-8938-DEA3E7633F26} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
-		{C2314668-ECFD-4AE2-8784-68B091DCC97F} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
-		{911CB182-7F85-4029-B562-98B3E8D74142} = {2F986BD9-1239-4145-8A1C-2E6FDC81F91B}
-		{3BD65062-6075-4E9F-B9CC-9CCD4B42DBA6} = {2F986BD9-1239-4145-8A1C-2E6FDC81F91B}
-		{7C0C0B98-583C-48A4-A065-4644CFF70051} = {2F986BD9-1239-4145-8A1C-2E6FDC81F91B}
-		{50DE555A-B7AB-4DAF-9A41-AA83DF753A2E} = {DCB384B7-FA8B-4DEB-B722-9311599CE0D6}
-		{A715DF20-B4FE-466F-A3DA-815E801BBC29} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
-		{57E80E77-4083-499D-B1BA-129980C4180E} = {BB51F8B0-7C26-4932-AEF0-97C488B7B674}
-		{EDBA52B6-B6A9-4AFE-8538-C3A906B29EC6} = {0181DE93-EF1F-4E15-85BB-E057599F24D1}
-		{9853A7CF-B2D6-4528-BD7D-051E58177BFB} = {DCB384B7-FA8B-4DEB-B722-9311599CE0D6}
+		{8C8E95E2-E96E-4336-BB8A-A5605580E75F} = {3D1F3229-6080-44F7-BE89-F2F83A275080}
 	EndGlobalSection
 EndGlobal

@@ -112,6 +112,17 @@ public class Viewport
         if (x >= 0 && x < _buffer.GetLength(0) && y >= 0 && y < _buffer.GetLength(1))
             _buffer[x, _buffer.GetLength(1) - y - 1] = pixel;
     }
+    
+    public char[,] GetBuffer()
+    {
+        var buffer = new char[_buffer.GetLength(0), _buffer.GetLength(1)];
+
+        for (var y = 0; y < _buffer.GetLength(1); y++)
+        for (var x = 0; x < _buffer.GetLength(0); x++)
+            buffer[x, y] = _buffer[x, y][0];
+
+        return buffer;
+    }
 
     public override string ToString()
     {

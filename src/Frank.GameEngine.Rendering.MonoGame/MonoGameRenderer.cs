@@ -28,7 +28,7 @@ public class MonoGameRenderer : IRenderer
 
     public void Render(Scene scene, Action<string> callback)
     {
-        throw new NotImplementedException();
+        Render(scene);
     }
 
     private BasicEffect CreateBasicEffect(Camera camera)

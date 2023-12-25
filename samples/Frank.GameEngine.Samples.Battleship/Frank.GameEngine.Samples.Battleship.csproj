@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>Battleship</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj" />
+    </ItemGroup>
+
+</Project>

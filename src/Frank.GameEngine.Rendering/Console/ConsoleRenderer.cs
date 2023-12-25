@@ -15,21 +15,54 @@ public class ConsoleRenderer : IRenderer
 
     public void Render(Scene scene)
     {
-        Render(scene, x =>
-        {
-            System.Console.Clear();
-            System.Console.WriteLine(x);
-        });
+        
+        var polygons = scene.GameObjects.Select(x => x.Shape.Polygon);
+        RenderToViewport(polygons);
+        System.Console.Clear();
+        WriteBuffer(_viewport.GetBuffer());
     }
-
-    public void Render(Scene scene, Action<string> callback)
+    
+    public static void WriteBuffer(char[,] buffer)
     {
-        var polygons = scene.GetTransformedShapes().Select(x => x.Polygon);
-        var consoleImage = Render(polygons);
-        callback(consoleImage);
+        var screenHeight = buffer.GetLength(0);
+        var screenWidth = buffer.GetLength(1);
+        
+        var currentBuffer = new char[screenHeight, screenWidth];
+        for (var i = 0; i < screenHeight; i++)
+        for (var j = 0; j < screenWidth; j++)
+            currentBuffer[i, j] = ' '; // Init with space
+        
+        if (currentBuffer is not null && buffer is not null)
+        {
+            for (int i = 0; i < Math.Min(currentBuffer.GetLength(0), buffer.GetLength(0)); i++)
+            {
+                for (int j = 0; j < Math.Min(currentBuffer.GetLength(1), buffer.GetLength(1)); j++)
+                {
+                    if (currentBuffer[i, j] == buffer[i, j]) continue;
+                    if(j >= 0 && j < System.Console.BufferWidth && i >= 0 && i < System.Console.BufferHeight)
+                    {
+                        System.Console.SetCursorPosition(j, i);
+                        System.Console.Write(buffer[i, j]);
+                        currentBuffer[i, j] = buffer[i, j];
+                    }
+                }
+            }
+        }
+
+        // for (var i = 0; i < screenHeight; i++)
+        // {
+        //     for (var j = 0; j < screenWidth; j++)
+        //     {
+                
+                // if (currentBuffer[i, j] == buffer[i, j]) continue;
+                // System.Console.SetCursorPosition(j, i);
+                // System.Console.Write(buffer[i, j]);
+                // currentBuffer[i, j] = buffer[i, j];
+        //     }
+        // }
     }
 
-    private string Render(IEnumerable<Polygon> polygons)
+    private void RenderToViewport(IEnumerable<Polygon> polygons)
     {
         _viewport.Clear();
 
@@ -38,8 +71,6 @@ public class ConsoleRenderer : IRenderer
             DrawLines(polygon);
             DrawPolygon(polygon);
         }
-
-        return _viewport.ToString();
     }
 
     private void DrawPolygon(Polygon polygon, string pixel = "#")
@@ -54,21 +85,6 @@ public class ConsoleRenderer : IRenderer
             var pixel = DetermineLinePixelFromAngle(edge);
             _viewport.DrawLine(edge, pixel);
         }
-    }
-
-    private void DrawLinesV1(Polygon polygon)
-    {
-        for (var i = 0; i < polygon.Length - 1; i++)
-        {
-            var edge = new Edge(polygon[i], polygon[i + 1]);
-            var pixel = DetermineLinePixelFromAngle(edge);
-            _viewport.DrawLine(edge, pixel);
-        }
-
-        // Draw line from last vertex to first
-        var finaleEdge = new Edge(polygon[^1], polygon[0]);
-        var finalPixel = DetermineLinePixelFromAngle(finaleEdge);
-        _viewport.DrawLine(finaleEdge, finalPixel);
     }
 
     private string DetermineLinePixelFromAngle(Edge edge)
