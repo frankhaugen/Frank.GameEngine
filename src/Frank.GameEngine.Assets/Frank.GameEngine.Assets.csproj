@@ -18,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Analyzer Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\bin\Debug\net7.0\Frank.GameEngine.Generators.AssetsGenerator.dll"/>
+        <Analyzer Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\bin\Debug\net8.0\Frank.GameEngine.Generators.AssetsGenerator.dll"/>
     </ItemGroup>
 
 </Project>

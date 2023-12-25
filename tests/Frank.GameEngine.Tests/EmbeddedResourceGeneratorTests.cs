@@ -22,7 +22,7 @@ public class EmbeddedResourceGeneratorTests
     [Fact]
     public void Use()
     {
-        var thing = AdditionalResources.Models.teapot;
+        var thing = AdditionalResources2.Models.teapot;
         _outputHelper.WriteLine(thing.Length.ToString());
     }
 
