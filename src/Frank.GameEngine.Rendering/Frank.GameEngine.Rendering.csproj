@@ -1,9 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +10,6 @@
 
 
     <ItemGroup>
-      <PackageReference Include="SadConsole" Version="9.2.2" />
     </ItemGroup>
 
 </Project>
