@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using FluentAssertions;
 using Frank.GameEngine.Physics;
+using Frank.GameEngine.Physics.Forces;
 using Frank.GameEngine.Primitives;
 using Xunit.Abstractions;
 

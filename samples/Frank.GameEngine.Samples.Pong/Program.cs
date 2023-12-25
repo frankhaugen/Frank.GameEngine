@@ -4,11 +4,13 @@ using Frank.GameEngine.Audio.Midi;
 using Frank.GameEngine.Core;
 using Frank.GameEngine.Input;
 using Frank.GameEngine.Physics;
+using Frank.GameEngine.Physics.Forces;
 using Frank.GameEngine.Primitives;
 using Frank.GameEngine.Rendering.RayLib;
 using Pong;
 using Pong.Ai;
 using Pong.GameObjects;
+using Pong.GameObjects.Walls;
 using Pong.Scenes;
 
 var physics = new PhysicsEngine(new NullCollisionHandler());

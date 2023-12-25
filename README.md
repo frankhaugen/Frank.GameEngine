@@ -11,3 +11,14 @@ use, so there is a decoupling between the game engine and the rendering technolo
 How useable this will be is yet to be seen, but the intention is to make it as useable as possible, and to make it as
 easy as possible to create games using this engine as nuget packages in your project.
 
+## How to use
+
+The engine is still in development, so there is no nuget package yet, but when there is, you will be able to install it
+
+```powershell
+Install-Package Frank.GameEngine
+```
+
+## How to contribute
+
+If you want to contribute, you are welcome to do so, but please read the [contribution guidelines](CONTRIBUTING.md)

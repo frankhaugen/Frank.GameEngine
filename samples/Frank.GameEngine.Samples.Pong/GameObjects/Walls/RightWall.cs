@@ -2,7 +2,7 @@
 using System.Numerics;
 using Frank.GameEngine.Primitives;
 
-namespace Pong.GameObjects;
+namespace Pong.GameObjects.Walls;
 
 public class RightWall : GameObject
 {

@@ -1,7 +1,7 @@
 using System.Numerics;
 using Frank.GameEngine.Primitives;
 
-namespace Frank.GameEngine.Physics;
+namespace Frank.GameEngine.Physics.Forces;
 
 /// <summary>
 ///     Drag is a force that is applied to a game object that is moving through a fluid, like air or water.

@@ -59,7 +59,6 @@ public static class ConsoleKeyConverter
             KeyCode.VcNumPad7 => ConsoleKey.NumPad7,
             KeyCode.VcNumPad8 => ConsoleKey.NumPad8,
             KeyCode.VcNumPad9 => ConsoleKey.NumPad9,
-            KeyCode.VcNumPadComma => ConsoleKey.Decimal,
             KeyCode.VcNumPadDivide => ConsoleKey.Divide,
             KeyCode.VcNumPadMultiply => ConsoleKey.Multiply,
             KeyCode.VcNumPadSubtract => ConsoleKey.Subtract,

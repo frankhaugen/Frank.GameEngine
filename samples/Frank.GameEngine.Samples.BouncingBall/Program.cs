@@ -3,9 +3,9 @@ using Frank.GameEngine.Audio.Console;
 using Frank.GameEngine.Audio.Midi;
 using Frank.GameEngine.Core;
 using Frank.GameEngine.Physics;
+using Frank.GameEngine.Physics.Forces;
 using Frank.GameEngine.Primitives;
 using Frank.GameEngine.Rendering.Console;
-using Frank.GameEngine.Rendering.RayLib;
 
 Console.WriteLine("Hello, World!");
 
@@ -40,13 +40,16 @@ void SimulationStep(TimeSpan elapsedTime)
     engine.Draw();
 }
 
-public static class GameConstants
+namespace BouncingBall
 {
-    public const int ScreenWidth = 1920 / 8;
-    public const int ScreenHeight = 1080 / 8;
-    public const float AspectRatio = (float)ScreenWidth / ScreenHeight;
-    public const int TargetFps = 60;
-    public const int TargetMs = 1000 / TargetFps;
-    public const int BallRadius = 10;
-    public const int BallSpeed = 10;
+    public static class GameConstants
+    {
+        public const int ScreenWidth = 1920 / 8;
+        public const int ScreenHeight = 1080 / 8;
+        public const float AspectRatio = (float)ScreenWidth / ScreenHeight;
+        public const int TargetFps = 60;
+        public const int TargetMs = 1000 / TargetFps;
+        public const int BallRadius = 10;
+        public const int BallSpeed = 10;
+    }
 }

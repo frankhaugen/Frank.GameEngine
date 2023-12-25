@@ -1,7 +1,7 @@
 using System.Numerics;
 using Frank.GameEngine.Primitives;
 
-namespace Frank.GameEngine.Physics;
+namespace Frank.GameEngine.Physics.Forces;
 
 /// <summary>
 ///     A force that applies gravity to a game object. Gravity is a constant force that is always applied to a game object.

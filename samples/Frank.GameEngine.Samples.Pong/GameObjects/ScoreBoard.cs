@@ -1,4 +1,4 @@
-namespace Pong.Scenes;
+namespace Pong.GameObjects;
 
 public class ScoreBoard
 {
