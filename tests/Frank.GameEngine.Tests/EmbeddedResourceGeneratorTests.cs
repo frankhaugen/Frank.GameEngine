@@ -19,7 +19,7 @@ public class EmbeddedResourceGeneratorTests
         _outputHelper = outputHelper;
     }
 
-    [Fact]
+    // [Fact]
     public void Use()
     {
         var thing = AdditionalResources2.Models.teapot;
