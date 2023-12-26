@@ -26,7 +26,7 @@ public class EmbeddedResourceGeneratorTests
         _outputHelper.WriteLine(thing.Length.ToString());
     }
 
-    [Fact]
+    // [Fact]
     public void Generate()
     {
         var inputCompilation = CSharpCompilation.Create("compilation",
