@@ -1,8 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        
-    </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj"/>

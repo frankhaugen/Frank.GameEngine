@@ -3,6 +3,7 @@
     <PropertyGroup>
         <UserSecretsId>dotnet-Frank.GameEngine.Tests.Application-A1962D77-56D8-4EF6-8A7C-D4BCC76CD56C</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
