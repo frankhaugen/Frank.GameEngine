@@ -18,7 +18,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Analyzer Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\bin\Debug\net8.0\Frank.GameEngine.Generators.AssetsGenerator.dll"/>
+        <ProjectReference Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj"
+                          PrivateAssets="all"
+                          ReferenceOutputAssembly="false"
+                          OutputItemType="Analyzer" />
     </ItemGroup>
 
 </Project>
