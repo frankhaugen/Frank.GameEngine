@@ -50,6 +50,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{8C8E
 		samples\Directory.Build.props = samples\Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.GameEngine.Rendering.Experimental", "src\Frank.GameEngine.Rendering.Experimental\Frank.GameEngine.Rendering.Experimental.csproj", "{DA8C5393-A3AE-4501-A396-0356BF9CD0BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -122,6 +124,10 @@ Global
 		{566C8B98-12D1-45F4-B706-1DB2D7E5E400}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{566C8B98-12D1-45F4-B706-1DB2D7E5E400}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{566C8B98-12D1-45F4-B706-1DB2D7E5E400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8C5393-A3AE-4501-A396-0356BF9CD0BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8C5393-A3AE-4501-A396-0356BF9CD0BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8C5393-A3AE-4501-A396-0356BF9CD0BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8C5393-A3AE-4501-A396-0356BF9CD0BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
