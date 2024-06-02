@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Raylib-cs" Version="5.0.0" />
+      <PackageReference Include="Raylib-CSharp" Version="4.1.0" />
     </ItemGroup>
 
     <ItemGroup>

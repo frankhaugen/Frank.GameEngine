@@ -1,5 +1,8 @@
 ﻿using Frank.GameEngine.Primitives;
-using Raylib_cs;
+using Raylib_CSharp.Colors;
+using Raylib_CSharp.Interact;
+using Raylib_CSharp.Rendering;
+using Raylib_CSharp.Windowing;
 
 namespace Frank.GameEngine.Rendering.RayLib;
 
@@ -8,17 +11,16 @@ public class RayLibRenderer : IRenderer
     public RayLibRenderer(int width, float aspectRatio, string title)
     {
         var height = (int) (width / aspectRatio);
-        Raylib.InitWindow(width, height, title);
-        // Raylib.SetTargetFPS(60);
-        Raylib.SetExitKey(KeyboardKey.KEY_ESCAPE);
+        Window.Init(width, height, title);
+        Input.SetExitKey(KeyboardKey.Escape);
     }
 
     public void Render(Scene scene)
     {
-        Raylib.ClearBackground(new Color(scene.BackgroundColor.R, scene.BackgroundColor.G, scene.BackgroundColor.B,
+        Graphics.ClearBackground(new Color(scene.BackgroundColor.R, scene.BackgroundColor.G, scene.BackgroundColor.B,
             scene.BackgroundColor.A));
 
-        Raylib.BeginDrawing();
+        Graphics.BeginDrawing();
         var shapes = scene.GameObjects.Select(x => x.Shape).ToArray();
         
         foreach (var shape in shapes)
@@ -27,10 +29,10 @@ public class RayLibRenderer : IRenderer
             var edges = shape.Polygon.Edges.ToArray();
 
             foreach (var edge in edges)
-                Raylib.DrawLine3D(edge.A, edge.B, new Color(color.R, color.G, color.B, color.A));
+                Graphics.DrawLine3D(edge.A, edge.B, new Color(color.R, color.G, color.B, color.A));
         }
 
-        Raylib.EndDrawing();
+        Graphics.EndDrawing();
     }
 
     public void Render(Scene scene, Action<string> callback)
