@@ -8,6 +8,14 @@ namespace Frank.GameEngine.Primitives;
 public static partial class PolygonFactory
 {
     /// <summary>
+    ///     Creates a polygon that is a cube with the specified width, height, and depth.
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
+    public static Polygon CreateLine(Vector3 start, Vector3 end) => new(new[] { start, end });
+
+    /// <summary>
     ///     Creates a polygon of the specified number of sides.
     /// </summary>
     /// <param name="sides">The number of sides the polygon should have.</param>

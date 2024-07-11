@@ -5,6 +5,8 @@
 
     <ItemGroup>
       <PackageReference Include="Raylib-CSharp" Version="4.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
     </ItemGroup>
 
     <ItemGroup>

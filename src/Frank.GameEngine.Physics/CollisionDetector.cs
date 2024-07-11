@@ -21,7 +21,8 @@ public class CollisionDetector : ICollisionHandler
         var gameObjects = collisions.Select(collision => (
             scene.GameObjects.First(gameObject => gameObject.Shape.Polygon == collision.Item1),
             scene.GameObjects.First(gameObject => gameObject.Shape.Polygon == collision.Item2)));
-        return default;
+        
+        return gameObjects.Select(x => new Collision(Vector3.Zero, x.Item1, x.Item2, Vector3.Zero, Vector3.Zero));
     }
 
     private static IEnumerable<(Polygon, Polygon)> DetectCollisions(List<Polygon> polygons)

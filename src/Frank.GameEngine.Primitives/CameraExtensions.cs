@@ -73,4 +73,20 @@ public static class CameraExtensions
         camera.Position += left * speed;
         camera.Target += left * speed;
     }
+    
+    public static void MoveUp(this Camera camera, float speed)
+    {
+        var direction = Vector3.Normalize(camera.Target - camera.Position);
+        var up = Vector3.Normalize(Vector3.Cross(direction, Vector3.Cross(camera.Up, direction)));
+        camera.Position += up * speed;
+        camera.Target += up * speed;
+    }
+    
+    public static void MoveDown(this Camera camera, float speed)
+    {
+        var direction = Vector3.Normalize(camera.Target - camera.Position);
+        var up = Vector3.Normalize(Vector3.Cross(direction, Vector3.Cross(camera.Up, direction)));
+        camera.Position -= up * speed;
+        camera.Target -= up * speed;
+    }
 }
