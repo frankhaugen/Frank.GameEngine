@@ -55,4 +55,10 @@ In Cursor, prefer the Task/agent tools for wide searches; keep edits minimal and
 - `.cursor/rules/*.mdc` — project rules (always-on + path globs).
 - `.cursor/agents/*.md` — short role prompts you can paste or attach for specialized turns.
 
-Do not commit secrets. CI may use reusable workflows under `frankhaugen/Workflows`; ensure any solution path there points at `Frank.GameEngine.slnx` if the workflow supports it.
+Do not commit secrets.
+
+## CI and shipping
+
+- **Local GitHub Actions**: `.github/workflows/verify-dotnet.yml` runs restore, build, and `dotnet test --solution Frank.GameEngine.slnx` on **ubuntu-latest** using the SDK from `global.json` (MTP / TUnit). Keep this in sync with how you run tests locally.
+- **Reusable workflows** (`frankhaugen/Workflows`): PR/merge/release jobs still call those; update that repository if its `dotnet test` invocation predates `--solution` / MTP on .NET 10.
+- **After work** (agents and humans): when build and tests pass locally, **commit** with a clear message and **push** the current branch unless the user asked otherwise. See `.cursor/rules/git-ship-after-verify.mdc`.

@@ -1,0 +1,23 @@
+---
+description: After code changes, verify with build/test then commit and push when green
+alwaysApply: true
+---
+
+# Ship changes when local verification passes
+
+When you finish **substantive** work in this repository (code, tests, CI, or docs that affect build/behavior):
+
+1. **Verify**
+   - `dotnet build Frank.GameEngine.slnx -c Release`
+   - `dotnet test --solution Frank.GameEngine.slnx -c Release`  
+   (Requires `global.json` `test.runner` = `Microsoft.Testing.Platform` for .NET 10 SDK.)
+
+2. **If both succeed**, **commit and push** unless the user explicitly asked not to push or to leave the working tree dirty:
+   - `git status` — review scope
+   - `git add` only intentional paths (or `git add -A` if the whole change set should ship)
+   - `git commit -m "Clear, complete sentence describing what changed and why."`
+   - `git push` (current branch; use `git push -u origin <branch>` when the branch has no upstream)
+
+3. **If tests or build fail**, fix first; do not push a broken tree.
+
+4. **Secrets / auth**: pushing needs network and git credentials available in the environment; if push is not possible, say so and leave the commit ready locally.

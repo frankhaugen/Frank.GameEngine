@@ -1,0 +1,30 @@
+# Ensures build + TUnit (Microsoft.Testing.Platform) pass on .NET 10 SDK.
+# Reusable workflows under frankhaugen/Workflows may use different commands; this job is the source of truth for this repo.
+name: Verify .NET
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore Frank.GameEngine.slnx
+
+      - name: Build
+        run: dotnet build Frank.GameEngine.slnx -c Release --no-restore
+
+      - name: Test (Microsoft.Testing.Platform)
+        run: dotnet test --solution Frank.GameEngine.slnx -c Release --no-build
