@@ -61,4 +61,5 @@ Do not commit secrets.
 
 - **Local GitHub Actions**: `.github/workflows/verify-dotnet.yml` runs restore, build, and `dotnet test --solution Frank.GameEngine.slnx` on **ubuntu-latest** using the SDK from `global.json` (MTP / TUnit). Keep this in sync with how you run tests locally.
 - **Reusable workflows** (`frankhaugen/Workflows`): PR/merge/release jobs still call those; update that repository if its `dotnet test` invocation predates `--solution` / MTP on .NET 10.
+- **Debugging failed runs** (if `gh` is installed): `gh run list --workflow "Verify .NET"` then `gh run view <id> --log-failed`. Without `gh`, open the run in the browser or query `https://api.github.com/repos/frankhaugen/Frank.GameEngine/actions/runs?per_page=5` and the job’s `steps` for which step failed.
 - **After work** (agents and humans): when build and tests pass locally, **commit** with a clear message and **push** the current branch unless the user asked otherwise. See `.cursor/rules/git-ship-after-verify.mdc`.

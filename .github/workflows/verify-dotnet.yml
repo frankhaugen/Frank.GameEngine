@@ -1,4 +1,4 @@
-# Ensures build + TUnit (Microsoft.Testing.Platform) pass on .NET 10 SDK.
+# Ensures build + TUnit (Microsoft.Testing.Platform) pass on .NET 10 SDK (linux + windows).
 # Reusable workflows under frankhaugen/Workflows may use different commands; this job is the source of truth for this repo.
 name: Verify .NET
 
@@ -9,9 +9,16 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
