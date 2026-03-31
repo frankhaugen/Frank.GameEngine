@@ -20,7 +20,7 @@ dotnet test --solution Frank.GameEngine.slnx -c Release
 ```
 
 - **Alternative**: `dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release` (TUnit test project is `OutputType` **Exe**). Coverage / TRX: add `--coverage`, `--report-trx` per [TUnit CLI](https://tunit.dev/docs/reference/command-line-flags/).
-- **CI** (`.github/workflows/verify-dotnet.yml`) uses `dotnet test --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj` because MTP + `--solution` was unreliable on GitHub-hosted runners; locally `dotnet test --solution Frank.GameEngine.slnx` remains the default full-solution check.
+- **CI** (`.github/workflows/verify-dotnet.yml`) builds the test project then runs **`dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj`** (TUnit’s recommended host). `dotnet test` + MTP was exiting non-zero on GitHub-hosted runners. Locally, `dotnet test --solution Frank.GameEngine.slnx` remains a convenient full-solution check.
 
 - **Central Package Management**: versions live in `Directory.Packages.props`; project files use `PackageReference` without `Version`.
 - **NuGet feeds**: repo `nuget.config` scopes restores to **nuget.org** with package source mapping (required for CPM when multiple feeds exist globally). To use another feed (e.g. Stride), add it under `packageSources` and map patterns under `packageSourceMapping`.

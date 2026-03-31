@@ -20,7 +20,7 @@
 dotnet test --solution Frank.GameEngine.slnx -c Release
 ```
 
-CI uses `dotnet test --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj` for the same suite (MTP is more reliable that way on Actions).
+CI builds the test project then runs `dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj` (TUnit host); `dotnet test` + MTP failed on Actions for this repo.
 
 Or run the test project directly:
 

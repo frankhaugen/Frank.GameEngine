@@ -30,6 +30,9 @@ jobs:
       - name: Restore
         run: dotnet restore Frank.GameEngine.slnx
 
-      # Target the test project explicitly; `dotnet test --solution` + MTP has been unreliable in CI for this repo.
-      - name: Test (Microsoft.Testing.Platform)
-        run: dotnet test --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-restore
+      # Build then `dotnet run` the TUnit executable (recommended host; `dotnet test` + MTP was exiting non-zero on Actions).
+      - name: Build test project
+        run: dotnet build tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-restore
+
+      - name: Run tests (TUnit executable)
+        run: dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-build
