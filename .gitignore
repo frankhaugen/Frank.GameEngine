@@ -74,6 +74,8 @@ StyleCopReport.xml
 *.ilk
 *.meta
 *.obj
+# Wavefront mesh assets (not MSVC object files)
+!src/Frank.GameEngine.Assets/Models/**/*.obj
 *.iobj
 *.pch
 *.pdb

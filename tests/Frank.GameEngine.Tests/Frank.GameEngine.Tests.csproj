@@ -34,7 +34,10 @@
         <ProjectReference Include="..\..\src\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj" />
         <ProjectReference Include="..\..\src\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
         <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj" />
-        <ProjectReference Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj" />
+        <!-- Reference the generator assembly for tests; do not run the analyzer on this project (would emit an empty AdditionalResources2). -->
+        <ProjectReference Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj">
+            <ExcludeAssets>analyzers</ExcludeAssets>
+        </ProjectReference>
     </ItemGroup>
 
 </Project>
