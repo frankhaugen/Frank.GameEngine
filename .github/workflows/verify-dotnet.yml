@@ -32,14 +32,9 @@ jobs:
       - name: Build test project
         run: dotnet build tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-restore
 
-      # Unset GITHUB_ACTIONS (step env "" does not remove the var). TUnit + GitHub reporter has exited non-zero on hosted runners despite all tests passing.
-      - name: Run tests (TUnit executable, Linux)
-        if: runner.os == 'Linux'
-        run: env -u GITHUB_ACTIONS dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-build -- --no-ansi
-
-      - name: Run tests (TUnit executable, Windows)
-        if: runner.os == 'Windows'
-        shell: pwsh
-        run: |
-          Remove-Item Env:GITHUB_ACTIONS -ErrorAction SilentlyContinue
-          dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-build -- --no-ansi
+      # TUnit enables a GitHub step-summary reporter when GITHUB_ACTIONS is set; writing the summary can fail the
+      # process with exit code 2 even when all tests pass. See https://tunit.dev/docs/execution/ci-cd-reporting
+      - name: Run tests (TUnit executable)
+        env:
+          TUNIT_DISABLE_GITHUB_REPORTER: true
+        run: dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-build
