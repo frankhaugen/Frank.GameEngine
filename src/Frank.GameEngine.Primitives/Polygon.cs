@@ -26,16 +26,13 @@ public class Polygon : IEnumerable<Vector3>
     public Polygon(IEnumerable<Vector3> vertices)
     {
         _vertices = vertices.ToArray();
-        _edges = new Edge[_vertices.Length + 1];
+        _edges = new Edge[_vertices.Length];
         for (var i = 0; i < _vertices.Length; i++)
         {
             var a = _vertices[i];
             var b = _vertices[(i + 1) % _vertices.Length];
             _edges[i] = new Edge(a, b);
         }
-
-        var finaleEdge = new Edge(_vertices[^1], _vertices[0]);
-        _edges[^1] = finaleEdge;
 
         _faces = new Face[_vertices.Length - 2];
         for (var i = 0; i < _faces.Length; i++)

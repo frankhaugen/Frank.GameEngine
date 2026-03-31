@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Frank.GameEngine.Primitives;
 using Raylib_CSharp.Camera.Cam3D;
 using Raylib_CSharp.Colors;
@@ -35,17 +35,18 @@ public class RayLibRenderer : IRenderer
         // Graphics.DrawGrid(10, 100);
         // Graphics.DrawText("Basic Window!", 10, 10, 20, Color.White);
 
-        var shapes = scene.GameObjects.Select(x => x.Shape).ToArray();
-        
-        foreach (var shape in shapes)
+        foreach (var gameObject in scene.GameObjects)
         {
+            var shape = gameObject.GetTransformedShape();
             var color = shape.Color;
             var edges = shape.Polygon.Edges.ToArray();
             var faces = shape.Polygon.Faces.ToArray();
-            
-            foreach (var face in faces) Graphics.DrawTriangle3D(face.A, face.B, face.C, new Color(color.R, color.G, color.B, color.A));
 
-            foreach (var edge in edges) Graphics.DrawLine3D(edge.A, edge.B, new Color(color.R, color.G, color.B, color.A));
+            foreach (var face in faces)
+                Graphics.DrawTriangle3D(face.A, face.B, face.C, new Color(color.R, color.G, color.B, color.A));
+
+            foreach (var edge in edges)
+                Graphics.DrawLine3D(edge.A, edge.B, new Color(color.R, color.G, color.B, color.A));
         }
 
         Graphics.EndMode3D();

@@ -6,7 +6,6 @@
 
     <ItemGroup>
         <PackageReference Include="FluentAssertions" />
-        <PackageReference Include="Frank.Libraries.Extensions" />
         <PackageReference Include="JetBrains.Annotations" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" />

@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+// See https://aka.ms/new-console-template for more information
 
 using Frank.GameEngine.Primitives;
 
@@ -118,7 +118,7 @@ public class Ship
     
     public ShipType ShipType { get; set; }
     
-    public List<BoardPosition> Positions { get; set; }
+    public List<BoardPosition> Positions { get; set; } = new();
     
     public int Length => ShipType.GetLength();
     

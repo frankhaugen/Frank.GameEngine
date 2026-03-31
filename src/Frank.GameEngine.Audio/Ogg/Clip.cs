@@ -1,6 +1,6 @@
-﻿namespace Frank.GameEngine.Audio.Ogg;
+namespace Frank.GameEngine.Audio.Ogg;
 
 public class Clip
 {
-    public byte[] Bytes { get; set; }
+    public required byte[] Bytes { get; set; }
 }

@@ -1,5 +1,7 @@
 # Architecture
 
+All shipping projects, tests, samples, and the **Roslyn assets generator** target **net10.0** (see repository `Directory.Build.props` and `tools/Frank.GameEngine.Generators.AssetsGenerator`).
+
 ## Layers
 
 | Layer | Projects | Depends on |
@@ -30,6 +32,13 @@ Input and audio are started from `GameEngine.Initialize(IRenderer)` on **backgro
 `Frank.GameEngine.Rendering.RayLib` can register **hosted services** (`AddGameEngine` in `ServiceCollectionExtensions`) that use **channels**: `TickProducer` → **`RayLibHostedPhysicsService`** → `RenderQueue` → `RenderLoop`.
 
 That hosted physics step is **not** the core `PhysicsEngine`; it is a **demo pipeline** for ticks and signoff messages. Renamed from `PhysicsEngine` to avoid confusion with simulation in `Frank.GameEngine.Physics`.
+
+## 3D mesh and transforms
+
+- **`Polygon`:** One edge per vertex (closed loop); `Translate` copies vertices and does not mutate the source mesh.
+- **`Shape.Transform` / `GetTransformedShape`:** Applies **scale → rotation → translation** in that order (local vertices, then placed in world space). Raylib rendering uses **`GameObject.GetTransformedShape()`** so draws match physics/collision transforms.
+- **`Camera.Up`:** Mutable so you can set a custom up vector for non-default orientations.
+- **`Polygon.GetAxisAlignedBoundingBox`:** Shared helper for broad-phase collision (`CollisionDetector`) and other culling.
 
 ## Extension points
 

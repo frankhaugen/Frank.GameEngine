@@ -6,7 +6,6 @@
 
     <ItemGroup>
         <PackageReference Include="MonoGame.Framework.DesktopGL" />
-        <PackageReference Include="SharpHook" />
     </ItemGroup>
 
     <ItemGroup>

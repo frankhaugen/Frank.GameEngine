@@ -1,6 +1,6 @@
 using System.Numerics;
 using Frank.GameEngine.Input.Args;
-using SharpHook.Native;
+using SharpHook.Data;
 
 namespace Frank.GameEngine.Input.Converters;
 

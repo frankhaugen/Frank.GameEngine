@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 
 namespace Frank.GameEngine.Primitives;
 
@@ -22,7 +22,7 @@ public class Board<T> : IObservable<T?>, ICloneable
 
     public T this[BoardPosition boardPosition]
     {
-        get => _board[boardPosition.Row, boardPosition.Column];
+        get => _board[boardPosition.Row, boardPosition.Column]!;
         set => _board[boardPosition.Row, boardPosition.Column] = value;
     }
 
@@ -49,21 +49,21 @@ public class Board<T> : IObservable<T?>, ICloneable
         var newBoard = new Board<T>(_board.GetLength(0), _board.GetLength(1));
         for (var i = 0; i < _board.GetLength(0); i++)
         for (var j = 0; j < _board.GetLength(1); j++)
-            newBoard[new BoardPosition(i, j)] = _board[i, j];
+            newBoard[new BoardPosition(i, j)] = _board[i, j]!;
         return newBoard;
     }
 
     public T[] GetRow(int row)
     {
         var rowArray = new T[_board.GetLength(1)];
-        for (var i = 0; i < _board.GetLength(1); i++) rowArray[i] = _board[row, i]; // Here, use the row as is, because we are assuming index starts from 0
+        for (var i = 0; i < _board.GetLength(1); i++) rowArray[i] = _board[row, i]!; // Here, use the row as is, because we are assuming index starts from 0
         return rowArray;
     }
 
     public T[] GetColumn(int column)
     {
         var columnArray = new T[_board.GetLength(0)];
-        for (var i = 0; i < _board.GetLength(0); i++) columnArray[i] = _board[i, column]; // Here, use the column as is, because we are assuming index starts from 0
+        for (var i = 0; i < _board.GetLength(0); i++) columnArray[i] = _board[i, column]!; // Here, use the column as is, because we are assuming index starts from 0
         return columnArray;
     }
 

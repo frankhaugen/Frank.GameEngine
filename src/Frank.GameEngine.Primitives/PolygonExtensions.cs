@@ -14,7 +14,8 @@ public static class PolygonExtensions
     public static Polygon Translate(this Polygon polygon, Vector3 position)
     {
         var vertices = new Vector3[polygon.Length];
-        for (var i = 0; i < polygon.Length; i++) vertices[i] = polygon[i] += position;
+        for (var i = 0; i < polygon.Length; i++)
+            vertices[i] = polygon[i] + position;
 
         return new Polygon(vertices);
     }
@@ -114,5 +115,24 @@ public static class PolygonExtensions
         var y = polygon.Average(v => v.Y);
         var z = polygon.Average(v => v.Z);
         return new Vector3(x, y, z);
+    }
+
+    /// <summary>
+    /// Axis-aligned bounding box in world space (min corner, max corner). Useful for broad-phase checks and culling.
+    /// </summary>
+    public static (Vector3 Min, Vector3 Max) GetAxisAlignedBoundingBox(this Polygon polygon)
+    {
+        if (polygon.Length == 0)
+            return (Vector3.Zero, Vector3.Zero);
+
+        var min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+        var max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+        foreach (var v in polygon)
+        {
+            min = Vector3.Min(min, v);
+            max = Vector3.Max(max, v);
+        }
+
+        return (min, max);
     }
 }

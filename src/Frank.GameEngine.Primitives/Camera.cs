@@ -25,7 +25,7 @@ public record Camera
     /// <summary>
     ///     The up vector of the camera. Defaults to <see cref="Vector3.UnitY" />.
     /// </summary>
-    public Vector3 Up { get; } = Vector3.UnitY;
+    public Vector3 Up { get; set; } = Vector3.UnitY;
 
     /// <summary>
     ///     The near plane distance of the camera. Defaults to 1f.

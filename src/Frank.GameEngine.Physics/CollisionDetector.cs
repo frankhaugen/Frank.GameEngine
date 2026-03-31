@@ -80,15 +80,8 @@ public class CollisionDetector : ICollisionHandler
 
     private static (Vector3, Vector3) GetBoundingBox(Polygon polygon)
     {
-        var minX = polygon.Min(vertex => vertex.X);
-        var minY = polygon.Min(vertex => vertex.Y);
-        var minZ = polygon.Min(vertex => vertex.Z);
-
-        var maxX = polygon.Max(vertex => vertex.X);
-        var maxY = polygon.Max(vertex => vertex.Y);
-        var maxZ = polygon.Max(vertex => vertex.Z);
-
-        return (new Vector3(minX, minY, minZ), new Vector3(maxX, maxY, maxZ));
+        var (min, max) = polygon.GetAxisAlignedBoundingBox();
+        return (min, max);
     }
 
     private static bool IsPolygon2D(Polygon polygon)

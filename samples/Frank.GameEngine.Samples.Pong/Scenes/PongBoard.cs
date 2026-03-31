@@ -1,4 +1,4 @@
-﻿using Frank.GameEngine.Primitives;
+using Frank.GameEngine.Primitives;
 using Pong.GameObjects;
 
 namespace Pong.Scenes;
@@ -9,11 +9,11 @@ public class PongBoard : Scene
     {
     }
 
-    public PlayerPaddle Player { get; set; }
+    public required PlayerPaddle Player { get; set; }
 
-    public ComputerPaddle Computer { get; set; }
+    public required ComputerPaddle Computer { get; set; }
 
-    public Ball Ball { get; set; }
+    public required Ball Ball { get; set; }
 
     public ScoreBoard ScoreBoard { get; set; } = new();
 }

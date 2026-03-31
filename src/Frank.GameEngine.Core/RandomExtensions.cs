@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 
 namespace Frank.GameEngine.Core;
 
@@ -8,7 +8,10 @@ public static class RandomExtensions
     {
         var values = Enum.GetValues(typeof(T));
         var index = random.Next(0, values.Length);
-        return (T)values.GetValue(index);
+        var value = values.GetValue(index);
+        if (value is null)
+            throw new InvalidOperationException($"Enum {typeof(T).Name} has no value at index {index}.");
+        return (T)value;
     }
 
     /// <summary>

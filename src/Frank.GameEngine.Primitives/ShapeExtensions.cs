@@ -10,17 +10,7 @@ public static class ShapeExtensions
     /// <param name="shape"></param>
     /// <param name="transform"></param>
     /// <returns></returns>
-    public static Shape GetTransformedShape(this Shape shape, Transform transform)
-    {
-        var polygon = shape.Polygon;
-        var transformedPolygon = polygon.Translate(transform.Position);
-        var transformedShape = new Shape
-        {
-            Polygon = transformedPolygon,
-            Color = shape.Color
-        };
-        return transformedShape;
-    }
+    public static Shape GetTransformedShape(this Shape shape, Transform transform) => shape.Transform(transform);
 
     /// <summary>
     ///     Gets the collision between two shapes.
@@ -50,16 +40,18 @@ public static class ShapeExtensions
     /// <param name="shape"></param>
     /// <param name="transform"></param>
     /// <returns></returns>
+    /// <summary>
+    /// Applies scale (around the origin), rotation, then translation in world space — typical for model vertices defined in local space.
+    /// </summary>
     public static Shape Transform(this Shape shape, Transform transform)
     {
-        var transformedShape = shape.GetCopy();
-        if (transform.Position != shape.Polygon.Position)
-            transformedShape = transformedShape.Translate(transform.Position);
-        if (transform.Rotation != Quaternion.Zero)
-            transformedShape = transformedShape.Rotate(transform.Rotation);
+        var result = shape.GetCopy();
         if (Math.Abs(transform.Scale - 1f) > 0.001f)
-            transformedShape = transformedShape.Scale(transform.Scale);
-        return transformedShape;
+            result = result.Scale(transform.Scale);
+        if (transform.Rotation != Quaternion.Identity)
+            result = result.Rotate(transform.Rotation);
+        result = result.Translate(transform.Position);
+        return result;
     }
 
     /// <summary>

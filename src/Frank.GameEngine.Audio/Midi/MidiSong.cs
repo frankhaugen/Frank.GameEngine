@@ -1,4 +1,4 @@
-﻿namespace Frank.GameEngine.Audio.Midi;
+namespace Frank.GameEngine.Audio.Midi;
 
 public class MidiSong
 {
@@ -11,9 +11,14 @@ public class MidiSong
 
     public MidiSong()
     {
+        Tracks = new List<MidiTrack>();
+        Name = string.Empty;
+        Composer = string.Empty;
     }
 
-    public List<MidiTrack> Tracks { get; set; }
-    public string Name { get; set; }
-    public string Composer { get; set; }
+    public List<MidiTrack> Tracks { get; set; } = new();
+
+    public string Name { get; set; } = string.Empty;
+
+    public string Composer { get; set; } = string.Empty;
 }

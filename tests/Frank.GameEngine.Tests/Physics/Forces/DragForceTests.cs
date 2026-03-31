@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using FluentAssertions;
 using Frank.GameEngine.Physics;
 using Frank.GameEngine.Physics.Forces;
@@ -41,11 +41,12 @@ public class DragForceTests
         _output.WriteLine($"Velocity: {result}");
 
         // Assert
-        result?.Should().NotBeNull();
-        result?.Length().Should()
+        result.Should().NotBeNull();
+        var drag = result!.Value;
+        drag.Length().Should()
             .BeApproximately((float)(expectedDragMagnitude * TimeSpan.FromSeconds(1).TotalSeconds),
                 0.0001f); // Tolerating small differences due to floating-point precision
-        Vector3.Dot(result.Value, gameObject.Rigidbody.Velocity).Should()
+        Vector3.Dot(drag, gameObject.Rigidbody.Velocity).Should()
             .BeLessThan(0); // Drag force should always be opposite to direction of motion
     }
 }

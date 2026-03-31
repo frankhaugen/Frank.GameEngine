@@ -14,4 +14,4 @@ Use after substantive C# or project file edits.
 
 **If the generator project fails**
 
-- It targets `netstandard2.1` with Roslyn `4.8.0` via `VersionOverride`; do not upgrade the analyzer package without checking RS rules and API surface.
+- It targets `net10.0` with central `Microsoft.CodeAnalysis.CSharp`. Upgrading that package may require addressing RS analyzer rules or migrating to `IIncrementalGenerator`.

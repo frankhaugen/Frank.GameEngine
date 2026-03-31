@@ -36,10 +36,12 @@ var renderer = new RayLibRenderer(1080, camera.AspectRatio, "Frank.GameEngine.Sa
 
 var playerMoveSpeed = GameConstants.PaddleSpeed;
 
-var scene = new PongBoard(camera);
-scene.Player = new PlayerPaddle();
-scene.Computer = new ComputerPaddle();
-scene.Ball = new Ball();
+var scene = new PongBoard(camera)
+{
+    Player = new PlayerPaddle(),
+    Computer = new ComputerPaddle(),
+    Ball = new Ball()
+};
 
 scene.GameObjects.Add(scene.Player);
 scene.GameObjects.Add(scene.Computer);

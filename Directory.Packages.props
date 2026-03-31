@@ -7,7 +7,6 @@
     <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
     <PackageVersion Include="coverlet.collector" Version="8.0.1" />
     <PackageVersion Include="FluentAssertions" Version="8.9.0" />
-    <PackageVersion Include="Frank.Libraries.Extensions" Version="2023.8.8.1956" />
     <PackageVersion Include="JetBrains.Annotations" Version="2025.2.4" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.3.0" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="10.0.5" />
@@ -21,7 +20,7 @@
     <PackageVersion Include="NAudio" Version="2.3.0" />
     <PackageVersion Include="NAudio.Vorbis" Version="1.5.0" />
     <PackageVersion Include="Raylib-CSharp" Version="5.0.0" />
-    <PackageVersion Include="SharpHook" Version="5.2.0" />
+    <PackageVersion Include="SharpHook" Version="7.1.1" />
     <PackageVersion Include="VsTools.Projects" Version="1.2.0" />
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />

@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using System.Text;
 using Frank.GameEngine.Primitives;
 
@@ -162,7 +162,7 @@ public readonly struct CharColor
         }
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj is CharColor charColor)
             return Char == charColor.Char && Color == charColor.Color;

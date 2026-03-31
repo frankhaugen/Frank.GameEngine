@@ -26,8 +26,8 @@ public class AdditionalFilesHelperGenerator : ISourceGenerator
         var sourceBuilder = new StringBuilder();
         var additionalFiles = context.AdditionalFiles;
 
-        if (TryGetProjectDir(context, out var projectDir)) return;
-        if (TryGetRootNamespace(context, out var rootNamespace)) return;
+        if (TryGetProjectDir(context, out var projectDir) || string.IsNullOrEmpty(projectDir)) return;
+        if (TryGetRootNamespace(context, out var rootNamespace) || string.IsNullOrEmpty(rootNamespace)) return;
 
         var root = new ClassMember(rootClassName);
         foreach (var file in additionalFiles)
@@ -41,7 +41,7 @@ public class AdditionalFilesHelperGenerator : ISourceGenerator
         var compilationUnit = SyntaxFactory.CompilationUnit()
                 .AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Reflection")))
                 .AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.IO")))
-                .AddMembers(SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(rootNamespace))
+                .AddMembers(SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(rootNamespace!))
                     .AddMembers(rootClass))
             ;
 

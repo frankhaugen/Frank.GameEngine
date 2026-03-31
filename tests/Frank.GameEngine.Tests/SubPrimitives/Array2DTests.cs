@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Linq;
 using Frank.GameEngine.Primitives.SubPrimitives;
 using JetBrains.Annotations;
 using Xunit;
 using FluentAssertions;
-using Frank.Libraries.Extensions;
 using Xunit.Abstractions;
 
 namespace Frank.GameEngine.Tests.SubPrimitives

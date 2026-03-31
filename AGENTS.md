@@ -18,7 +18,7 @@ dotnet build Frank.GameEngine.slnx -c Release
 dotnet test Frank.GameEngine.slnx -c Release
 ```
 
-- **Central Package Management**: versions live in `Directory.Packages.props`; project files use `PackageReference` without `Version` (except `VersionOverride` in the Roslyn generator tool).
+- **Central Package Management**: versions live in `Directory.Packages.props`; project files use `PackageReference` without `Version`.
 - **NuGet feeds**: repo `nuget.config` scopes restores to **nuget.org** with package source mapping (required for CPM when multiple feeds exist globally). To use another feed (e.g. Stride), add it under `packageSources` and map patterns under `packageSourceMapping`.
 
 ## Layout
@@ -26,14 +26,14 @@ dotnet test Frank.GameEngine.slnx -c Release
 | Area | Path |
 |------|------|
 | Core / physics / rendering contracts | `src/Frank.GameEngine.*` |
-| Source generator (Roslyn) | `tools/Frank.GameEngine.Generators.AssetsGenerator` — targets **netstandard2.1**; `Microsoft.CodeAnalysis.CSharp` is pinned via `VersionOverride` to **4.8.0** |
+| Source generator (Roslyn) | `tools/Frank.GameEngine.Generators.AssetsGenerator` — **net10.0**, same `Microsoft.CodeAnalysis.CSharp` version as tests (central package file); `EnforceExtendedAnalyzerRules` is off with targeted `NoWarn` for legacy `ISourceGenerator` rules |
 | Samples | `samples/*` — shared props in `samples/Directory.Build.props` |
-| Tests | `tests/Frank.GameEngine.Tests` (xUnit, FluentAssertions) |
+| Tests | `tests/Frank.GameEngine.Tests` — xUnit + FluentAssertions + Moq; grouped under `Core/`, `Physics/`, `Primitives/`, `Input/`, `Audio/` |
 | Design docs | `docs/architecture.md`, `docs/critical-improvements.md` |
 
 ## Conventions
 
-- **Target framework**: `net10.0` from `Directory.Build.props` (except the generator tool).
+- **Target framework**: **net10.0** for every project, including the Roslyn generator tool.
 - **Quality**: `TreatWarningsAsErrors`, nullable reference types, XML docs on public API (CS1591 suppressed globally).
 - **Platform**: `ConsoleAudioPlayer` / `AudioPlayerFactory.CreateConsoleAudioPlayer` are **Windows-only** (`SupportedOSPlatform`). Samples use `SilentAudioPlayer` on other OSes. Respect CA1416 when adding platform APIs.
 

@@ -4,6 +4,12 @@ This document tracks design fixes that were identified in review and how they we
 
 ## Completed
 
+### 0. Unified `net10.0` and clean Release build
+
+**Problem:** The source generator used `netstandard2.1` and a `VersionOverride` for Roslyn; multiple nullable and API warnings appeared in Release builds.
+
+**Fix:** Generator targets **net10.0**, uses the central `Microsoft.CodeAnalysis.CSharp` package with `EnforceExtendedAnalyzerRules` disabled and `NoWarn` for RS1035/RS1041/RS1042 (legacy `ISourceGenerator`); nullable and API fixes across Audio, Primitives, Core, Rendering, samples, and tests; removed a machine-specific `None Remove` entry from `Frank.GameEngine.Audio.csproj`.
+
 ### 1. Force aggregation crash (`Frank.GameEngine.Physics.PhysicsEngine`)
 
 **Problem:** When `Forces` was non-empty but every `Calculate` returned `null`, `Enumerable.Aggregate` ran on an empty sequence and threw.

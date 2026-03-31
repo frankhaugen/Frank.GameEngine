@@ -6,6 +6,6 @@ alwaysApply: true
 # Frank.GameEngine — build
 
 - Open or build **`Frank.GameEngine.slnx`** (not `.sln`). CLI: `dotnet build Frank.GameEngine.slnx`.
-- **CPM**: package versions only in `Directory.Packages.props`. Do not add `Version=` on `PackageReference` unless using `VersionOverride` for a special project (the Roslyn generator uses `VersionOverride` for `Microsoft.CodeAnalysis.CSharp`).
+- **CPM**: package versions only in `Directory.Packages.props`. Do not add `Version=` on `PackageReference` without a team reason.
 - **nuget.config** pins restores to nuget.org with source mapping; do not add unmapped feeds without updating mapping.
-- **Generator** `tools/Frank.GameEngine.Generators.AssetsGenerator` targets **netstandard2.1**; keep it compatible with older BCL APIs unless you retarget.
+- **Generator** `tools/Frank.GameEngine.Generators.AssetsGenerator` targets **net10.0** (same as the rest of the repo). It uses `ISourceGenerator` with `EnforceExtendedAnalyzerRules` disabled and `NoWarn` for RS1035/RS1041/RS1042 until migrated to `IIncrementalGenerator`.

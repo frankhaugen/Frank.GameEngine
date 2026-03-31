@@ -1,7 +1,7 @@
-﻿using System.Numerics;
+using System.Linq;
+using System.Numerics;
 using Frank.GameEngine.Primitives;
 using Frank.GameEngine.Rendering.Console;
-using Frank.Libraries.Extensions;
 using Xunit.Abstractions;
 
 namespace Frank.GameEngine.Tests.Primitives;
@@ -31,7 +31,7 @@ public class PolygonTest
             .ToString();
         
         _outputHelper.WriteLine(drawerString);
-        _outputHelper.WriteLine(intersections.ToString("F"));
+        _outputHelper.WriteLine(string.Join(Environment.NewLine, intersections.Select(v => v.ToString("F"))));
 
         Assert.NotEmpty(intersections);
     }

@@ -31,7 +31,7 @@ public class BoardHistory<T>
 
     public Board<T> GetStateAt(DateTime timestamp)
     {
-        if (history.TryGetValue(timestamp, out Board<T> boardState))
+        if (history.TryGetValue(timestamp, out var boardState) && boardState is not null)
         {
             return boardState;
         }
