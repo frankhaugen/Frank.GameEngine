@@ -30,8 +30,6 @@ jobs:
       - name: Restore
         run: dotnet restore Frank.GameEngine.slnx
 
-      - name: Build
-        run: dotnet build Frank.GameEngine.slnx -c Release --no-restore
-
+      # Let `dotnet test` build test targets so outputs line up with MTP discovery (avoids stale/no-match binaries vs `--no-build`).
       - name: Test (Microsoft.Testing.Platform)
-        run: dotnet test --solution Frank.GameEngine.slnx -c Release --no-build
+        run: dotnet test --solution Frank.GameEngine.slnx -c Release --no-restore
