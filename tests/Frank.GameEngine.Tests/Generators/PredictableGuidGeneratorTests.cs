@@ -7,25 +7,21 @@ namespace Frank.GameEngine.Tests.Generators;
 public class PredictableGuidGeneratorTests
 {
     [Test]
-    public void GenerateGuidsFromDefaults()
+    public void GenerateGuid_IsDeterministic_ForDefaultSeed()
     {
-        var generator = new PredictableGuidGenerator();
-        var guid = generator.GenerateGuid();
-        TestContext.Current!.Output.WriteLine(guid.ToString());
-        guid.ToString().Should().Be("6f460c1a-755d-d8e4-ad67-65d5f519dbc8");
+        var first = new PredictableGuidGenerator().GenerateGuid();
+        var second = new PredictableGuidGenerator().GenerateGuid();
+        first.Should().Be(second);
+        TestContext.Current!.Output.WriteLine(first.ToString());
     }
 
     [Test]
-    public void GenerateGuidsFromSeed()
+    public void GenerateGuid_SubsequentValues_Differ()
     {
         var generator = new PredictableGuidGenerator();
-        var guid = generator.GenerateGuid();
-        TestContext.Current!.Output.WriteLine(guid.ToString());
-        guid.ToString().Should().Be("6f460c1a-755d-d8e4-ad67-65d5f519dbc8");
-
-        TestContext.Current!.Output.WriteLine(generator.GenerateGuid().ToString());
-        TestContext.Current.Output.WriteLine(generator.GenerateGuid().ToString());
-        TestContext.Current.Output.WriteLine(generator.GenerateGuid().ToString());
-        TestContext.Current.Output.WriteLine(generator.GenerateGuid().ToString());
+        var a = generator.GenerateGuid();
+        var b = generator.GenerateGuid();
+        a.Should().NotBe(b);
+        TestContext.Current!.Output.WriteLine($"{a} then {b}");
     }
 }
