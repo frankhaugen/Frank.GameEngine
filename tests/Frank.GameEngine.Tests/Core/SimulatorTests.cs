@@ -5,7 +5,7 @@ namespace Frank.GameEngine.Tests.Core;
 
 public class SimulatorTests
 {
-    [Fact]
+    [Test]
     public void Run_InvokesActionPerIteration_WithSimulationSpeedZero_SkipsDelay()
     {
         var ticks = new List<TimeSpan>();
@@ -25,7 +25,7 @@ public class SimulatorTests
         ticks[3].Should().Be(TimeSpan.FromMilliseconds(40));
     }
 
-    [Fact]
+    [Test]
     public void Run_StopsEarly_WhenStopIsCalled()
     {
         var count = 0;
@@ -46,7 +46,7 @@ public class SimulatorTests
         count.Should().Be(2);
     }
 
-    [Fact]
+    [Test]
     public void Tick_IncrementsTotalRunningTime_AndInvokesAction()
     {
         TimeSpan? last = null;
@@ -65,7 +65,7 @@ public class SimulatorTests
         last.Should().Be(TimeSpan.FromSeconds(4));
     }
 
-    [Fact]
+    [Test]
     public void Start_RespectsMaxRunningTime_WithSimulationSpeedZero()
     {
         var iterations = 0;

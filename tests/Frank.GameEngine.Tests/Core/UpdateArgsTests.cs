@@ -5,7 +5,7 @@ namespace Frank.GameEngine.Tests.Core;
 
 public class UpdateArgsTests
 {
-    [Fact]
+    [Test]
     public void Equality_ByValue()
     {
         var a = new UpdateArgs(TimeSpan.FromTicks(100), TimeSpan.FromTicks(200));
@@ -15,7 +15,7 @@ public class UpdateArgsTests
         a.Should().Be(b);
     }
 
-    [Fact]
+    [Test]
     public void Deconstruct_ReturnsElapsedAndTotal()
     {
         var args = new UpdateArgs(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(10));

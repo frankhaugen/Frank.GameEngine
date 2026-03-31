@@ -3,25 +3,20 @@ using FluentAssertions;
 using Frank.GameEngine.Physics;
 using Frank.GameEngine.Physics.Forces;
 using Frank.GameEngine.Primitives;
-using Xunit.Abstractions;
+using TUnit.Core;
 
 namespace Frank.GameEngine.Tests.Physics.Forces;
 
 public class DragForceTests
 {
-    private readonly ITestOutputHelper _output;
-
-    public DragForceTests(ITestOutputHelper output)
+    [Test]
+    [Arguments(1f, 1f, 1f, 2f)]
+    public void Calculate_DragForce_ReturnsCorrectResult(
+        float dragCoefficient,
+        float gameObjectVelocityX,
+        float gameObjectVelocityY,
+        float gameObjectVelocityZ)
     {
-        _output = output;
-    }
-
-    [Theory]
-    [InlineData(1, 1, 1, 2)]
-    public void Calculate_DragForce_ReturnsCorrectResult(float dragCoefficient, float gameObjectVelocityX,
-        float gameObjectVelocityY, float gameObjectVelocityZ)
-    {
-        // Arrange
         var dragForce = new DragForce(dragCoefficient);
         var gameObject = new GameObject
         {
@@ -32,21 +27,19 @@ public class DragForceTests
         };
         var expectedDragMagnitude = dragCoefficient * gameObject.Rigidbody.Velocity.LengthSquared();
 
-        // Act
         var result = dragForce.Calculate(gameObject, TimeSpan.FromSeconds(1));
 
-        // Outputting the information
-        _output.WriteLine($"Expected: {expectedDragMagnitude}");
-        _output.WriteLine($"Actual: {result?.Length()}");
-        _output.WriteLine($"Velocity: {result}");
+        var context = TestContext.Current!;
+        context.Output.WriteLine($"Expected: {expectedDragMagnitude}");
+        context.Output.WriteLine($"Actual: {result?.Length()}");
+        context.Output.WriteLine($"Velocity: {result}");
 
-        // Assert
         result.Should().NotBeNull();
         var drag = result!.Value;
         drag.Length().Should()
             .BeApproximately((float)(expectedDragMagnitude * TimeSpan.FromSeconds(1).TotalSeconds),
-                0.0001f); // Tolerating small differences due to floating-point precision
+                0.0001f);
         Vector3.Dot(drag, gameObject.Rigidbody.Velocity).Should()
-            .BeLessThan(0); // Drag force should always be opposite to direction of motion
+            .BeLessThan(0);
     }
 }

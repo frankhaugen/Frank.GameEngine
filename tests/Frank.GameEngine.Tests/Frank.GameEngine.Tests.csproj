@@ -1,37 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <OutputType>Exe</OutputType>
         <IsPackable>false</IsPackable>
+        <!-- TUnit uses Microsoft.Testing.Platform; do not reference Microsoft.NET.Test.Sdk or coverlet. -->
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="FluentAssertions" />
         <PackageReference Include="JetBrains.Annotations" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" />
         <PackageReference Include="Moq" />
-        <PackageReference Include="xunit" />
-        <PackageReference Include="xunit.runner.visualstudio">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            <PrivateAssets>all</PrivateAssets>
-        </PackageReference>
-        <PackageReference Include="coverlet.collector">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            <PrivateAssets>all</PrivateAssets>
-        </PackageReference>
+        <PackageReference Include="TUnit" />
     </ItemGroup>
-
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj"/>
-        <ProjectReference Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj"/>
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj" />
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj" />
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj" />
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj" />
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj" />
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
+        <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering\Frank.GameEngine.Rendering.csproj" />
+        <ProjectReference Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj" />
     </ItemGroup>
-
 
 </Project>

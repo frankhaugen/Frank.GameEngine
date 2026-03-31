@@ -6,7 +6,7 @@ namespace Frank.GameEngine.Tests.Core;
 
 public class SceneManagerTests
 {
-    [Fact]
+    [Test]
     public void SelectScene_FindsSceneInGameScenes()
     {
         var camera = new Camera();
@@ -19,7 +19,7 @@ public class SceneManagerTests
         manager.CurrentScene.Should().BeSameAs(scene);
     }
 
-    [Fact]
+    [Test]
     public void SelectScene_FindsSceneInMenuScenes()
     {
         var scene = new Scene("menu", new Camera());
@@ -31,7 +31,7 @@ public class SceneManagerTests
         manager.CurrentScene.Should().BeSameAs(scene);
     }
 
-    [Fact]
+    [Test]
     public void SelectScene_SearchesGameScenes_WhenIdNotInMenuScenes()
     {
         var menu = new Scene("menu", new Camera());
@@ -45,7 +45,7 @@ public class SceneManagerTests
         manager.CurrentScene.Should().BeSameAs(game);
     }
 
-    [Fact]
+    [Test]
     public void SelectScene_UnknownId_SetsCurrentSceneToNull()
     {
         var manager = new SceneManager();

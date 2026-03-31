@@ -6,27 +6,23 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
-using Xunit.Abstractions;
+using TUnit.Core;
 
-namespace Frank.GameEngine.Tests;
+namespace Frank.GameEngine.Tests.Generators;
 
+/// <summary>
+/// Roslyn source generator smoke tests; useful for local diagnostics when changing <see cref="AdditionalFilesHelperGenerator"/>.
+/// </summary>
 public class EmbeddedResourceGeneratorTests
 {
-    private readonly ITestOutputHelper _outputHelper;
-
-    public EmbeddedResourceGeneratorTests(ITestOutputHelper outputHelper)
-    {
-        _outputHelper = outputHelper;
-    }
-
-    // [Fact]
+    [Test]
     public void Use()
     {
         var thing = AdditionalResources2.Models.teapot;
-        _outputHelper.WriteLine(thing.Length.ToString());
+        TestContext.Current!.Output.WriteLine(thing.Length.ToString());
     }
 
-    // [Fact]
+    [Test]
     public void Generate()
     {
         var inputCompilation = CSharpCompilation.Create("compilation",
@@ -61,11 +57,11 @@ public class EmbeddedResourceGeneratorTests
             .Create(generators, optionsProvider: new TestOptionsProvider(), additionalTexts: additionalFiles)
             .RunGeneratorsAndUpdateCompilation(inputCompilation, out var outputCompilation, out var diagnostics);
 
-        _outputHelper.WriteLine(string.Join(Environment.NewLine, diagnostics.Select(x => x.GetMessage())));
+        TestContext.Current!.Output.WriteLine(string.Join(Environment.NewLine, diagnostics.Select(x => x.GetMessage())));
         var syntaxTree = outputCompilation.SyntaxTrees.ElementAt(1);
         var text = syntaxTree.ToString();
 
-        _outputHelper.WriteLine(text);
+        TestContext.Current.Output.WriteLine(text);
     }
 }
 

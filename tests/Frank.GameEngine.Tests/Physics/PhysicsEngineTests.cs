@@ -7,7 +7,7 @@ namespace Frank.GameEngine.Tests.Physics;
 
 public class PhysicsEngineTests
 {
-    [Fact]
+    [Test]
     public void Update_WhenAllForcesReturnNull_DoesNotThrow_AndStillIntegratesVelocity()
     {
         var scene = new Scene("s", new Camera());

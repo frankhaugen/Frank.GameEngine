@@ -5,7 +5,7 @@ namespace Frank.GameEngine.Tests.Primitives;
 
 public class SceneAndGameObjectTests
 {
-    [Fact]
+    [Test]
     public void Scene_GeneratesUniqueIds()
     {
         var camera = new Camera();
@@ -17,7 +17,7 @@ public class SceneAndGameObjectTests
         b.Name.Should().Be("b");
     }
 
-    [Fact]
+    [Test]
     public void GameObject_HasUniqueId()
     {
         var g1 = new GameObject();
@@ -27,7 +27,7 @@ public class SceneAndGameObjectTests
         g1.IsActive.Should().BeTrue();
     }
 
-    [Fact]
+    [Test]
     public void Scene_GameObjects_CanAddAndEnumerate()
     {
         var scene = new Scene("s", new Camera());

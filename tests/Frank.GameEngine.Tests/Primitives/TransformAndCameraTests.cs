@@ -6,7 +6,7 @@ namespace Frank.GameEngine.Tests.Primitives;
 
 public class TransformAndCameraTests
 {
-    [Fact]
+    [Test]
     public void Translate_AddsToPosition()
     {
         var t = new Transform { Position = new Vector3(1f, 2f, 3f) };
@@ -14,7 +14,7 @@ public class TransformAndCameraTests
         t.Position.Should().Be(new Vector3(5f, 7f, 9f));
     }
 
-    [Fact]
+    [Test]
     public void MoveTo_ReplacesPosition()
     {
         var t = new Transform { Position = Vector3.One };
@@ -22,7 +22,7 @@ public class TransformAndCameraTests
         t.Position.Should().Be(Vector3.Zero);
     }
 
-    [Fact]
+    [Test]
     public void ScaleBy_MultipliesScale()
     {
         var t = new Transform { Scale = 2f };
@@ -30,7 +30,7 @@ public class TransformAndCameraTests
         t.Scale.Should().Be(6f);
     }
 
-    [Fact]
+    [Test]
     public void Camera_GetViewMatrix_IsNotDefault()
     {
         var camera = new Camera
@@ -44,7 +44,7 @@ public class TransformAndCameraTests
         view.Should().NotBe(default(Matrix4x4));
     }
 
-    [Fact]
+    [Test]
     public void Camera_GetProjectionMatrix_IsNotDefault()
     {
         var camera = new Camera { FieldOfView = 60f, AspectRatio = 16f / 9f };
@@ -54,7 +54,7 @@ public class TransformAndCameraTests
         proj.Should().NotBe(default(Matrix4x4));
     }
 
-    [Fact]
+    [Test]
     public void Camera_MoveForward_TranslatesPositionAndTarget()
     {
         var camera = new Camera

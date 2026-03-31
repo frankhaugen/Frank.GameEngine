@@ -6,7 +6,7 @@ namespace Frank.GameEngine.Tests.Primitives;
 
 public class PolygonFactoryTests
 {
-    [Fact]
+    [Test]
     public void CreateCube_SingleArg_HasEightVertices()
     {
         var poly = PolygonFactory.CreateCube(2f);
@@ -14,7 +14,7 @@ public class PolygonFactoryTests
         poly.Length.Should().Be(8);
     }
 
-    [Fact]
+    [Test]
     public void CreateRectangle_HasFourVertices()
     {
         var poly = PolygonFactory.CreateRectangle(4f, 2f, Vector3.Zero);
@@ -22,7 +22,7 @@ public class PolygonFactoryTests
         poly.Length.Should().Be(4);
     }
 
-    [Fact]
+    [Test]
     public void CreateLine_HasTwoVertices()
     {
         var poly = PolygonFactory.CreateLine(Vector3.Zero, Vector3.UnitX);
@@ -30,7 +30,7 @@ public class PolygonFactoryTests
         poly.Length.Should().Be(2);
     }
 
-    [Fact]
+    [Test]
     public void CreateCircle_HasExpectedVertexCount()
     {
         const int sides = 12;

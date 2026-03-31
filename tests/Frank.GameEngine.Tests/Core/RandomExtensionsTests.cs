@@ -12,7 +12,7 @@ public class RandomExtensionsTests
         Beta
     }
 
-    [Fact]
+    [Test]
     public void NextEnum_WithSeededRandom_IsDeterministic()
     {
         var random = new Random(2026);
@@ -23,7 +23,7 @@ public class RandomExtensionsTests
         values.Distinct().Should().HaveCount(2, "both enum values should appear over many draws");
     }
 
-    [Fact]
+    [Test]
     public void NextDirection_ReturnsUnitLength_WhenNonZeroComponents()
     {
         var random = new Random(42);
@@ -36,7 +36,7 @@ public class RandomExtensionsTests
         }
     }
 
-    [Fact]
+    [Test]
     public void NextDirection_WithForce_ScalesMagnitude()
     {
         var random = new Random(7);

@@ -6,7 +6,7 @@ namespace Frank.GameEngine.Tests.Primitives;
 
 public class MeshTransform3DTests
 {
-    [Fact]
+    [Test]
     public void Polygon_Translate_DoesNotMutateOriginalVertices()
     {
         var original = PolygonFactory.CreateRectangle(2f, 2f, Vector3.Zero);
@@ -17,7 +17,7 @@ public class MeshTransform3DTests
         original[0].Should().Be(v0Before);
     }
 
-    [Fact]
+    [Test]
     public void Polygon_EdgeCount_EqualsVertexCount_ForClosedLoop()
     {
         var cube = PolygonFactory.CreateCube(1f);
@@ -25,7 +25,7 @@ public class MeshTransform3DTests
         cube.Edges.Should().HaveCount(cube.Length);
     }
 
-    [Fact]
+    [Test]
     public void Shape_Transform_AppliesScaleRotationThenTranslation()
     {
         var rect = PolygonFactory.CreateRectangle(2f, 2f, Vector3.Zero);
@@ -42,7 +42,7 @@ public class MeshTransform3DTests
         world.Polygon[0].Y.Should().BeApproximately(rect[0].Y + 5f, 0.001f);
     }
 
-    [Fact]
+    [Test]
     public void GameObject_GetTransformedShape_UsesFullTransform()
     {
         var rect = PolygonFactory.CreateRectangle(1f, 1f, Vector3.Zero);
@@ -57,7 +57,7 @@ public class MeshTransform3DTests
         world.Polygon.GetCenter().X.Should().BeApproximately(100f, 1f);
     }
 
-    [Fact]
+    [Test]
     public void Polygon_GetAxisAlignedBoundingBox_ContainsAllVertices()
     {
         var rect = PolygonFactory.CreateRectangle(4f, 2f, new Vector3(10f, 20f, 0f));
@@ -72,7 +72,7 @@ public class MeshTransform3DTests
         }
     }
 
-    [Fact]
+    [Test]
     public void Camera_Up_IsMutable_ForCustomOrientation()
     {
         var camera = new Camera();

@@ -6,7 +6,7 @@ Use after substantive C# or project file edits.
 
 1. `dotnet restore Frank.GameEngine.slnx`
 2. `dotnet build Frank.GameEngine.slnx -c Release`
-3. `dotnet test Frank.GameEngine.slnx -c Release` (when tests cover the change)
+3. `dotnet test --solution Frank.GameEngine.slnx -c Release` (when tests cover the change; TUnit / Microsoft.Testing.Platform)
 
 **If restore fails with NU1507**
 

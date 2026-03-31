@@ -10,7 +10,7 @@ namespace Frank.GameEngine.Tests.Core;
 
 public class GameEngineTests
 {
-    [Fact]
+    [Test]
     public void CurrentScene_IsNull_UntilSelected()
     {
         var engine = new CoreGameEngine(new PhysicsEngine(new NullCollisionHandler()), new SilentAudioPlayer());
@@ -18,7 +18,7 @@ public class GameEngineTests
         engine.CurrentScene.Should().BeNull();
     }
 
-    [Fact]
+    [Test]
     public void Initialize_Throws_WhenNoCurrentScene()
     {
         var engine = new CoreGameEngine(new PhysicsEngine(new NullCollisionHandler()), new SilentAudioPlayer());
@@ -30,7 +30,7 @@ public class GameEngineTests
             .WithMessage("*no current scene*");
     }
 
-    [Fact]
+    [Test]
     public void Draw_Throws_WhenInitializeNotCalled()
     {
         var engine = new CoreGameEngine(new PhysicsEngine(new NullCollisionHandler()), new SilentAudioPlayer());
@@ -43,7 +43,7 @@ public class GameEngineTests
             .WithMessage("*Initialize*");
     }
 
-    [Fact]
+    [Test]
     public void Update_DoesNothing_WhenNoCurrentScene()
     {
         var physics = new PhysicsEngine(new NullCollisionHandler());
@@ -54,7 +54,7 @@ public class GameEngineTests
         act.Should().NotThrow();
     }
 
-    [Fact]
+    [Test]
     public void Update_RunsPhysics_WhenSceneSelected()
     {
         var collision = new Mock<ICollisionHandler>();

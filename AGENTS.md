@@ -4,19 +4,22 @@ Instructions for AI assistants (Cursor, Copilot, etc.) working in this repositor
 
 ## Product
 
-Modular .NET game engine: core simulation and rendering abstractions with pluggable backends (Raylib, MonoGame, console). Libraries under `src/` are packable; `samples/` are executables; `tests/` are xUnit.
+Modular .NET game engine: core simulation and rendering abstractions with pluggable backends (Raylib, MonoGame, console). Libraries under `src/` are packable; `samples/` are executables; unit tests use **TUnit** on **Microsoft.Testing.Platform** (see `tests/README.md`).
 
 ## Build and verify
 
 - **Solution file**: `Frank.GameEngine.slnx` (XML SLNX; migrate from `.sln` with `dotnet sln <path>.sln migrate` if needed).
 - **SDK**: .NET 10 (`global.json` pins a minimum; `rollForward` allows newer feature bands).
+- **`global.json`** includes `"test": { "runner": "Microsoft.Testing.Platform" }` so `dotnet test` uses the MTP experience required on .NET 10 SDK for TUnit.
 - Restore and build:
 
 ```powershell
 dotnet restore Frank.GameEngine.slnx
 dotnet build Frank.GameEngine.slnx -c Release
-dotnet test Frank.GameEngine.slnx -c Release
+dotnet test --solution Frank.GameEngine.slnx -c Release
 ```
+
+- **Alternative**: `dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release` (TUnit test project is `OutputType` **Exe**). Coverage / TRX: add `--coverage`, `--report-trx` per [TUnit CLI](https://tunit.dev/docs/reference/command-line-flags/).
 
 - **Central Package Management**: versions live in `Directory.Packages.props`; project files use `PackageReference` without `Version`.
 - **NuGet feeds**: repo `nuget.config` scopes restores to **nuget.org** with package source mapping (required for CPM when multiple feeds exist globally). To use another feed (e.g. Stride), add it under `packageSources` and map patterns under `packageSourceMapping`.
@@ -28,7 +31,7 @@ dotnet test Frank.GameEngine.slnx -c Release
 | Core / physics / rendering contracts | `src/Frank.GameEngine.*` |
 | Source generator (Roslyn) | `tools/Frank.GameEngine.Generators.AssetsGenerator` — **net10.0**, same `Microsoft.CodeAnalysis.CSharp` version as tests (central package file); `EnforceExtendedAnalyzerRules` is off with targeted `NoWarn` for legacy `ISourceGenerator` rules |
 | Samples | `samples/*` — shared props in `samples/Directory.Build.props` |
-| Tests | `tests/Frank.GameEngine.Tests` — xUnit + FluentAssertions + Moq; grouped under `Core/`, `Physics/`, `Primitives/`, `Input/`, `Audio/` |
+| Tests | `tests/Frank.GameEngine.Tests` — TUnit + FluentAssertions + Moq; folders `Core/`, `Physics/`, `Primitives/`, `Input/`, `Audio/`, `SubPrimitives/`, `Generators/` (Roslyn / asset smoke tests). Do **not** reference `Microsoft.NET.Test.Sdk` or coverlet here — TUnit ships MTP coverage extensions. |
 | Design docs | `docs/architecture.md`, `docs/critical-improvements.md` |
 
 ## Conventions

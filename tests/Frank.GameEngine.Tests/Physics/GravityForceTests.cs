@@ -7,7 +7,7 @@ namespace Frank.GameEngine.Tests.Physics;
 
 public class GravityForceTests
 {
-    [Fact]
+    [Test]
     public void Calculate_ReturnsPositiveY_AlignedWithEarthGravityConstant_ForWholeSecondDelta()
     {
         var gravity = new GravityForce();
@@ -21,7 +21,7 @@ public class GravityForceTests
         impulse.Value.Y.Should().BeApproximately(Constants.TerrestrialConstants.EarthGravity, 0.0001f);
     }
 
-    [Fact]
+    [Test]
     public void Calculate_UsesTimeSpanSecondsComponent_NotTotalSeconds()
     {
         var gravity = new GravityForce();

@@ -7,7 +7,7 @@ namespace Frank.GameEngine.Tests.Physics;
 
 public class DragForceBehaviorTests
 {
-    [Fact]
+    [Test]
     public void Calculate_ReturnsZeroVector_WhenVelocityIsZero()
     {
         var drag = new DragForce(0.5f);
@@ -19,7 +19,7 @@ public class DragForceBehaviorTests
         f!.Value.Should().Be(Vector3.Zero);
     }
 
-    [Fact]
+    [Test]
     public void Calculate_PointsOppositeToVelocity()
     {
         var drag = new DragForce(0.25f);

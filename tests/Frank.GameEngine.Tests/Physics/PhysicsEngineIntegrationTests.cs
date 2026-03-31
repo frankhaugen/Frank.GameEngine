@@ -14,7 +14,7 @@ public class PhysicsEngineIntegrationTests
             deltaVPerSecond * (float)deltaTime.TotalSeconds;
     }
 
-    [Fact]
+    [Test]
     public void Update_SumsMultipleForcesIntoVelocity()
     {
         var scene = new Scene("s", new Camera());
@@ -31,7 +31,7 @@ public class PhysicsEngineIntegrationTests
         body.Transform.Position.Should().Be(new Vector3(1f, 2f, 0f));
     }
 
-    [Fact]
+    [Test]
     public void Update_CallsCollisionHandlerOncePerUpdate()
     {
         var scene = new Scene("s", new Camera());
@@ -46,7 +46,7 @@ public class PhysicsEngineIntegrationTests
         handler.Verify(h => h.HandleCollisions(scene), Times.Exactly(2));
     }
 
-    [Fact]
+    [Test]
     public void Update_AppliesTranslationFromVelocity()
     {
         var scene = new Scene("s", new Camera());

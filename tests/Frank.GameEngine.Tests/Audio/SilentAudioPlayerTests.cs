@@ -5,7 +5,7 @@ namespace Frank.GameEngine.Tests.Audio;
 
 public class SilentAudioPlayerTests
 {
-    [Fact]
+    [Test]
     public void Play_PlayLooping_Stop_DoNotThrow()
     {
         var player = new SilentAudioPlayer();

@@ -6,7 +6,7 @@ namespace Frank.GameEngine.Tests.Primitives;
 
 public class BoardNotificationTests
 {
-    [Fact]
+    [Test]
     public void Set_NotifiesObserver_WithValue()
     {
         var board = new Board<int>(2, 2);
@@ -18,7 +18,7 @@ public class BoardNotificationTests
         observer.Verify(o => o.OnNext(42), Times.Once);
     }
 
-    [Fact]
+    [Test]
     public void UnSet_ForReferenceType_CallsOnCompleted_WhenCellClearedToNull()
     {
         var board = new Board<string>(2, 2);
@@ -31,7 +31,7 @@ public class BoardNotificationTests
         observer.Verify(o => o.OnCompleted(), Times.Once);
     }
 
-    [Fact]
+    [Test]
     public void GetRow_ReturnsValuesAlongRow()
     {
         var board = new Board<int>(2, 3);
@@ -42,7 +42,7 @@ public class BoardNotificationTests
         board.GetRow(0).Should().Equal(1, 2, 3);
     }
 
-    [Fact]
+    [Test]
     public void GetColumn_ReturnsValuesAlongColumn()
     {
         var board = new Board<int>(3, 2);
@@ -53,7 +53,7 @@ public class BoardNotificationTests
         board.GetColumn(1).Should().Equal(10, 20, 30);
     }
 
-    [Fact]
+    [Test]
     public void Clone_CopiesCellContents()
     {
         var board = new Board<string>(2, 2);

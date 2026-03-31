@@ -5,7 +5,7 @@ namespace Frank.GameEngine.Tests.Primitives;
 
 public class BoardHistoryTests
 {
-    [Fact]
+    [Test]
     public void GetLatest_Throws_WhenEmpty()
     {
         var history = new BoardHistory<char>();
@@ -14,7 +14,7 @@ public class BoardHistoryTests
             .WithMessage("*No history*");
     }
 
-    [Fact]
+    [Test]
     public void SaveState_ThenGetLatest_ReturnsClone()
     {
         var board = new Board<char>(2, 2);
@@ -28,7 +28,7 @@ public class BoardHistoryTests
         latest[new BoardPosition(0, 0)].Should().Be('X');
     }
 
-    [Fact]
+    [Test]
     public void GetStateAt_ReturnsBoard_WhenTimestampExists()
     {
         var board = new Board<int>(1, 1);
@@ -45,7 +45,7 @@ public class BoardHistoryTests
         restored[new BoardPosition(0, 0)].Should().Be(7);
     }
 
-    [Fact]
+    [Test]
     public void GetStateAt_Throws_WhenMissing()
     {
         var history = new BoardHistory<int>();

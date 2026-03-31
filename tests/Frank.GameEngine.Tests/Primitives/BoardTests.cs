@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+using FluentAssertions;
 using Frank.GameEngine.Primitives;
 using JetBrains.Annotations;
 using Moq;
@@ -8,18 +8,18 @@ namespace Frank.GameEngine.Tests.Primitives
     [TestSubject(typeof(Board<string>))]
     public class BoardTests
     {
-        [Fact]
+        [Test]
         public void Board_ShouldInitializeWithProvidedDimensions()
         {
             var board = new Board<string>(5, 5);
             board.Should().NotBeNull();
         }
 
-        [Theory]
-        [InlineData(-1, "a", typeof(IndexOutOfRangeException))]
-        [InlineData("a", -1, typeof(IndexOutOfRangeException))]
-        [InlineData("0", "a", typeof(ArgumentException))]
-        [InlineData("a", "0", typeof(ArgumentException))]
+        [Test]
+        [Arguments(-1, "a", typeof(IndexOutOfRangeException))]
+        [Arguments("a", -1, typeof(IndexOutOfRangeException))]
+        [Arguments("0", "a", typeof(ArgumentException))]
+        [Arguments("a", "0", typeof(ArgumentException))]
         public void Board_ShouldThrowExceptionForInvalidIndices(object row, object col, Type expectedException)
         {
             var board = new Board<string>(5, 5);
@@ -28,10 +28,10 @@ namespace Frank.GameEngine.Tests.Primitives
                 var val = board[new BoardPosition((dynamic)row, (dynamic)col)];
             };
 
-            Assert.Throws(expectedException, action);
+            action.Should().Throw<Exception>().Which.GetType().Should().Be(expectedException);
         }
 
-        [Fact]
+        [Test]
         public void Board_Dispose_ShouldUnsubscribeObserver()
         {
             var observerMock = new Mock<IObserver<string>>();
