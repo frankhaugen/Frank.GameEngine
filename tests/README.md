@@ -3,7 +3,7 @@
 ## Unit tests (`Frank.GameEngine.Tests`)
 
 - **Framework**: [TUnit](https://tunit.dev/) on **Microsoft.Testing.Platform** (not VSTest). The project is an executable (`OutputType` = `Exe`).
-- **Assertions**: FluentAssertions (`.Should()`) alongside TUnit’s `[Test]` / `[Arguments]`.
+- **Assertions**: FluentAssertions **7.x** (`.Should()`); version is pinned in `Directory.Packages.props` (8+ uses a license model that is a poor fit for default OSS CI).
 - **Layout** (mirror engine areas):
   - `Core/` — `GameEngine`, `Simulator`, `SceneManager`, `UpdateArgs`, etc.
   - `Physics/` — engine, forces, integration-style cases.

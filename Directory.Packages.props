@@ -5,7 +5,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
-    <PackageVersion Include="FluentAssertions" Version="8.9.0" />
+    <!-- Stay on 7.x: 8+ is Xceed-licensed and can affect CI / non-commercial OSS workflows. -->
+    <PackageVersion Include="FluentAssertions" Version="7.2.2" />
     <PackageVersion Include="JetBrains.Annotations" Version="2025.2.4" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.3.0" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="10.0.5" />
