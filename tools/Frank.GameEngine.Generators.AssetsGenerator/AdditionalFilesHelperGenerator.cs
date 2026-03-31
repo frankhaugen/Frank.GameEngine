@@ -39,6 +39,7 @@ public class AdditionalFilesHelperGenerator : ISourceGenerator
 
         var rootClass = GenerateClassRecursively(root);
         var compilationUnit = SyntaxFactory.CompilationUnit()
+                .AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System")))
                 .AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Reflection")))
                 .AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.IO")))
                 .AddMembers(SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(rootNamespace!))
@@ -119,31 +120,16 @@ public class AdditionalFilesHelperGenerator : ISourceGenerator
 
     private static PropertyDeclarationSyntax GenerateEmbeddedResourceProperty(string name, string relativeAssetFilePath)
     {
-        var syntaxTree = SyntaxFactory
-            .PropertyDeclaration(
-                SyntaxFactory.ParseTypeName("byte[]"), name)
-            .WithExpressionBody(
-                SyntaxFactory.ArrowExpressionClause(SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
-                            SyntaxFactory.IdentifierName("File"), SyntaxFactory.IdentifierName("ReadAllBytes"))
-                    ).WithArgumentList(
-                        SyntaxFactory.ArgumentList(
-                            SyntaxFactory.SingletonSeparatedList(
-                                SyntaxFactory.Argument(
-                                    SyntaxFactory.LiteralExpression(
-                                        SyntaxKind.StringLiteralExpression,
-                                        SyntaxFactory.Literal(relativeAssetFilePath)
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            )
+        // BaseDirectory matches published output (CopyToOutputDirectory); cwd on CI is often repo root and breaks relative paths.
+        var readCall = SyntaxFactory.ParseExpression(
+            $"File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, \"{relativeAssetFilePath.Replace("\"", "\\\"", StringComparison.Ordinal)}\"))");
+
+        return SyntaxFactory
+            .PropertyDeclaration(SyntaxFactory.ParseTypeName("byte[]"), name)
+            .WithExpressionBody(SyntaxFactory.ArrowExpressionClause(readCall))
             .WithSemicolonToken(SyntaxFactory.Token(SyntaxKind.SemicolonToken))
             .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.PublicKeyword),
                 SyntaxFactory.Token(SyntaxKind.StaticKeyword)));
-        return syntaxTree;
     }
 
     private static string ConvertPathToClassName(string path)

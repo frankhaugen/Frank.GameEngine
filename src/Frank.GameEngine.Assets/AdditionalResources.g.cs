@@ -1,4 +1,4 @@
-using System.Reflection;
+using System;
 using System.IO;
 
 namespace Frank.GameEngine.Assets
@@ -7,7 +7,8 @@ namespace Frank.GameEngine.Assets
     {
         public static class Models
         {
-            public static byte[] teapot => File.ReadAllBytes("Models/teapot.obj");
+            public static byte[] teapot =>
+                File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Models/teapot.obj"));
         }
 
         public static class Audio
@@ -16,8 +17,11 @@ namespace Frank.GameEngine.Assets
             {
                 public static class Songs
                 {
-                    public static byte[] ImperialMarch => File.ReadAllBytes("Audio/Midi/Songs/ImperialMarch.json");
-                    public static byte[] RescueRangers => File.ReadAllBytes("Audio/Midi/Songs/RescueRangers.json");
+                    public static byte[] ImperialMarch =>
+                        File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Audio/Midi/Songs/ImperialMarch.json"));
+
+                    public static byte[] RescueRangers =>
+                        File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Audio/Midi/Songs/RescueRangers.json"));
                 }
             }
         }
