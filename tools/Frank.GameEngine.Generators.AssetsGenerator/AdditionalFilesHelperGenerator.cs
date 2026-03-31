@@ -21,7 +21,7 @@ public class AdditionalFilesHelperGenerator : ISourceGenerator
 
     private static void GenerateResourceHelperClass(GeneratorExecutionContext context)
     {
-        const string rootClassName = "AdditionalResources";
+        const string rootClassName = "AdditionalResources2";
 
         var sourceBuilder = new StringBuilder();
         var additionalFiles = context.AdditionalFiles;

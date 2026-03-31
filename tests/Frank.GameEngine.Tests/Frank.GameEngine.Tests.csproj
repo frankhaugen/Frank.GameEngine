@@ -14,6 +14,18 @@
         <PackageReference Include="TUnit" />
     </ItemGroup>
 
+    <!-- AdditionalFiles on Assets copy only to that project's output; mirror content next to the test host for AdditionalResources2. -->
+    <ItemGroup>
+        <Content Include="..\..\src\Frank.GameEngine.Assets\Models\**\*">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>Models\%(RecursiveDir)%(Filename)%(Extension)</Link>
+        </Content>
+        <Content Include="..\..\src\Frank.GameEngine.Assets\Audio\Midi\Songs\**\*">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>Audio\Midi\Songs\%(RecursiveDir)%(Filename)%(Extension)</Link>
+        </Content>
+    </ItemGroup>
+
     <ItemGroup>
         <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj" />
         <ProjectReference Include="..\..\src\Frank.GameEngine.Audio\Frank.GameEngine.Audio.csproj" />
