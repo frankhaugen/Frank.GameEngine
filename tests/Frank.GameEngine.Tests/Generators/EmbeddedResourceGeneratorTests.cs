@@ -26,6 +26,10 @@ public class EmbeddedResourceGeneratorTests
     [Test]
     public void Generate()
     {
+        // Paths must use the OS separator so Path.GetRelativePath matches the real generator on Linux CI.
+        var projectDir = Path.Combine(Path.GetTempPath(), "Frank.GameEngine.Tests", "Frank.GameEngine.Assets");
+        projectDir = Path.GetFullPath(projectDir);
+
         var inputCompilation = CSharpCompilation.Create("compilation",
             new[] { CSharpSyntaxTree.ParseText("public class R { }") },
             new[] { MetadataReference.CreateFromFile(typeof(Binder).GetTypeInfo().Assembly.Location) });
@@ -35,27 +39,20 @@ public class EmbeddedResourceGeneratorTests
         var generators = new ISourceGenerator[] { generator };
         var additionalFiles = new[]
         {
-            new AnalyzerAdditionalText(@"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Teapot.obj",
+            new AnalyzerAdditionalText(Path.Combine(projectDir, "Teapot.obj"), SourceText.From("Hello world")),
+            new AnalyzerAdditionalText(Path.Combine(projectDir, "Models", "Teapot.obj"), SourceText.From("Hello world")),
+            new AnalyzerAdditionalText(Path.Combine(projectDir, "Models", "My Hole", "State.obj"),
                 SourceText.From("Hello world")),
-            new AnalyzerAdditionalText(
-                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Models\Teapot.obj",
+            new AnalyzerAdditionalText(Path.Combine(projectDir, "Models", "Bob", "MtL", "Teapot.mtl"),
                 SourceText.From("Hello world")),
-            new AnalyzerAdditionalText(
-                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Models\My Hole\State.obj",
+            new AnalyzerAdditionalText(Path.Combine(projectDir, "Sap", "Bob", "MtL", "Teapot.mtl"),
                 SourceText.From("Hello world")),
-            new AnalyzerAdditionalText(
-                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Models\Bob\MtL\Teapot.mtl",
-                SourceText.From("Hello world")),
-            new AnalyzerAdditionalText(
-                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Sap\Bob\MtL\Teapot.mtl",
-                SourceText.From("Hello world")),
-            new AnalyzerAdditionalText(
-                @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets\Sap\Bob\MtL\Ashpot.mtl",
+            new AnalyzerAdditionalText(Path.Combine(projectDir, "Sap", "Bob", "MtL", "Ashpot.mtl"),
                 SourceText.From("Hello world"))
         };
 
         CSharpGeneratorDriver
-            .Create(generators, optionsProvider: new TestOptionsProvider(), additionalTexts: additionalFiles)
+            .Create(generators, optionsProvider: new TestOptionsProvider(projectDir), additionalTexts: additionalFiles)
             .RunGeneratorsAndUpdateCompilation(inputCompilation, out var outputCompilation, out var diagnostics);
 
         TestContext.Current!.Output.WriteLine(string.Join(Environment.NewLine, diagnostics.Select(x => x.GetMessage())));
@@ -92,10 +89,10 @@ file class TestOptionsProvider : AnalyzerConfigOptionsProvider
 {
     private readonly TestAnalyzerConfigOptions _options = new();
 
-    public TestOptionsProvider()
+    public TestOptionsProvider(string projectDir)
     {
         _options.Add("build_property.rootnamespace", "Frank.GameEngine.Assets");
-        _options.Add("build_property.projectdir", @"C:\repos\frankhaugen\Frank.GameEngine\src\Frank.GameEngine.Assets");
+        _options.Add("build_property.projectdir", projectDir);
     }
 
     public override AnalyzerConfigOptions GlobalOptions => _options;

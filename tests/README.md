@@ -20,7 +20,7 @@
 dotnet test --solution Frank.GameEngine.slnx -c Release
 ```
 
-CI builds the test project then runs `dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj` with `TUNIT_DISABLE_GITHUB_REPORTER=true` (avoids a bad exit code from the GitHub step-summary reporter on Actions).
+CI builds the test project then runs `dotnet test --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj` with `TUNIT_DISABLE_GITHUB_REPORTER=true` (avoids the GitHub step-summary reporter on Actions).
 
 Or run the test project directly:
 

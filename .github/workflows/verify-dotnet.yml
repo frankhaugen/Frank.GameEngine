@@ -11,6 +11,10 @@ on:
 permissions:
   contents: read
 
+env:
+  # Hosted runners are moving default Node for actions to 24; opt in early to avoid surprise failures.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   verify:
     strategy:
@@ -32,9 +36,19 @@ jobs:
       - name: Build test project
         run: dotnet build tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-restore
 
-      # TUnit enables a GitHub step-summary reporter when GITHUB_ACTIONS is set; writing the summary can fail the
-      # process with exit code 2 even when all tests pass. See https://tunit.dev/docs/execution/ci-cd-reporting
-      - name: Run tests (TUnit executable)
+      # TUnit enables a GitHub step-summary reporter when GITHUB_ACTIONS is set; disable it on CI.
+      # See https://tunit.dev/docs/execution/ci-cd-reporting
+      - name: Run tests
         env:
           TUNIT_DISABLE_GITHUB_REPORTER: true
-        run: dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-build
+          DISABLE_GITHUB_REPORTER: true
+        run: dotnet test --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-build --verbosity normal
+
+      - name: Upload test logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-output-${{ matrix.os }}
+          path: |
+            artifacts/bin/Frank.GameEngine.Tests/**/TestResults/**
+          if-no-files-found: ignore
