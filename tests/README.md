@@ -20,6 +20,8 @@
 dotnet test --solution Frank.GameEngine.slnx -c Release
 ```
 
+CI uses `dotnet test --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj` for the same suite (MTP is more reliable that way on Actions).
+
 Or run the test project directly:
 
 ```powershell
