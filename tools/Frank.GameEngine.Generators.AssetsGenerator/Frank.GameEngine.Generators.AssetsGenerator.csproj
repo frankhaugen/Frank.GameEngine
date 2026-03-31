@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <IsPackable>false</IsPackable>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <IsRoslynComponent>true</IsRoslynComponent>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
@@ -9,8 +10,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all" />
-        <PackageReference Include="VsTools.Projects" Version="1.2.0" PrivateAssets="all" GeneratePathProperty="true"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" VersionOverride="4.8.0" />
+        <PackageReference Include="VsTools.Projects" PrivateAssets="all" GeneratePathProperty="true"/>
     </ItemGroup>
 
 </Project>

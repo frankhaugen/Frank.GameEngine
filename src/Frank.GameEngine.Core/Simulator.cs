@@ -1,4 +1,4 @@
-﻿namespace Frank.GameEngine.Core;
+namespace Frank.GameEngine.Core;
 
 /// <summary>
 ///     Simulates a game loop and allows for the simulation speed to be adjusted and the simulation to be stopped
@@ -68,10 +68,8 @@ public class Simulator
     }
 
     /// <summary>
-    ///     Runs the simulation for the specified time
+    ///     Runs the simulation until stopped or <see cref="MaxRunningTime" /> is reached.
     /// </summary>
-    /// <param name="timeSpan"></param>
-    /// <param name="action"></param>
     public void Start()
     {
         while (TotalRunningTime < MaxRunningTime)
@@ -87,9 +85,8 @@ public class Simulator
     }
 
     /// <summary>
-    ///     Runs one iteration of the simulation and increments the time by the TimeIncrement
+    ///     Runs one iteration of the simulation and increments the time by <see cref="TimeIncrement" />.
     /// </summary>
-    /// <param name="action"></param>
     public void Tick()
     {
         TotalRunningTime += TimeIncrement;

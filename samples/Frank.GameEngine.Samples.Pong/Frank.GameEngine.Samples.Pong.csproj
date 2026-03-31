@@ -1,14 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <RootNamespace>Pong</RootNamespace>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj" />

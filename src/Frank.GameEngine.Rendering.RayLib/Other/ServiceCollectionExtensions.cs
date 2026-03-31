@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Frank.GameEngine.Rendering.RayLib;
 
@@ -7,7 +7,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddGameEngine(this IServiceCollection services)
     {
         services.AddTickProducer();
-        services.AddPhysicsEngine();
+        services.AddRayLibHostedPhysics();
         services.AddRenderLoop();
         services.AddChannelFactory(builder => builder
             .AddChannel<Tick>()
@@ -21,9 +21,12 @@ public static class ServiceCollectionExtensions
         return services;
     }
     
-    public static IServiceCollection AddPhysicsEngine(this IServiceCollection services)
+    /// <summary>
+    /// Registers the experimental Raylib channel pipeline physics step (not the core simulation type in Frank.GameEngine.Physics).
+    /// </summary>
+    public static IServiceCollection AddRayLibHostedPhysics(this IServiceCollection services)
     {
-        services.AddHostedService<PhysicsEngine>();
+        services.AddHostedService<RayLibHostedPhysicsService>();
         return services;
     }
     

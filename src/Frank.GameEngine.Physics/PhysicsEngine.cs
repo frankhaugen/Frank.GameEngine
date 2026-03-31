@@ -17,12 +17,14 @@ public class PhysicsEngine
     {
         foreach (var gameObject in scene.GameObjects)
         {
-            if (Forces.Any())
-            {
-                var force = Forces.Select(x => x.Calculate(gameObject, deltaTime)).Where(x => x.HasValue)
-                    .Select(x => x!.Value).Aggregate((x, y) => x + y);
-                gameObject.Rigidbody.Velocity += force;
-            }
+            var forceContributions = Forces
+                .Select(f => f.Calculate(gameObject, deltaTime))
+                .Where(f => f.HasValue)
+                .Select(f => f!.Value)
+                .ToList();
+
+            if (forceContributions.Count > 0)
+                gameObject.Rigidbody.Velocity += forceContributions.Aggregate((x, y) => x + y);
 
             gameObject.Transform.Translate(gameObject.Rigidbody.Velocity * (float)deltaTime.TotalSeconds);
 

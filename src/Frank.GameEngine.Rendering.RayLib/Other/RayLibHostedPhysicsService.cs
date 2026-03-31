@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using System.Threading.Channels;
 using Frank.GameEngine.Primitives;
 using Microsoft.Extensions.Hosting;
@@ -6,7 +6,15 @@ using Microsoft.Extensions.Logging;
 
 namespace Frank.GameEngine.Rendering.RayLib;
 
-public class PhysicsEngine(ILogger<PhysicsEngine> logger, RenderQueue renderQueue, ChannelWriter<PhysicsEngineSignoff> writer, ChannelReader<Tick> reader)
+/// <summary>
+/// Experimental hosted-service step that consumes <see cref="Tick"/> messages and pushes shapes into <see cref="RenderQueue"/>.
+/// This is not the core simulation type in the Frank.GameEngine.Physics assembly; it is part of the Raylib plus Generic Host channel demo only.
+/// </summary>
+public class RayLibHostedPhysicsService(
+    ILogger<RayLibHostedPhysicsService> logger,
+    RenderQueue renderQueue,
+    ChannelWriter<PhysicsEngineSignoff> writer,
+    ChannelReader<Tick> reader)
     : BackgroundService
 {
     private readonly Shape _shape = new()
@@ -21,7 +29,6 @@ public class PhysicsEngine(ILogger<PhysicsEngine> logger, RenderQueue renderQueu
         Color = System.Drawing.Color.Crimson
     };
 
-
     /// <inheritdoc />
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -34,27 +41,25 @@ public class PhysicsEngine(ILogger<PhysicsEngine> logger, RenderQueue renderQueu
         }
         catch (OperationCanceledException)
         {
-            logger.LogInformation("Physics engine cancelled");
+            logger.LogInformation("RayLib hosted physics service cancelled");
         }
         catch (Exception e)
         {
-            logger.LogError(e, "Physics engine failed");
+            logger.LogError(e, "RayLib hosted physics service failed");
         }
     }
-    
+
     public async Task UpdateAsync(Tick tick)
     {
-        logger.LogDebug("Updating physics for frame {FrameNumber}", tick.FrameNumber);
-        
-        var deltaTime = (float) tick.DeltaTime.TotalSeconds;
-        
-        // Add gravity
+        logger.LogDebug("Hosted physics step for frame {FrameNumber}", tick.FrameNumber);
+
+        var deltaTime = (float)tick.DeltaTime.TotalSeconds;
+
         var gravity = new Vector3(0, -0.98f, 0) * deltaTime;
         _shape.Translate(gravity);
-        
+
         renderQueue.Add(tick, _shape);
-        
-        // Sign off
+
         await writer.WriteAsync(new PhysicsEngineSignoff(tick));
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -73,7 +73,7 @@ public class AdditionalFilesHelperGenerator : ISourceGenerator
     {
         var relativePath = GetRelativePath(file, projectDir);
         var directoryPath = relativePath.Replace(Path.GetFileName(relativePath), "");
-        var directories = directoryPath.Split('/', StringSplitOptions.RemoveEmptyEntries).ToList();
+        var directories = directoryPath.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).ToList();
         var memberDeclarationSyntax = GenerateEmbeddedResourceProperty(GetMethodName(file), relativePath);
 
         return new Member
@@ -157,7 +157,7 @@ public class AdditionalFilesHelperGenerator : ISourceGenerator
     private static string GetMethodName(AdditionalText additionalText)
     {
         var name = Path.GetFileNameWithoutExtension(additionalText.Path);
-        var nameParts = name.Split(".");
+        var nameParts = name.Split('.');
         var methodName = nameParts.Last();
         return methodName;
     }

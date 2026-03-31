@@ -1,6 +1,7 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Frank.GameEngine.Audio.Console;
 using Frank.GameEngine.Audio.Midi;
+using Frank.GameEngine.Audio.Ogg;
 using Frank.GameEngine.Core;
 using Frank.GameEngine.Input;
 using Frank.GameEngine.Physics;
@@ -18,7 +19,10 @@ var physics = new PhysicsEngine(new NullCollisionHandler());
 
 physics.Forces.Add(new DragForce(1f));
 
-var engine = new GameEngine(physics, new ConsoleAudioPlayer(new TuneLibrary()));
+IAudioPlayer audioPlayer = OperatingSystem.IsWindows()
+    ? new ConsoleAudioPlayer(new TuneLibrary())
+    : new SilentAudioPlayer();
+var engine = new GameEngine(physics, audioPlayer);
 var camera = new Camera()
 {
     Position = new Vector3(0, 0, 1000),

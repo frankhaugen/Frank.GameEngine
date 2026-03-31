@@ -25,8 +25,8 @@ classDiagram
         +void Add(Tick tick, Shape shape)
         +IEnumerable<Shape> DestructiveGet(Tick tick)
     }
-    class PhysicsEngine {
-        -ILogger<PhysicsEngine> logger
+    class RayLibHostedPhysicsService {
+        -ILogger<RayLibHostedPhysicsService> logger
         -RenderQueue renderQueue
         -ChannelWriter<PhysicsEngineSignoff> writer
         -ChannelReader<Tick> reader
@@ -43,7 +43,7 @@ classDiagram
         +IServiceCollection AddRenderLoop(IServiceCollection services)
         +IServiceCollection AddWindow(IServiceCollection services)
         +IServiceCollection AddRenderQueue(IServiceCollection services)
-        +IServiceCollection AddPhysicsEngine(IServiceCollection services)
+        +IServiceCollection AddRayLibHostedPhysics(IServiceCollection services)
         +IServiceCollection AddChannelFactory(IServiceCollection services)
     }
 ```

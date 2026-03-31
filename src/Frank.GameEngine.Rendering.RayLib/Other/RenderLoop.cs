@@ -1,10 +1,10 @@
-﻿using System.Threading.Channels;
+using System.Threading.Channels;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace Frank.GameEngine.Rendering.RayLib;
 
-public class RenderLoop(ILogger<RenderLoop> logger, IHostApplicationLifetime applicationLifetime, ChannelReader<PhysicsEngineSignoff> reader, IRenderer renderer) : BackgroundService
+public class RenderLoop(ILogger<RenderLoop> logger, IHostApplicationLifetime applicationLifetime, ChannelReader<PhysicsEngineSignoff> reader) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {

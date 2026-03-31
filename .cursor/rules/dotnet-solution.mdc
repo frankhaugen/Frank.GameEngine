@@ -1,0 +1,11 @@
+---
+description: Build layout, SLNX, and package management for this repo
+alwaysApply: true
+---
+
+# Frank.GameEngine — build
+
+- Open or build **`Frank.GameEngine.slnx`** (not `.sln`). CLI: `dotnet build Frank.GameEngine.slnx`.
+- **CPM**: package versions only in `Directory.Packages.props`. Do not add `Version=` on `PackageReference` unless using `VersionOverride` for a special project (the Roslyn generator uses `VersionOverride` for `Microsoft.CodeAnalysis.CSharp`).
+- **nuget.config** pins restores to nuget.org with source mapping; do not add unmapped feeds without updating mapping.
+- **Generator** `tools/Frank.GameEngine.Generators.AssetsGenerator` targets **netstandard2.1**; keep it compatible with older BCL APIs unless you retarget.

@@ -1,0 +1,10 @@
+---
+description: Windows-only audio and cross-platform sample patterns
+globs: "**/*.cs"
+alwaysApply: false
+---
+
+# Platform checks
+
+- `ConsoleAudioPlayer` and `AudioPlayerFactory.CreateConsoleAudioPlayer` are Windows-only (`SupportedOSPlatform`). Call sites must guard with `OperatingSystem.IsWindows()` or use `SilentAudioPlayer` for non-Windows hosts.
+- Prefer `SupportedOSPlatform` / `UnsupportedOSPlatform` attributes over suppressing CA1416 unless the API is already guarded.

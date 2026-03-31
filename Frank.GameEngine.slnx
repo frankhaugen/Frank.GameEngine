@@ -1,0 +1,41 @@
+<Solution>
+  <Folder Name="/SolutionFiles/Docs/">
+    <File Path="docs/architecture.md" />
+    <File Path="docs/critical-improvements.md" />
+    <File Path="docs/index.md" />
+    <File Path="docs/readme.md" />
+  </Folder>
+  <Folder Name="/SolutionFiles/">
+    <File Path=".dockerignore" />
+    <File Path=".gitignore" />
+    <File Path="AGENTS.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="icon.png" />
+    <File Path="LICENSE" />
+    <File Path="nuget.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/SolutionFiles/Samples/">
+    <File Path="samples/Directory.Build.props" />
+  </Folder>
+  <Project Path="samples/Frank.GameEngine.Samples.Battleship/Frank.GameEngine.Samples.Battleship.csproj" />
+  <Project Path="samples/Frank.GameEngine.Samples.BouncingBall/Frank.GameEngine.Samples.BouncingBall.csproj" />
+  <Project Path="samples/Frank.GameEngine.Samples.Pong/Frank.GameEngine.Samples.Pong.csproj" />
+  <Project Path="src/Frank.GameEngine.Assets/Frank.GameEngine.Assets.csproj" />
+  <Project Path="src/Frank.GameEngine.Audio/Frank.GameEngine.Audio.csproj" />
+  <Project Path="src/Frank.GameEngine.Core/Frank.GameEngine.Core.csproj" />
+  <Project Path="src/Frank.GameEngine.Input/Frank.GameEngine.Input.csproj" />
+  <Project Path="src/Frank.GameEngine.Physics/Frank.GameEngine.Physics.csproj" />
+  <Project Path="src/Frank.GameEngine.Primitives/Frank.GameEngine.Primitives.csproj" />
+  <Project Path="src/Frank.GameEngine.Rendering.Experimental/Frank.GameEngine.Rendering.Experimental.csproj" />
+  <Project Path="src/Frank.GameEngine.Rendering.MonoGame/Frank.GameEngine.Rendering.MonoGame.csproj" />
+  <Project Path="src/Frank.GameEngine.Rendering.RayLib/Frank.GameEngine.Rendering.RayLib.csproj" />
+  <Project Path="src/Frank.GameEngine.Rendering/Frank.GameEngine.Rendering.csproj" />
+  <Project Path="tests/Frank.GameEngine.Tests.Application/Frank.GameEngine.Tests.Application.csproj" />
+  <Project Path="tests/Frank.GameEngine.Tests.Benchmarks/Frank.GameEngine.Tests.Benchmarks.csproj" />
+  <Project Path="tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj" />
+  <Project Path="tools/Frank.GameEngine.Generators.AssetsGenerator/Frank.GameEngine.Generators.AssetsGenerator.csproj" />
+</Solution>

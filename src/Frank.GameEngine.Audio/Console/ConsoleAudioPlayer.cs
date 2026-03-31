@@ -1,8 +1,10 @@
-﻿using Frank.GameEngine.Audio.Midi;
+using System.Runtime.Versioning;
+using Frank.GameEngine.Audio.Midi;
 using Frank.GameEngine.Audio.Ogg;
 
 namespace Frank.GameEngine.Audio.Console;
 
+[SupportedOSPlatform("windows")]
 public class ConsoleAudioPlayer : IAudioPlayer
 {
     private readonly TuneLibrary _tunes;

@@ -9,7 +9,7 @@ namespace Frank.GameEngine.Core;
 
 public class GameEngine
 {
-    private IRenderer _renderer;
+    private IRenderer? _renderer;
 
     public GameEngine(PhysicsEngine physicsEngine, IAudioPlayer audioPlayer)
     {
@@ -34,7 +34,7 @@ public class GameEngine
     public void Initialize(IRenderer renderer)
     {
         if (CurrentScene is null)
-            throw new Exception("No scene has been set.");
+            throw new InvalidOperationException("Cannot initialize: no current scene. Select a scene before calling Initialize.");
 
         _renderer = renderer;
 
@@ -57,6 +57,8 @@ public class GameEngine
     {
         if (CurrentScene is null)
             return;
+        if (_renderer is null)
+            throw new InvalidOperationException("Cannot draw before Initialize(IRenderer) has completed.");
         _renderer.Render(CurrentScene);
     }
 }
