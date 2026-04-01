@@ -1,4 +1,3 @@
-using System.Drawing;
 using System.Text;
 using Frank.GameEngine.Primitives;
 
@@ -9,9 +8,9 @@ public class SvgBuilder
     private const int IndentSize = 4;
     private readonly SvgRendererOptions _options;
     private readonly StringBuilder _svgBuilder = new();
-    private readonly Rectangle _viewBox;
+    private readonly IntRect _viewBox;
 
-    public SvgBuilder(SvgRendererOptions options, Rectangle viewBox)
+    public SvgBuilder(SvgRendererOptions options, IntRect viewBox)
     {
         _options = options;
         _viewBox = viewBox;
@@ -81,10 +80,10 @@ public class SvgBuilder
         return this;
     }
 
-    public SvgBuilder WithBackground(Color color)
+    public SvgBuilder WithBackground(Rgba32 color)
     {
         var backgroundRect =
-            $"<rect x='{_viewBox.X}' y='{_viewBox.Y}' width='{_viewBox.Width}' height='{_viewBox.Height}' fill='{ColorTranslator.ToHtml(color)}' />";
+            $"<rect x='{_viewBox.X}' y='{_viewBox.Y}' width='{_viewBox.Width}' height='{_viewBox.Height}' fill='{color.ToCssHex()}' />";
         _svgBuilder.AppendLine(backgroundRect);
         return this;
     }
@@ -101,10 +100,10 @@ public class SvgBuilder
     {
         var polygon = shape.Polygon;
         var color = shape.Color;
-        var stroke = Color.Black;
+        var stroke = Rgba32.Black;
         var points = string.Join(" ", polygon.Select(vertex => $"{vertex.X},{vertex.Y}"));
         var polygonString =
-            $"{Indent(1)}<polygon points='{points}' fill='{ColorTranslator.ToHtml(color)}' stroke='{ColorTranslator.ToHtml(stroke)}' stroke-width='{strokeWidth}' />";
+            $"{Indent(1)}<polygon points='{points}' fill='{color.ToCssHex()}' stroke='{stroke.ToCssHex()}' stroke-width='{strokeWidth}' />";
 
         _svgBuilder.AppendLine(polygonString);
         return this;

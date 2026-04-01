@@ -1,4 +1,3 @@
-﻿using System.Drawing;
 using Frank.GameEngine.Primitives;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -16,21 +15,21 @@ public static partial class GraphicsDeviceExtensions
     {
         var polygon = shape.Polygon;
         var color = shape.Color;
-        // graphicsDevice.DrawLineList(polygon, color);
         graphicsDevice.DrawTriangleList(polygon, color);
     }
 
-    public static void DrawLineList(this GraphicsDevice graphicsDevice, Polygon polygon, Color color)
+    public static void DrawLineList(this GraphicsDevice graphicsDevice, Polygon polygon, Rgba32 color)
     {
         var lineList = polygon.ToVertexPositionColors(color);
         graphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, lineList, 0,
             lineList.Length / PrimitiveType.LineList.GetVertexCount());
     }
 
-    public static void DrawTriangleList(this GraphicsDevice graphicsDevice, Polygon polygon, Color color)
+    public static void DrawTriangleList(this GraphicsDevice graphicsDevice, Polygon polygon, Rgba32 color)
     {
         var faceList = FaceFactory.Create(polygon);
-        var triangleList = faceList.Select(x => new VertexPositionColor(x.GetNormal(), color.ToColor())).ToArray();
+        var xna = color.ToXnaColor();
+        var triangleList = faceList.Select(x => new VertexPositionColor(x.GetNormal(), xna)).ToArray();
         graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList, 0,
             triangleList.Length / PrimitiveType.TriangleList.GetVertexCount());
     }

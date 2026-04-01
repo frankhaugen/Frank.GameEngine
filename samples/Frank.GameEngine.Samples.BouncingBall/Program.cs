@@ -43,7 +43,7 @@ scene.GameObjects.Add(new Ball());
 engine.SceneManager.GameScenes.Add(scene);
 engine.SceneManager.SelectScene(scene.Id);
 
-engine.InputManager.OnKeyboardKeyPress(data =>
+engine.Input.OnKeyboardKeyPress(data =>
 {
     switch (data)
     {

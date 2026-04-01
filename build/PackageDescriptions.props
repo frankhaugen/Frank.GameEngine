@@ -1,7 +1,7 @@
 <Project>
   <!-- Per-package NuGet descriptions (imported from src/Directory.Build.props). -->
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Primitives'">
-    <Description>Scene graph, transforms, polygons, boards, and camera types for Frank.GameEngine (net10.0).</Description>
+    <Description>Scene graph, transforms, polygons, boards, Rgba32 colors, and camera types for Frank.GameEngine (net10.0).</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Rendering'">
     <Description>Rendering contracts (IRenderer) decoupled from concrete graphics APIs.</Description>

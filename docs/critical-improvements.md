@@ -62,17 +62,22 @@ This document tracks design fixes that were identified in review and how they we
 - CI: `dotnet pack` on the solution after build.
 - Root `PackageRequireLicenseAcceptance` set to **false**; `PackageProjectUrl` fixed.
 
+### 6. Headless primitives, input seam, Raylib naming, CI audit
+
+**Problem:** `System.Drawing` on `Shape`/`Scene` tied the model to Windows-era types; `GameEngine` exposed only `InputManager`; Raylib used `PhysicsEngineSignoff`; NuGet security advisories were suppressed even on CI.
+
+**Fix:**
+
+- **`Rgba32`**, **`IntPoint`**, **`IntRect`** in Primitives; **`IInputSource`** with **`InputManager`** as default; **`GameEngine.Input`** property.
+- Raylib channel message renamed to **`RayLibPhysicsStepComplete`**.
+- **`Directory.Build.props`**: **`NU1901`–`NU1904`** are warnings locally only; on **`CI` / `GITHUB_ACTIONS` / `TF_BUILD`** they fail the build with **`TreatWarningsAsErrors`**.
+- XML docs on **`GameEngine`** describe host loop vs background input/audio.
+
 ## Recommended next (not done here)
 
-
-| Item                              | Rationale                                                                                                                 |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **Single game loop / threading**  | Replace ad-hoc `Thread` usage in `Initialize` with a documented lifecycle (or host-driven loop) and coordinated shutdown. |
-| **Input abstraction**             | Introduce something like `IInputSource` with a SharpHook implementation so Core does not assume global hooks everywhere.  |
-| **Colors in Primitives**          | Replace or wrap `System.Drawing.Color` with an engine-owned type if you want a stricter “headless core” boundary.         |
-| **Rename `PhysicsEngineSignoff`** | Optional: e.g. `RayLibPhysicsStepComplete` for parity with `RayLibHostedPhysicsService`.                                  |
-| **CI / vulnerable packages**      | Treat high-severity NU advisories as errors in CI while keeping local overrides documented.                               |
-
+| Item                             | Rationale                                                                                                    |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Single game loop / threading** | Optionally replace background `Task` input/audio with a fully host-owned loop and injectable schedulers.     |
 
 ## References
 

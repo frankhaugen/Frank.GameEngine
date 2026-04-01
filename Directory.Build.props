@@ -52,7 +52,11 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <PropertyGroup Label="NuGet compatibility">
-    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1504;NU1510;NU1603;NU1605;NU1608;NU1901;NU1902;NU1903;NU1904;NU1701</WarningsNotAsErrors>
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1504;NU1510;NU1603;NU1605;NU1608;NU1701</WarningsNotAsErrors>
+  </PropertyGroup>
+  <!-- Local dev only: NuGet audit advisories stay warnings so transitive issues don't block every build. On CI (GitHub/Azure/TF), NU1901–NU1904 are errors with TreatWarningsAsErrors. -->
+  <PropertyGroup Label="NuGet audit (local only)" Condition="'$(CI)' != 'true' And '$(GITHUB_ACTIONS)' != 'true' And '$(TF_BUILD)' != 'true'">
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Label="Artifacts">

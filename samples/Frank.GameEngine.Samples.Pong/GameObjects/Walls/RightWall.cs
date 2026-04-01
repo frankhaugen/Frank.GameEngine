@@ -1,4 +1,3 @@
-﻿using System.Drawing;
 using System.Numerics;
 using Frank.GameEngine.Primitives;
 
@@ -12,6 +11,6 @@ public class RightWall : GameObject
             new Vector3(GameConstants.ScreenWidth - GameConstants.WallWidth, GameConstants.WallOffset, 0);
         Shape.Polygon = PolygonFactory.CreateCube(GameConstants.WallWidth,
             GameConstants.ScreenHeight - GameConstants.WallOffset, 0);
-        Shape.Color = Color.Crimson;
+        Shape.Color = Rgba32.Crimson;
     }
 }

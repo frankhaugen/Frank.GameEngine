@@ -13,7 +13,7 @@ namespace Frank.GameEngine.Rendering.RayLib;
 public class RayLibHostedPhysicsService(
     ILogger<RayLibHostedPhysicsService> logger,
     RenderQueue renderQueue,
-    ChannelWriter<PhysicsEngineSignoff> writer,
+    ChannelWriter<RayLibPhysicsStepComplete> writer,
     ChannelReader<Tick> reader)
     : BackgroundService
 {
@@ -26,7 +26,7 @@ public class RayLibHostedPhysicsService(
             new Vector3(10, 10, 0),
             new Vector3(10, 0, 0),
         }),
-        Color = System.Drawing.Color.Crimson
+        Color = Rgba32.Crimson
     };
 
     /// <inheritdoc />
@@ -60,6 +60,6 @@ public class RayLibHostedPhysicsService(
 
         renderQueue.Add(tick, _shape);
 
-        await writer.WriteAsync(new PhysicsEngineSignoff(tick));
+        await writer.WriteAsync(new RayLibPhysicsStepComplete(tick));
     }
 }

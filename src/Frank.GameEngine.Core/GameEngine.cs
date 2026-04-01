@@ -9,21 +9,30 @@ namespace Frank.GameEngine.Core;
 
 /// <summary>
 ///     Facade that wires physics, scenes, input, audio, and an <see cref="IRenderer" />.
-///     Call <see cref="Initialize" /> once a scene is selected, then <see cref="Shutdown" /> (or <see cref="Dispose" />)
-///     before dropping the instance so background input/audio work is stopped cleanly.
+///     The host owns wall-clock stepping: call <see cref="Update" /> and <see cref="Draw" /> from your loop
+///     (for example <see cref="Simulator" />). <see cref="Initialize" /> starts long-running input and audio work;
+///     call <see cref="Shutdown" /> or <see cref="Dispose" /> before releasing the instance.
 /// </summary>
 public sealed class GameEngine : IDisposable
 {
     private static readonly TimeSpan ShutdownWait = TimeSpan.FromSeconds(10);
+
+    private readonly IInputSource _input;
 
     private IRenderer? _renderer;
     private Task? _audioBackgroundTask;
     private Task? _inputBackgroundTask;
 
     public GameEngine(PhysicsEngine physicsEngine, IAudioPlayer audioPlayer)
+        : this(physicsEngine, audioPlayer, new InputManager())
+    {
+    }
+
+    public GameEngine(PhysicsEngine physicsEngine, IAudioPlayer audioPlayer, IInputSource inputSource)
     {
         PhysicsEngine = physicsEngine;
         AudioPlayer = audioPlayer;
+        _input = inputSource;
     }
 
     public ILoggerProvider? LoggerProvider { get; set; }
@@ -32,7 +41,8 @@ public sealed class GameEngine : IDisposable
 
     public SceneManager SceneManager { get; } = new();
 
-    public InputManager InputManager { get; } = new();
+    /// <summary>Keyboard and mouse input; default is SharpHook via <see cref="InputManager" />.</summary>
+    public IInputSource Input => _input;
 
     public PhysicsEngine PhysicsEngine { get; }
 
@@ -63,7 +73,7 @@ public sealed class GameEngine : IDisposable
             TaskScheduler.Default);
 
         _inputBackgroundTask = Task.Factory.StartNew(
-            () => InputManager.Start(),
+            () => _input.Start(),
             CancellationToken.None,
             TaskCreationOptions.LongRunning,
             TaskScheduler.Default);
@@ -84,7 +94,7 @@ public sealed class GameEngine : IDisposable
             return;
 
         AudioPlayer.Stop();
-        InputManager.Stop();
+        _input.Stop();
 
         var tasks = new List<Task>(2);
         if (_audioBackgroundTask is { IsCompleted: false } a)

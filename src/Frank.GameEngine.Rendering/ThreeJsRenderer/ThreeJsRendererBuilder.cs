@@ -1,4 +1,3 @@
-using System.Drawing;
 using System.Numerics;
 using System.Text;
 using Frank.GameEngine.Primitives;
@@ -29,7 +28,7 @@ public class ThreeJsRendererBuilder
         return $"meshes.push(CreateMesh({CreateJsPolygon(shape.Polygon)}, {CreateJsColor(shape.Color)}));";
     }
 
-    public static string CreateJsColor(Color color)
+    public static string CreateJsColor(Rgba32 color)
     {
         return $"0x{color.R:X2}{color.G:X2}{color.B:X2}";
     }

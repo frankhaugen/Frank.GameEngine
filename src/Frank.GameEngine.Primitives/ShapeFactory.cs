@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
@@ -14,7 +12,7 @@ public static class ShapeFactory
     /// <param name="radius"></param>
     /// <param name="resolution"></param>
     /// <returns></returns>
-    public static Shape CreateSpere(Color color, float radius = 10f, int resolution = 16)
+    public static Shape CreateSpere(Rgba32 color, float radius = 10f, int resolution = 16)
     {
         var shape = new Shape
         {
@@ -30,7 +28,7 @@ public static class ShapeFactory
     /// <param name="color"></param>
     /// <param name="size"></param>
     /// <returns></returns>
-    public static Shape CreateCube(Color color, float size = 10f)
+    public static Shape CreateCube(Rgba32 color, float size = 10f)
     {
         var shape = new Shape
         {
@@ -48,7 +46,7 @@ public static class ShapeFactory
     /// <param name="height"></param>
     /// <param name="resolution"></param>
     /// <returns></returns>
-    public static Shape CreateCylinder(Color color, float radius = 10f, float height = 10f, int resolution = 16)
+    public static Shape CreateCylinder(Rgba32 color, float radius = 10f, float height = 10f, int resolution = 16)
     {
         var shape = new Shape
         {
@@ -66,7 +64,7 @@ public static class ShapeFactory
     /// <param name="height"></param>
     /// <param name="resolution"></param>
     /// <returns></returns>
-    public static Shape CreateCone(Color color, float radius = 10f, float height = 10f, int resolution = 16)
+    public static Shape CreateCone(Rgba32 color, float radius = 10f, float height = 10f, int resolution = 16)
     {
         var shape = new Shape
         {
@@ -83,7 +81,7 @@ public static class ShapeFactory
     /// <param name="radius"></param>
     /// <param name="height"></param>
     /// <returns></returns>
-    public static Shape CreatePyramid(Color color, float radius = 10f, float height = 10f)
+    public static Shape CreatePyramid(Rgba32 color, float radius = 10f, float height = 10f)
     {
         var shape = new Shape
         {

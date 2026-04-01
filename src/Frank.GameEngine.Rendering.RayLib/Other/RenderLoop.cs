@@ -4,13 +4,13 @@ using Microsoft.Extensions.Logging;
 
 namespace Frank.GameEngine.Rendering.RayLib;
 
-public class RenderLoop(ILogger<RenderLoop> logger, IHostApplicationLifetime applicationLifetime, ChannelReader<PhysicsEngineSignoff> reader) : BackgroundService
+public class RenderLoop(ILogger<RenderLoop> logger, IHostApplicationLifetime applicationLifetime, ChannelReader<RayLibPhysicsStepComplete> reader) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         try
         {
-            await foreach (var signoff in reader.ReadAllAsync(stoppingToken))
+            await foreach (var _ in reader.ReadAllAsync(stoppingToken))
             {
                 // await renderer.Render();
             }

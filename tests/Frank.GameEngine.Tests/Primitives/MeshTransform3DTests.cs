@@ -29,7 +29,7 @@ public class MeshTransform3DTests
     public void Shape_Transform_AppliesScaleRotationThenTranslation()
     {
         var rect = PolygonFactory.CreateRectangle(2f, 2f, Vector3.Zero);
-        var shape = new Shape { Polygon = rect, Color = System.Drawing.Color.White };
+        var shape = new Shape { Polygon = rect, Color = Rgba32.White };
         var transform = new Transform
         {
             Position = new Vector3(0f, 5f, 0f),
@@ -48,7 +48,7 @@ public class MeshTransform3DTests
         var rect = PolygonFactory.CreateRectangle(1f, 1f, Vector3.Zero);
         var go = new GameObject
         {
-            Shape = new Shape { Polygon = rect, Color = System.Drawing.Color.Red },
+            Shape = new Shape { Polygon = rect, Color = Rgba32.Red },
             Transform = new Transform { Position = new Vector3(100f, 0f, 0f) }
         };
 

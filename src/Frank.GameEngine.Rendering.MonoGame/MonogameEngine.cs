@@ -1,7 +1,6 @@
 using Frank.GameEngine.Input;
 using Frank.GameEngine.Primitives;
 using Microsoft.Xna.Framework;
-using Color = System.Drawing.Color;
 
 namespace Frank.GameEngine.Rendering.MonoGame;
 
@@ -27,14 +26,14 @@ public class MonogameEngine : Game
     {
         base.LoadContent();
 
-        var shape = ShapeFactory.CreateCube(Color.Chartreuse, 5f);
+        var shape = ShapeFactory.CreateCube(Rgba32.Chartreuse, 5f);
         var transform = TransformFactory.CreateTransform();
         var gameObject = GameObjectFactory.CreateGameObject(transform, shape, "Test Object");
         var camera = new Camera();
         var scene = new Scene("Test Scene", camera);
         scene.GameObjects.Add(gameObject);
 
-        _gameEngine.InputManager.OnKeyboardKeyPress(x =>
+        _gameEngine.Input.OnKeyboardKeyPress(x =>
         {
             if (x.KeyboardKey == KeyboardKey.Escape)
                 Exit();

@@ -1,4 +1,3 @@
-using System.Drawing;
 using System.Numerics;
 using Frank.GameEngine.Primitives;
 
@@ -10,7 +9,7 @@ public class PlayerPaddle : GameObject
     {
         Transform.Position = new Vector3(GameConstants.WallOffset * 2, GameConstants.ScreenHeight / 2, 0);
         Shape.Polygon = PolygonFactory.CreateCube(GameConstants.PaddleWidth, GameConstants.PaddleHeight, 0);
-        Shape.Color = Color.Chartreuse;
+        Shape.Color = Rgba32.Chartreuse;
     }
 
     public void MoveUp(float speed)

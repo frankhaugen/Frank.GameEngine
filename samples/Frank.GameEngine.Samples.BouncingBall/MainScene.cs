@@ -1,4 +1,3 @@
-﻿using System.Drawing;
 using System.Numerics;
 using Frank.GameEngine.Core;
 using Frank.GameEngine.Primitives;
@@ -18,7 +17,7 @@ public class Floor : GameObject
     {
         Transform.Position = new Vector3(0, 100, 0);
         Shape.Polygon = PolygonFactory.CreateLine(new Vector3(-200, 0, 0), new Vector3(200, 0, 0));
-        Shape.Color = Color.Crimson;
+        Shape.Color = Rgba32.Crimson;
         Rigidbody.UseGravity = false;
         Rigidbody.IsColliding = false;
         Rigidbody.Velocity = new Vector3(0, 0, 0);
@@ -32,7 +31,7 @@ public class Ball : GameObject
     {
         Transform.Position = new Vector3(150, -25, 0);
         Shape.Polygon = PolygonFactory.CreateCircle(5, 12);
-        Shape.Color = Color.Chartreuse;
+        Shape.Color = Rgba32.Chartreuse;
         Rigidbody.UseGravity = false;
         Rigidbody.IsColliding = true;
         Rigidbody.Velocity = new Vector3(0, 0, 0);

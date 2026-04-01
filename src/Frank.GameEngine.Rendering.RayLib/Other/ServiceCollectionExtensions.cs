@@ -11,7 +11,7 @@ public static class ServiceCollectionExtensions
         services.AddRenderLoop();
         services.AddChannelFactory(builder => builder
             .AddChannel<Tick>()
-            .AddChannel<PhysicsEngineSignoff>());
+            .AddChannel<RayLibPhysicsStepComplete>());
         return services;
     }
  

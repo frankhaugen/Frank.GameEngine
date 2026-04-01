@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
@@ -27,7 +25,7 @@ public class Scene
     /// <summary>
     ///     The background color of the scene. This is used to clear the screen before rendering the scene.
     /// </summary>
-    public Color BackgroundColor { get; set; } = Color.Black;
+    public Rgba32 BackgroundColor { get; set; } = Rgba32.Black;
 
     /// <summary>
     ///     The game objects in the scene. These are rendered by the camera.
@@ -43,5 +41,5 @@ public class Scene
     ///     The size of the scene. This is used to determine the size of the rendered scene.
     ///     Default is 1000x1000 pixels, starting at 0,0.
     /// </summary>
-    public Rectangle Size { get; set; } = new(0, 0, 1000, 1000);
+    public IntRect Size { get; set; } = new(0, 0, 1000, 1000);
 }

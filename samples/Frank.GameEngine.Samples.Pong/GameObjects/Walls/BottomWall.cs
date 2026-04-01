@@ -1,4 +1,3 @@
-﻿using System.Drawing;
 using System.Numerics;
 using Frank.GameEngine.Primitives;
 
@@ -12,6 +11,6 @@ public class BottomWall : GameObject
             new Vector3(GameConstants.WallOffset, GameConstants.ScreenHeight - GameConstants.WallWidth, 0);
         Shape.Polygon = PolygonFactory.CreateCube(GameConstants.ScreenWidth - GameConstants.WallOffset,
             GameConstants.WallWidth, 0);
-        Shape.Color = Color.White;
+        Shape.Color = Rgba32.White;
     }
 }

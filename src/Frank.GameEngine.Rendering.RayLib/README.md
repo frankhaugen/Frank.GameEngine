@@ -12,7 +12,7 @@ classDiagram
         -ILogger<RenderLoop> logger
         -IHostApplicationLifetime applicationLifetime
         -IWindow window
-        -ChannelReader<PhysicsEngineSignoff> reader
+        -ChannelReader<RayLibPhysicsStepComplete> reader
         +Task ExecuteAsync(CancellationToken stoppingToken)
     }
     class Window {
@@ -28,7 +28,7 @@ classDiagram
     class RayLibHostedPhysicsService {
         -ILogger<RayLibHostedPhysicsService> logger
         -RenderQueue renderQueue
-        -ChannelWriter<PhysicsEngineSignoff> writer
+        -ChannelWriter<RayLibPhysicsStepComplete> writer
         -ChannelReader<Tick> reader
         +Task ExecuteAsync(CancellationToken stoppingToken)
         +Task UpdateAsync(Tick tick)

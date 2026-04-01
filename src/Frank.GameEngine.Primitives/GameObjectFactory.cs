@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
@@ -34,7 +32,7 @@ public static class GameObjectFactory
         var gameObject = new GameObject
         {
             Transform = TransformFactory.CreateTransform(),
-            Shape = ShapeFactory.CreateSpere(Color.White)
+            Shape = ShapeFactory.CreateSpere(Rgba32.White)
         };
         return gameObject;
     }

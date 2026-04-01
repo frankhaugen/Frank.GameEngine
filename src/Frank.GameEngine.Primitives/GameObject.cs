@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
@@ -30,7 +28,7 @@ public class GameObject
 
     /// <summary>
     ///     The shape of the game object. This is used to determine the collision of the game object.
-    ///     A shape is <see cref="Polygon" /> and a <see cref="Color" />.
+    ///     A shape is <see cref="Polygon" /> and <see cref="Rgba32" />.
     /// </summary>
     public Shape Shape { get; set; } = new();
 

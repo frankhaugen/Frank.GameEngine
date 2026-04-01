@@ -57,7 +57,7 @@ engine.SceneManager.SelectScene(scene.Id);
 
 var ai = new PongAi(scene.Computer, scene.Ball);
 
-engine.InputManager.OnKeyboardKeyPress(data =>
+engine.Input.OnKeyboardKeyPress(data =>
 {
     switch (data)
     {

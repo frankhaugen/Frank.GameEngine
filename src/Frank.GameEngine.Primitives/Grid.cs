@@ -1,4 +1,3 @@
-﻿using System.Drawing;
 using System.Numerics;
 
 namespace Frank.GameEngine.Primitives;
@@ -15,7 +14,7 @@ public class Grid<T>
         set => _board[x, y] = value;
     }
 
-    public T this[Point position]
+    public T this[IntPoint position]
     {
         get => _board[position.X, position.Y];
         set => _board[position.X, position.Y] = value;

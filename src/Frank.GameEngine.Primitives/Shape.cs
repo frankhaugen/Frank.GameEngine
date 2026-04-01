@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace Frank.GameEngine.Primitives;
 
 /// <summary>
@@ -15,7 +13,7 @@ public class Shape
     /// <summary>
     ///     The color of the shape.
     /// </summary>
-    public Color Color { get; set; } = Color.White;
+    public Rgba32 Color { get; set; } = Rgba32.White;
 
     /// <summary>
     ///     Gets a string representation of the shape.

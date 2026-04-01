@@ -6,9 +6,9 @@ using SharpHook;
 namespace Frank.GameEngine.Input;
 
 /// <summary>
-///     Wrapper for the input hook.
+///     SharpHook-backed global input. Prefer taking <see cref="IInputSource" /> in application code.
 /// </summary>
-public class InputManager
+public class InputManager : IInputSource
 {
     /// <summary>
     ///     Created on first subscription or <see cref="Start" /> so the engine can be constructed without loading

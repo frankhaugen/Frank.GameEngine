@@ -1,4 +1,3 @@
-﻿using System.Drawing;
 using System.Numerics;
 using Frank.GameEngine.Primitives;
 
@@ -11,6 +10,6 @@ public class LeftWall : GameObject
         Transform.Position = new Vector3(0, GameConstants.WallOffset, 0);
         Shape.Polygon = PolygonFactory.CreateCube(GameConstants.WallWidth,
             GameConstants.ScreenHeight - GameConstants.WallOffset, 0);
-        Shape.Color = Color.Chartreuse;
+        Shape.Color = Rgba32.Chartreuse;
     }
 }

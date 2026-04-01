@@ -49,7 +49,7 @@ public class ConsoleRendererWorker : BackgroundService
         engine.SceneManager.GameScenes.Add(testScene);
         engine.SceneManager.SelectScene(testScene.Id);
 
-        engine.InputManager.OnKeyboardKeyPress(data =>
+        engine.Input.OnKeyboardKeyPress(data =>
         {
             switch (data)
             {

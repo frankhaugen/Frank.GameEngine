@@ -6,7 +6,7 @@ All shipping projects, tests, samples, and the **Roslyn assets generator** targe
 
 | Layer | Projects | Depends on |
 |--------|-----------|------------|
-| Model | `Frank.GameEngine.Primitives` | BCL, `System.Drawing` for colors |
+| Model | `Frank.GameEngine.Primitives` | BCL; `Rgba32`, `IntPoint`, `IntRect` (no `System.Drawing` on hot paths) |
 | Rendering contract | `Frank.GameEngine.Rendering` | Primitives only |
 | Backends | `Frank.GameEngine.Rendering.*` | Rendering + backend SDKs |
 | Simulation | `Frank.GameEngine.Physics` | Primitives |
@@ -31,7 +31,7 @@ Input and audio are started from `GameEngine.Initialize(IRenderer)` on **long-ru
 
 `Frank.GameEngine.Rendering.RayLib` can register **hosted services** (`AddGameEngine` in `ServiceCollectionExtensions`) that use **channels**: `TickProducer` → **`RayLibHostedPhysicsService`** → `RenderQueue` → `RenderLoop`.
 
-That hosted physics step is **not** the core `PhysicsEngine`; it is a **demo pipeline** for ticks and signoff messages. Renamed from `PhysicsEngine` to avoid confusion with simulation in `Frank.GameEngine.Physics`.
+That hosted physics step is **not** the core `PhysicsEngine`; it is a **demo pipeline** for ticks and `RayLibPhysicsStepComplete` messages. Renamed from `PhysicsEngine` to avoid confusion with simulation in `Frank.GameEngine.Physics`.
 
 ## 3D mesh and transforms
 
