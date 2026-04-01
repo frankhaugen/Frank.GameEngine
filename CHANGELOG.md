@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented here. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Changed
+
+- Central package refresh: **TUnit** 1.24.13; pinned transitive **NVorbis** 0.10.5 and **MonoGame.Library.*** SDL/OpenAL stacks.
+- GitHub Actions: **checkout** v5, **setup-dotnet** v5, **upload-artifact** v5 on `verify-dotnet`.
+- Root **.editorconfig** for current C# style (file-scoped namespaces, collection expressions, etc.).
+- NuGet package copyright year range in `Directory.Build.props`.
+
 ## [0.1.0] - 2026-03-31
 
 ### Added

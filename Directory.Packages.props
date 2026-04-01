@@ -14,13 +14,17 @@
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.5" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.5" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.201" />
+    <!-- Pin MonoGame native stacks (transitive) to current patch releases. -->
+    <PackageVersion Include="MonoGame.Library.OpenAL" Version="1.24.3.4" />
+    <PackageVersion Include="MonoGame.Library.SDL" Version="2.32.10.2" />
     <PackageVersion Include="MonoGame.Framework.DesktopGL" Version="3.8.4.1" />
     <PackageVersion Include="Moq" Version="4.20.72" />
     <PackageVersion Include="NAudio" Version="2.3.0" />
     <PackageVersion Include="NAudio.Vorbis" Version="1.5.0" />
+    <PackageVersion Include="NVorbis" Version="0.10.5" />
     <PackageVersion Include="Raylib-CSharp" Version="5.0.0" />
     <PackageVersion Include="SharpHook" Version="7.1.1" />
-    <PackageVersion Include="TUnit" Version="1.24.0" />
+    <PackageVersion Include="TUnit" Version="1.24.13" />
     <PackageVersion Include="VsTools.Projects" Version="1.2.0" />
   </ItemGroup>
 </Project>
