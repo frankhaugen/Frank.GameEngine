@@ -69,4 +69,63 @@ public class GameEngineTests
 
         collision.Verify(c => c.HandleCollisions(scene), Times.Once);
     }
+
+    [Test]
+    public void Shutdown_IsIdempotent_AndStopsBackgroundWork()
+    {
+        var engine = new CoreGameEngine(new PhysicsEngine(new NullCollisionHandler()), new SilentAudioPlayer());
+        engine.SceneManager.GameScenes.Add(new Scene("s", new Camera()));
+        engine.SceneManager.SelectScene(engine.SceneManager.GameScenes[0].Id);
+        engine.Initialize(Mock.Of<IRenderer>());
+
+        var act = () =>
+        {
+            engine.Shutdown();
+            engine.Shutdown();
+        };
+
+        act.Should().NotThrow();
+        engine.IsInitialized.Should().BeFalse();
+    }
+
+    [Test]
+    public void Initialize_Throws_WhenAlreadyInitialized()
+    {
+        var engine = new CoreGameEngine(new PhysicsEngine(new NullCollisionHandler()), new SilentAudioPlayer());
+        engine.SceneManager.GameScenes.Add(new Scene("s", new Camera()));
+        engine.SceneManager.SelectScene(engine.SceneManager.GameScenes[0].Id);
+        var renderer = Mock.Of<IRenderer>();
+        engine.Initialize(renderer);
+
+        var act = () => engine.Initialize(renderer);
+
+        act.Should().Throw<InvalidOperationException>().WithMessage("*already initialized*");
+    }
+
+    [Test]
+    public void Dispose_CallsShutdown()
+    {
+        var engine = new CoreGameEngine(new PhysicsEngine(new NullCollisionHandler()), new SilentAudioPlayer());
+        engine.SceneManager.GameScenes.Add(new Scene("s", new Camera()));
+        engine.SceneManager.SelectScene(engine.SceneManager.GameScenes[0].Id);
+        engine.Initialize(Mock.Of<IRenderer>());
+
+        engine.Dispose();
+
+        engine.IsInitialized.Should().BeFalse();
+    }
+
+    [Test]
+    public void Initialize_Throws_WhenDisposed()
+    {
+        var engine = new CoreGameEngine(new PhysicsEngine(new NullCollisionHandler()), new SilentAudioPlayer());
+        engine.SceneManager.GameScenes.Add(new Scene("s", new Camera()));
+        engine.SceneManager.SelectScene(engine.SceneManager.GameScenes[0].Id);
+        engine.Initialize(Mock.Of<IRenderer>());
+        engine.Dispose();
+
+        var act = () => engine.Initialize(Mock.Of<IRenderer>());
+
+        act.Should().Throw<ObjectDisposedException>();
+    }
 }

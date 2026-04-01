@@ -3,9 +3,18 @@ using NAudio.Wave;
 
 namespace Frank.GameEngine.Audio.Ogg;
 
-public class AudioPlayer : IAudioPlayer
+/// <summary>
+///     NAudio-based Ogg Vorbis player. <see cref="Play" /> is one-shot; <see cref="PlayLooping" /> runs until
+///     <see cref="Stop" />. All members are thread-safe.
+/// </summary>
+public sealed class AudioPlayer : IAudioPlayer
 {
     private readonly ClipLibrary _clipLibrary;
+    private readonly object _gate = new();
+
+    private WaveOutEvent? _loopOut;
+    private VorbisWaveReader? _loopReader;
+    private bool _looping;
 
     public AudioPlayer(ClipLibrary clipLibrary)
     {
@@ -14,25 +23,83 @@ public class AudioPlayer : IAudioPlayer
 
     public void Play(int clipId)
     {
-        using var waveOut = new WaveOutEvent();
-        using var reader = new VorbisWaveReader(new MemoryStream(_clipLibrary[clipId].Bytes));
-
-        waveOut.Init(reader);
-        waveOut.PlaybackStopped += (s, e) =>
+        var clip = _clipLibrary[clipId];
+        lock (_gate)
         {
-            waveOut.Dispose();
-            reader.Dispose();
-        };
-        waveOut.Play();
+            StopLoopUnlocked();
+            var waveOut = new WaveOutEvent();
+            var reader = new VorbisWaveReader(new MemoryStream(clip.Bytes));
+
+            waveOut.Init(reader);
+            waveOut.PlaybackStopped += (_, _) =>
+            {
+                waveOut.Dispose();
+                reader.Dispose();
+            };
+            waveOut.Play();
+        }
     }
 
     public void PlayLooping(int soundId)
     {
-        throw new NotImplementedException();
+        var clip = _clipLibrary[soundId];
+        lock (_gate)
+        {
+            StopLoopUnlocked();
+            _loopReader = new VorbisWaveReader(new MemoryStream(clip.Bytes));
+            _loopOut = new WaveOutEvent();
+            _loopOut.Init(_loopReader);
+            _looping = true;
+            _loopOut.PlaybackStopped += OnLoopPlaybackStopped;
+            _loopOut.Play();
+        }
     }
 
     public void Stop()
     {
-        throw new NotImplementedException();
+        lock (_gate)
+            StopLoopUnlocked();
+    }
+
+    private void OnLoopPlaybackStopped(object? sender, StoppedEventArgs e)
+    {
+        lock (_gate)
+        {
+            if (!_looping || _loopOut is null || _loopReader is null)
+                return;
+
+            try
+            {
+                _loopReader.Position = 0;
+                _loopOut.Play();
+            }
+            catch (ObjectDisposedException)
+            {
+                StopLoopUnlocked();
+            }
+        }
+    }
+
+    private void StopLoopUnlocked()
+    {
+        _looping = false;
+        if (_loopOut is not null)
+        {
+            _loopOut.PlaybackStopped -= OnLoopPlaybackStopped;
+            try
+            {
+                _loopOut.Stop();
+            }
+            catch (ObjectDisposedException)
+            {
+                // ignore
+            }
+
+            _loopOut.Dispose();
+            _loopOut = null;
+        }
+
+        _loopReader?.Dispose();
+        _loopReader = null;
     }
 }

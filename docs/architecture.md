@@ -25,7 +25,7 @@ All shipping projects, tests, samples, and the **Roslyn assets generator** targe
 - `GameEngine.Update(UpdateArgs)` → **`Frank.GameEngine.Physics.PhysicsEngine`**
 - `GameEngine.Draw()` → `IRenderer.Render(Scene)`
 
-Input and audio are started from `GameEngine.Initialize(IRenderer)` on **background threads** (global hook + audio loop). This model is simple but does not use the Generic Host pipeline.
+Input and audio are started from `GameEngine.Initialize(IRenderer)` on **long-running background tasks** (global hook + `PlayLooping`). Call **`GameEngine.Shutdown()`** or **`Dispose()`** before releasing the engine so hooks and looping audio stop. This model is simple but does not use the Generic Host pipeline.
 
 ### 2. Raylib + Generic Host experiment
 

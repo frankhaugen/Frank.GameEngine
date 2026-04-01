@@ -6,9 +6,11 @@
     <File Path="docs/readme.md" />
   </Folder>
   <Folder Name="/SolutionFiles/">
+    <File Path="CHANGELOG.md" />
     <File Path=".dockerignore" />
     <File Path=".gitignore" />
     <File Path="AGENTS.md" />
+    <File Path="build/PackageDescriptions.props" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
     <File Path="Directory.Packages.props" />

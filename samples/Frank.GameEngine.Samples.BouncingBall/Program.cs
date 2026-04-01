@@ -92,7 +92,14 @@ engine.Initialize(renderer);
 
 var simulator = new Simulator(SimulationStep);
 simulator.MaxRunningTime = TimeSpan.FromMinutes(5);
-simulator.Start();
+try
+{
+    simulator.Start();
+}
+finally
+{
+    engine.Dispose();
+}
 
 void SimulationStep(TimeSpan elapsedTime)
 {

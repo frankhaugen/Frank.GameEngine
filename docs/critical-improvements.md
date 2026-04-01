@@ -50,6 +50,18 @@ This document tracks design fixes that were identified in review and how they we
 - [architecture.md](architecture.md) — layers and the two execution models.
 - This file — audit trail for critical fixes.
 
+### 5. Production packaging and lifecycle (0.1.0)
+
+**Problem:** Libraries had no unified package version or descriptions; `AudioPlayer.PlayLooping`/`Stop` threw `NotImplementedException`; `GameEngine` used fire-and-forget `Thread` without shutdown; Wavefront `*.obj` assets were gitignored so CI could not generate `AdditionalResources2` (addressed in a prior CI fix).
+
+**Fix:**
+
+- Root `Directory.Build.props` (path condition for `src/`) + `build/PackageDescriptions.props`: **Version 0.1.0**, tags, and NuGet descriptions for shipping projects; **Rendering.Experimental** is not packed.
+- `AudioPlayer`: thread-safe looping playback with NAudio; `Play` stops any active loop and no longer disposes the device before playback runs.
+- `GameEngine`: `Shutdown()` / `IDisposable`, `TaskCreationOptions.LongRunning` for background work, guarded re-`Initialize`, `ObjectDisposedException` after `Dispose`.
+- CI: `dotnet pack` on the solution after build.
+- Root `PackageRequireLicenseAcceptance` set to **false**; `PackageProjectUrl` fixed.
+
 ## Recommended next (not done here)
 
 

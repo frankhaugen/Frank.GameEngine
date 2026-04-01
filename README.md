@@ -13,11 +13,16 @@ easy as possible to create games using this engine as nuget packages in your pro
 
 ## How to use
 
-The engine is still in development, so there is no nuget package yet, but when there is, you will be able to install it
+Target **.NET 10** and add the packages you need. Core gameplay wiring lives in **`Frank.GameEngine.Core`**; you also pick a renderer (for example **`Frank.GameEngine.Rendering.RayLib`** or **`Frank.GameEngine.Rendering.MonoGame`**) and reference **`Frank.GameEngine.Primitives`**, **`Frank.GameEngine.Physics`**, etc., as required.
 
 ```powershell
-Install-Package Frank.GameEngine
+dotnet add package Frank.GameEngine.Core --version 0.1.0
+dotnet add package Frank.GameEngine.Rendering.RayLib --version 0.1.0
 ```
+
+Packages are built with `dotnet pack Frank.GameEngine.slnx -c Release` (output folder: `artifacts/package/release/` with this repo’s centralized artifacts layout). **0.x** versions may introduce API changes; see [CHANGELOG.md](CHANGELOG.md).
+
+**Lifecycle:** after `GameEngine.Initialize(IRenderer)`, call **`Shutdown()`** or **`Dispose()`** before releasing the engine so global input and looping audio stop cleanly.
 
 ## Documentation
 

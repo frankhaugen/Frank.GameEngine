@@ -1,0 +1,30 @@
+<Project>
+  <!-- Per-package NuGet descriptions (imported from src/Directory.Build.props). -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Primitives'">
+    <Description>Scene graph, transforms, polygons, boards, and camera types for Frank.GameEngine (net10.0).</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Rendering'">
+    <Description>Rendering contracts (IRenderer) decoupled from concrete graphics APIs.</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Physics'">
+    <Description>Forces, rigid bodies, and collision hooks for Frank.GameEngine.</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Input'">
+    <Description>Global input via SharpHook (keyboard and mouse) for Frank.GameEngine.</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Audio'">
+    <Description>Ogg/console audio abstractions and NAudio-based playback for Frank.GameEngine.</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Assets'">
+    <Description>OBJ assets and Roslyn-generated resource helpers for Frank.GameEngine.</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Core'">
+    <Description>Game loop facade: GameEngine wires physics, scenes, input, audio, and IRenderer.</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Rendering.RayLib'">
+    <Description>Raylib-backed renderer and optional Generic Host integration for Frank.GameEngine.</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Rendering.MonoGame'">
+    <Description>MonoGame-backed renderer for Frank.GameEngine.</Description>
+  </PropertyGroup>
+</Project>

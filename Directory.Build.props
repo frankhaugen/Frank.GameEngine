@@ -18,13 +18,22 @@
 
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://www.github.com/frankhaugen/Frank.GameEngine</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/frankhaugen/Frank.GameEngine</PackageProjectUrl>
 
-    <RepositoryUrl>https://www.github.com/frankhaugen/Frank.GameEngine</RepositoryUrl>
+    <RepositoryUrl>https://github.com/frankhaugen/Frank.GameEngine</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <!-- NuGet metadata for libraries under src/ (see build/PackageDescriptions.props). -->
+  <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('\src\')) or $(MSBuildProjectDirectory.Contains('/src/'))">
+    <Version>0.1.0</Version>
+    <PackageTags>game-engine;dotnet;gamedev;frank.gameengine</PackageTags>
+    <PackageReleaseNotes>Initial 0.1 packaging. See https://github.com/frankhaugen/Frank.GameEngine/blob/main/CHANGELOG.md</PackageReleaseNotes>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)build/PackageDescriptions.props"
+          Condition="$(MSBuildProjectDirectory.Contains('\src\')) or $(MSBuildProjectDirectory.Contains('/src/'))" />
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All"/>

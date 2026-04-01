@@ -126,6 +126,11 @@ var simulator = new Simulator(deltaTime =>
     MaxRunningTime = TimeSpan.FromMinutes(5)
 };
 
-simulator.Start();
-
-Environment.Exit(0);
+try
+{
+    simulator.Start();
+}
+finally
+{
+    engine.Dispose();
+}

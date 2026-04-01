@@ -20,7 +20,7 @@ dotnet test --solution Frank.GameEngine.slnx -c Release
 ```
 
 - **Alternative**: `dotnet run --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release` (TUnit test project is `OutputType` **Exe**). Coverage / TRX: add `--coverage`, `--report-trx` per [TUnit CLI](https://tunit.dev/docs/reference/command-line-flags/).
-- **CI** (`.github/workflows/verify-dotnet.yml`) builds the test project then runs **`dotnet test --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj`** with **`TUNIT_DISABLE_GITHUB_REPORTER=true`** (and `DISABLE_GITHUB_REPORTER`) so TUnit does not write `GITHUB_STEP_SUMMARY` on Actions. Locally, `dotnet test --solution Frank.GameEngine.slnx` remains a convenient full-solution check.
+- **CI** (`.github/workflows/verify-dotnet.yml`) builds the **solution**, runs **`dotnet pack`** on shipping libraries, then **`dotnet test --project tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj`** with **`TUNIT_DISABLE_GITHUB_REPORTER=true`** (and `DISABLE_GITHUB_REPORTER`). Packages land under **`artifacts/package/release/`** when packing locally (`dotnet pack Frank.GameEngine.slnx -c Release`).
 
 - **Central Package Management**: versions live in `Directory.Packages.props`; project files use `PackageReference` without `Version`.
 - **NuGet feeds**: repo `nuget.config` scopes restores to **nuget.org** with package source mapping (required for CPM when multiple feeds exist globally). To use another feed (e.g. Stride), add it under `packageSources` and map patterns under `packageSourceMapping`.

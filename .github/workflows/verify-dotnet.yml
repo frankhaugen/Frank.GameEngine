@@ -29,8 +29,11 @@ jobs:
       - name: Restore
         run: dotnet restore Frank.GameEngine.slnx
 
-      - name: Build test project
-        run: dotnet build tests/Frank.GameEngine.Tests/Frank.GameEngine.Tests.csproj -c Release --no-restore
+      - name: Build solution
+        run: dotnet build Frank.GameEngine.slnx -c Release --no-restore
+
+      - name: Pack libraries (NuGet)
+        run: dotnet pack Frank.GameEngine.slnx -c Release --no-build -p:ContinuousIntegrationBuild=true
 
       # TUnit enables a GitHub step-summary reporter when GITHUB_ACTIONS is set; disable it on CI.
       # See https://tunit.dev/docs/execution/ci-cd-reporting
