@@ -28,7 +28,6 @@ var camera = new Camera()
     Position = new Vector3(0, 0, 1000),
     Target = new Vector3(0, 0, 0),
     AspectRatio = 1.6666666666f,
-    FieldOfView = Constants.MathConstants.PiOver4,
     NearPlaneDistance = 1f,
     FarPlaneDistance = 1_000f
 };

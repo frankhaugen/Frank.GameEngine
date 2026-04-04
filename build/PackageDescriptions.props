@@ -4,22 +4,22 @@
     <Description>Scene graph, transforms, polygons, boards, Rgba32 colors, and camera types for Frank.GameEngine (net10.0).</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Rendering'">
-    <Description>Rendering contracts (IRenderer) decoupled from concrete graphics APIs.</Description>
+    <Description>Rendering contracts: IRenderer (3D scenes) and IRenderer2D (orthographic 2D), decoupled from concrete graphics APIs.</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Physics'">
     <Description>Forces, rigid bodies, and collision hooks for Frank.GameEngine.</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Input'">
-    <Description>Global input via SharpHook (keyboard and mouse) for Frank.GameEngine.</Description>
+    <Description>Global input via SharpHook (keyboard and mouse) and a no-op source for Raylib-poll hosts for Frank.GameEngine.</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Audio'">
     <Description>Ogg/console audio abstractions and NAudio-based playback for Frank.GameEngine.</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Assets'">
-    <Description>OBJ assets and Roslyn-generated resource helpers for Frank.GameEngine.</Description>
+    <Description>OBJ parsing, Assimp-backed mesh import (FBX/glTF/OBJ/etc.), and Roslyn-generated resource helpers for Frank.GameEngine.</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Core'">
-    <Description>Game loop facade: GameEngine wires physics, scenes, input, audio, and IRenderer.</Description>
+    <Description>Game loop facades: GameEngine (3D scenes + IRenderer) and GameEngine2D (Scene2D + IRenderer2D), plus scene managers.</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Rendering.RayLib'">
     <Description>Raylib-backed renderer and optional Generic Host integration for Frank.GameEngine.</Description>

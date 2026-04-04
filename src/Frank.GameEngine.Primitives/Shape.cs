@@ -11,6 +11,12 @@ public class Shape
     public Polygon Polygon { get; set; } = new();
 
     /// <summary>
+    ///     Optional indexed triangle mesh (OBJ/FBX/glTF). When set, renderers draw this instead of fan-triangles from
+    ///     <see cref="Polygon" />.
+    /// </summary>
+    public TriangleMesh? TriangleMesh { get; set; }
+
+    /// <summary>
     ///     The color of the shape.
     /// </summary>
     public Rgba32 Color { get; set; } = Rgba32.White;

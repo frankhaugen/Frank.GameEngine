@@ -8,7 +8,8 @@ using Microsoft.Extensions.Logging;
 namespace Frank.GameEngine.Core;
 
 /// <summary>
-///     Facade that wires physics, scenes, input, audio, and an <see cref="IRenderer" />.
+///     Facade that wires physics, 3D scenes, input, audio, and an <see cref="IRenderer" />. For pure 2D, see
+///     <see cref="GameEngine2D" /> and <see cref="IRenderer2D" />.
 ///     The host owns wall-clock stepping: call <see cref="Update" /> and <see cref="Draw" /> from your loop
 ///     (for example <see cref="Simulator" />). <see cref="Initialize" /> starts long-running input and audio work;
 ///     call <see cref="Shutdown" /> or <see cref="Dispose" /> before releasing the instance.

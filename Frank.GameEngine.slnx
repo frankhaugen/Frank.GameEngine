@@ -26,6 +26,8 @@
   <Project Path="samples/Frank.GameEngine.Samples.Battleship/Frank.GameEngine.Samples.Battleship.csproj" />
   <Project Path="samples/Frank.GameEngine.Samples.BouncingBall/Frank.GameEngine.Samples.BouncingBall.csproj" />
   <Project Path="samples/Frank.GameEngine.Samples.Pong/Frank.GameEngine.Samples.Pong.csproj" />
+  <Project Path="samples/Frank.GameEngine.Samples.Fps/Frank.GameEngine.Samples.Fps.csproj" />
+  <Project Path="samples/Frank.GameEngine.Samples.Hello2D/Frank.GameEngine.Samples.Hello2D.csproj" />
   <Project Path="src/Frank.GameEngine.Assets/Frank.GameEngine.Assets.csproj" />
   <Project Path="src/Frank.GameEngine.Audio/Frank.GameEngine.Audio.csproj" />
   <Project Path="src/Frank.GameEngine.Core/Frank.GameEngine.Core.csproj" />

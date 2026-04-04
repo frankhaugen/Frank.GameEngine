@@ -26,12 +26,25 @@ public class Polygon : IEnumerable<Vector3>
     public Polygon(IEnumerable<Vector3> vertices)
     {
         _vertices = vertices.ToArray();
+        if (_vertices.Length == 0)
+        {
+            _edges = Array.Empty<Edge>();
+            _faces = Array.Empty<Face>();
+            return;
+        }
+
         _edges = new Edge[_vertices.Length];
         for (var i = 0; i < _vertices.Length; i++)
         {
             var a = _vertices[i];
             var b = _vertices[(i + 1) % _vertices.Length];
             _edges[i] = new Edge(a, b);
+        }
+
+        if (_vertices.Length < 3)
+        {
+            _faces = Array.Empty<Face>();
+            return;
         }
 
         _faces = new Face[_vertices.Length - 2];
@@ -68,6 +81,14 @@ public class Polygon : IEnumerable<Vector3>
     ///     Gets the faces of the polygon. A face is a triangle between three points <see cref="Face" />.
     /// </summary>
     public IEnumerable<Face> Faces => _faces;
+
+    /// <summary>Same triangles as <see cref="Faces" /> without allocating an enumerator.</summary>
+    public ReadOnlySpan<Face> FacesSpan => _faces;
+
+    /// <summary>Same as <see cref="Edges" /> without allocating an enumerator.</summary>
+    public ReadOnlySpan<Edge> EdgesSpan => _edges;
+
+    public int FaceCount => _faces.Length;
 
     /// <summary>
     ///     Gets the position of the polygon. The position is the average of all the vertices.

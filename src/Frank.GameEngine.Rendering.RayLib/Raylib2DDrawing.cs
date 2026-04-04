@@ -1,6 +1,5 @@
 using System.Numerics;
 using Frank.GameEngine.Primitives;
-using Raylib_CSharp.Camera.Cam2D;
 using Raylib_CSharp.Colors;
 using Raylib_CSharp.Rendering;
 using Raylib_CSharp.Transformations;
@@ -9,17 +8,18 @@ namespace Frank.GameEngine.Rendering.RayLib;
 
 internal static class Raylib2DDrawing
 {
-    public static void DrawScene2D(Scene2D scene)
+    public static void DrawScene2D(Scene2D scene, List<GameObject2D> sortedScratch)
     {
+        scene.CollectActiveSorted(sortedScratch);
         var cam = ToRaylibCamera(scene.Camera);
         Graphics.BeginMode2D(cam);
-        foreach (var go in scene.GetActiveSorted())
-            DrawGameObject2D(go);
+        for (var i = 0; i < sortedScratch.Count; i++)
+            DrawGameObject2D(sortedScratch[i]);
 
         Graphics.EndMode2D();
     }
 
-    public static Camera2D ToRaylibCamera(Camera2D camera) =>
+    public static Raylib_CSharp.Camera.Cam2D.Camera2D ToRaylibCamera(Camera2D camera) =>
         new(
             camera.Offset,
             camera.Target,

@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using Frank.GameEngine.Primitives;
 using Frank.GameEngine.Rendering;
 using Frank.GameEngine.Rendering.MonoGame.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using XnaColor = Microsoft.Xna.Framework.Color;
+using XnaVector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Frank.GameEngine.Rendering.MonoGame;
 
@@ -12,27 +15,36 @@ namespace Frank.GameEngine.Rendering.MonoGame;
 public sealed class MonoGameRenderer2D : IRenderer2D
 {
     private readonly IGraphicsDeviceContext _ctx;
+    private readonly List<GameObject2D> _sortedScratch = new();
     private Texture2D? _pixel;
+    private SpriteBatch? _spriteBatch;
 
     public MonoGameRenderer2D(IGraphicsDeviceContext ctx)
     {
         _ctx = ctx;
     }
 
-    private Texture2D Pixel =>
-        _pixel ??= new Texture2D(_ctx.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+    private Texture2D Pixel
+    {
+        get
+        {
+            if (_pixel != null)
+                return _pixel;
+            _pixel = new Texture2D(_ctx.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            _pixel.SetData([XnaColor.White]);
+            return _pixel;
+        }
+    }
 
     public void Render(Scene2D scene)
     {
-        if (!Pixel.TrySetData([Microsoft.Xna.Framework.Color.White]))
-        {
-        }
-
         var device = _ctx.GraphicsDevice;
-        device.Clear(ToXnaColor(scene.BackgroundColor));
+        device.Clear(scene.BackgroundColor.ToXnaColor());
 
         var view = scene.Camera.GetWorldToScreenMatrix().ToXnaMatrix();
-        using var batch = new SpriteBatch(device);
+        _spriteBatch ??= new SpriteBatch(device);
+        var batch = _spriteBatch;
+        scene.CollectActiveSorted(_sortedScratch);
         batch.Begin(
             transformMatrix: view,
             blendState: BlendState.AlphaBlend,
@@ -40,8 +52,9 @@ public sealed class MonoGameRenderer2D : IRenderer2D
             depthStencilState: DepthStencilState.None,
             rasterizerState: RasterizerState.CullNone);
 
-        foreach (var go in scene.GetActiveSorted())
+        for (var i = 0; i < _sortedScratch.Count; i++)
         {
+            var go = _sortedScratch[i];
             var sp = go.Sprite;
             var tr = go.Transform;
             var w = sp.Size.X * tr.Scale.X;
@@ -49,19 +62,16 @@ public sealed class MonoGameRenderer2D : IRenderer2D
             var layer = go.ZOrder * 0.0001f;
             batch.Draw(
                 Pixel,
-                tr.Position,
+                new XnaVector2(tr.Position.X, tr.Position.Y),
                 new Microsoft.Xna.Framework.Rectangle(0, 0, 1, 1),
                 sp.Tint.ToXnaColor(),
                 MathHelper.ToRadians(tr.RotationDegrees),
-                new Vector2(sp.Origin.X, sp.Origin.Y),
-                new Vector2(w, h),
+                new XnaVector2(sp.Origin.X, sp.Origin.Y),
+                new XnaVector2(w, h),
                 SpriteEffects.None,
                 layer);
         }
 
         batch.End();
     }
-
-    private static Microsoft.Xna.Framework.Color ToXnaColor(Rgba32 c) =>
-        new(c.R, c.G, c.B, c.A);
 }

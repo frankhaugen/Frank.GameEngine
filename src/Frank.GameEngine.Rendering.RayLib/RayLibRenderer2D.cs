@@ -1,3 +1,4 @@
+using System.Numerics;
 using Frank.GameEngine.Primitives;
 using Frank.GameEngine.Rendering;
 using Raylib_CSharp.Colors;
@@ -13,6 +14,8 @@ namespace Frank.GameEngine.Rendering.RayLib;
 /// </summary>
 public sealed class RayLibRenderer2D : IRenderer2D
 {
+    private readonly List<GameObject2D> _sortedScratch = new();
+
     public bool ShouldClose => Window.ShouldClose();
 
     public float FrameDeltaSeconds => Raylib_CSharp.Time.GetFrameTime();
@@ -27,10 +30,11 @@ public sealed class RayLibRenderer2D : IRenderer2D
     {
         scene.Camera.ViewportWidth = Math.Max(1, Window.GetScreenWidth());
         scene.Camera.ViewportHeight = Math.Max(1, Window.GetScreenHeight());
+        scene.Camera.Offset = new Vector2(scene.Camera.ViewportWidth * 0.5f, scene.Camera.ViewportHeight * 0.5f);
 
         Graphics.BeginDrawing();
         Graphics.ClearBackground(ToRlColor(scene.BackgroundColor));
-        Raylib2DDrawing.DrawScene2D(scene);
+        Raylib2DDrawing.DrawScene2D(scene, _sortedScratch);
         Graphics.EndDrawing();
     }
 

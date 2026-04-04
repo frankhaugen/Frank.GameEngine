@@ -30,11 +30,11 @@ public static class SceneMeshImporter
         var ext = formatHintExtension.StartsWith('.') ? formatHintExtension : "." + formatHintExtension;
 
         using var ctx = new AssimpContext();
-        var scene = ctx.ImportFromStream(stream, DefaultFlags, ext);
+        var scene = ctx.ImportFileFromStream(stream, DefaultFlags, ext);
         return MergeSceneMeshes(scene);
     }
 
-    private static TriangleMesh MergeSceneMeshes(Scene scene)
+    private static TriangleMesh MergeSceneMeshes(Assimp.Scene scene)
     {
         var vertices = new List<Vector3>();
         var indices = new List<int>();

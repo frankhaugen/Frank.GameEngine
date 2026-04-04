@@ -38,9 +38,10 @@ public record Camera
     public float FarPlaneDistance { get; set; } = 1_000f;
 
     /// <summary>
-    ///     The field of view of the camera. Defaults to <see cref="Constants.MathConstants.PiOver4" />.
+    ///     Vertical field of view in degrees (e.g. 45–90). Used by MonoGame, Raylib, and
+    ///     <see cref="CameraExtensions.GetProjectionMatrix" />.
     /// </summary>
-    public float FieldOfView { get; set; } = Constants.MathConstants.PiOver4;
+    public float FieldOfView { get; set; } = 45f;
 
     /// <summary>
     ///     The view matrix of the camera.

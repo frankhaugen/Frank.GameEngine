@@ -12,18 +12,14 @@ public static class CameraExtensions
     /// <returns></returns>
     public static Matrix4x4 GetProjectionMatrix(this Camera camera)
     {
+        var fovRadians = camera.FieldOfView * (MathF.PI / 180f);
         var projectionMatrix = Matrix4x4.CreatePerspectiveFieldOfView(
-            ToRadians(camera.FieldOfView),
+            fovRadians,
             camera.AspectRatio,
             camera.NearPlaneDistance,
             camera.FarPlaneDistance);
 
         return projectionMatrix;
-    }
-
-    private static float ToRadians(this float degrees)
-    {
-        return degrees * (MathF.PI / 180f);
     }
 
     /// <summary>

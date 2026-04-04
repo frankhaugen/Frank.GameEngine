@@ -33,14 +33,11 @@ public sealed class TriangleMesh
         if (_vertices.Length == 0 && _indices.Length != 0)
             throw new ArgumentException("Cannot have indices with zero vertices.", nameof(indices));
 
-        var maxIndex = -1;
         for (var i = 0; i < _indices.Length; i++)
         {
             var idx = _indices[i];
             if (idx < 0 || idx >= _vertices.Length)
                 throw new ArgumentOutOfRangeException(nameof(indices), $"Index {idx} is out of range for {_vertices.Length} vertices.");
-            if (idx > maxIndex)
-                maxIndex = idx;
         }
     }
 

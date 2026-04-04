@@ -4,24 +4,25 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <AdditionalFiles Include="Models/*" CopyToOutputDirectory="PreserveNewest"/>
-        <AdditionalFiles Include="Shaders/*" CopyToOutputDirectory="PreserveNewest"/>
-        <AdditionalFiles Include="Audio/Midi/Songs/*" CopyToOutputDirectory="PreserveNewest"/>
+        <AdditionalFiles Include="Models/*" CopyToOutputDirectory="PreserveNewest" />
+        <AdditionalFiles Include="Shaders/*" CopyToOutputDirectory="PreserveNewest" />
+        <AdditionalFiles Include="Audio/Midi/Songs/*" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Shaders\"/>
+        <Folder Include="Shaders\" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
+        <ProjectReference Include="..\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj"
-                          PrivateAssets="all"
-                          ReferenceOutputAssembly="false"
-                          OutputItemType="Analyzer" />
+        <ProjectReference Include="..\..\tools\Frank.GameEngine.Generators.AssetsGenerator\Frank.GameEngine.Generators.AssetsGenerator.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AssimpNet" />
     </ItemGroup>
 
 </Project>

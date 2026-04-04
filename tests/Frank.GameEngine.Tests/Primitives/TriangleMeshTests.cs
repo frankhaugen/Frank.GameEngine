@@ -42,12 +42,14 @@ public class TriangleMeshTests
         var shape = new Shape
         {
             Polygon = new Polygon(Array.Empty<Vector3>()),
-            TriangleMesh = new TriangleMesh([Vector3.UnitZ], [0, 0, 0]),
+            TriangleMesh = new TriangleMesh(
+                [Vector3.Zero, Vector3.UnitX, Vector3.UnitY],
+                [0, 1, 2]),
             Color = Rgba32.White
         };
         var t = new Transform { Position = new Vector3(0f, 5f, 0f) };
         var world = shape.GetTransformedShape(t);
         world.TriangleMesh.Should().NotBeNull();
-        world.TriangleMesh!.Vertices[0].Y.Should().BeApproximately(6f, 0.001f);
+        world.TriangleMesh!.Vertices[0].Y.Should().BeApproximately(5f, 0.001f);
     }
 }

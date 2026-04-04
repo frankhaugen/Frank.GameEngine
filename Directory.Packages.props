@@ -4,6 +4,8 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
+    <!-- Beta package; provides FBX/OBJ/glTF via native assimp runtimes (win/linux/osx). -->
+    <PackageVersion Include="AssimpNet" Version="5.0.0-beta1" />
     <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
     <!-- Stay on 7.x: 8+ is Xceed-licensed and can affect CI / non-commercial OSS workflows. -->
     <PackageVersion Include="FluentAssertions" Version="7.2.2" />

@@ -19,7 +19,6 @@ var camera = new Camera()
 {
     Position = new Vector3(0, -100, 500),
     AspectRatio = GameConstants.AspectRatio,
-    FieldOfView = Constants.MathConstants.PiOver4,
     NearPlaneDistance = 1f,
     FarPlaneDistance = 1_000f,
     Target = new Vector3(0, 0, 0)
