@@ -1,5 +1,5 @@
 # Ensures build + TUnit (Microsoft.Testing.Platform) pass on .NET 10 SDK (linux + windows).
-name: Verify .NET
+name: CI: verify SDK
 
 on:
   pull_request:
