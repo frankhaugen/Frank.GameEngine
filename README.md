@@ -26,7 +26,13 @@ Packages are built with `dotnet pack Frank.GameEngine.slnx -c Release` (output f
 
 ## Documentation
 
-Design and architecture notes live under [docs/](docs/readme.md) (start with [architecture](docs/architecture.md)).
+Design and architecture notes live under [docs/](docs/readme.md) (start with [architecture](docs/architecture.md)). A short **priorities** synthesis lives in [docs/evaluation-major.md](docs/evaluation-major.md).
+
+## Samples and .NET Aspire
+
+Runnable demos are under `samples/`. To run one project directly, use `dotnet run --project samples/<SampleFolder>/<Sample>.csproj`.
+
+For local development, a **.NET Aspire AppHost** registers every sample so you can start them from the Aspire dashboard (start **one** windowed game at a time). See [samples/README.md](samples/README.md).
 
 ## How to contribute
 

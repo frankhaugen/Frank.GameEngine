@@ -29,6 +29,7 @@ jobs:
       - name: Restore
         run: dotnet restore Frank.GameEngine.slnx
 
+      # Full solution build includes dev/Frank.GameEngine.Samples.AppHost (Aspire); CI compile-only — do not run the AppHost on headless agents.
       - name: Build solution
         run: dotnet build Frank.GameEngine.slnx -c Release --no-restore
 

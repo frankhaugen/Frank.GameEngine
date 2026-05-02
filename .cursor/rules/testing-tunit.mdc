@@ -1,0 +1,15 @@
+---
+description: TUnit, Microsoft.Testing.Platform, and test project conventions
+globs:
+  - "tests/**"
+alwaysApply: false
+---
+
+# Tests (TUnit + MTP)
+
+- Full procedures: [AGENTS.md](../../AGENTS.md) and [tests/README.md](../../tests/README.md).
+- **Runner**: TUnit on **Microsoft.Testing.Platform** — `global.json` must keep `"test": { "runner": "Microsoft.Testing.Platform" }`.
+- **Unit project**: `tests/Frank.GameEngine.Tests` uses `OutputType` **Exe**. Prefer `dotnet test --solution Frank.GameEngine.slnx` from repo root.
+- **Do not** add `Microsoft.NET.Test.Sdk` or Coverlet; TUnit supplies MTP coverage extensions.
+- **FluentAssertions**: stay on **7.x** (pinned in `Directory.Packages.props`); 8+ uses a license model that is a poor default for OSS CI.
+- **CI reporters**: when touching CI env, preserve `TUNIT_DISABLE_GITHUB_REPORTER` / `DISABLE_GITHUB_REPORTER` for GitHub Actions (see TUnit CI docs).

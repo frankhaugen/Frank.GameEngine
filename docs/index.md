@@ -4,6 +4,7 @@
 
 - [Architecture](architecture.md) — project layers, IRenderer, and the two runtime models.
 - [Critical improvements](critical-improvements.md) — design fixes applied and follow-up backlog.
+- [Evaluation — major (executive)](evaluation-major.md) — synthesized priorities across product, engineering, samples, and CI.
 - [Evaluation — product and roadmap](evaluation-product-and-roadmap.md) — maturity, positioning, and strategic recommendations.
 - [Evaluation — technical improvements](evaluation-technical-improvements.md) — concrete backlog aligned with the codebase.
 

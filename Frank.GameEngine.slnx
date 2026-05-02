@@ -2,6 +2,7 @@
   <Folder Name="/SolutionFiles/Docs/">
     <File Path="docs/architecture.md" />
     <File Path="docs/critical-improvements.md" />
+    <File Path="docs/evaluation-major.md" />
     <File Path="docs/index.md" />
     <File Path="docs/readme.md" />
   </Folder>
@@ -22,7 +23,9 @@
   </Folder>
   <Folder Name="/SolutionFiles/Samples/">
     <File Path="samples/Directory.Build.props" />
+    <File Path="samples/README.md" />
   </Folder>
+  <Project Path="dev/Frank.GameEngine.Samples.AppHost/Frank.GameEngine.Samples.AppHost.csproj" />
   <Project Path="samples/Frank.GameEngine.Samples.Battleship/Frank.GameEngine.Samples.Battleship.csproj" />
   <Project Path="samples/Frank.GameEngine.Samples.BouncingBall/Frank.GameEngine.Samples.BouncingBall.csproj" />
   <Project Path="samples/Frank.GameEngine.Samples.Pong/Frank.GameEngine.Samples.Pong.csproj" />

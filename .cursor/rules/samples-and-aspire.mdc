@@ -1,0 +1,15 @@
+---
+description: Running samples, Aspire AppHost, and windowed-backend pitfalls
+globs:
+  - "samples/**"
+  - "dev/**"
+alwaysApply: false
+---
+
+# Samples and Aspire AppHost
+
+- Prefer repo guidance in [AGENTS.md](../../AGENTS.md) and [docs/evaluation-technical-improvements.md](../../docs/evaluation-technical-improvements.md) for loop models (`Simulator` vs Raylib window), `NullInputSource` (avoid duplicate global hooks), and audio (`SilentAudioPlayer` off Windows).
+- **Aspire**: the AppHost under `dev/` orchestrates sample **executables** for local dev. It is not a substitute for documenting the engine’s two execution models.
+- **Run one windowed sample at a time** from the dashboard when using Raylib/MonoGame; multiple full-screen or competing GL contexts are a common footgun.
+- **CI**: AppHost and samples are **compile-tested** in the solution build; do not assume headless Linux CI can launch interactive windows.
+- Keep sample logging teachable: avoid `Console.WriteLine` every frame unless gated behind a debug flag (see technical evaluation).
