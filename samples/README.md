@@ -24,6 +24,7 @@ Use the dashboard to start **one** windowed sample at a time (Raylib/MonoGame an
 
 ## Learn more
 
+- [src/libraries/README.md](../src/libraries/README.md) — shipping NuGet projects referenced by samples.
 - [AGENTS.md](../AGENTS.md) — build, platforms, and agent guidance.
 - [docs/architecture.md](../docs/architecture.md) — execution models and renderer choice.
 - [docs/evaluation-major.md](../docs/evaluation-major.md) — how Aspire fits next to product priorities.
