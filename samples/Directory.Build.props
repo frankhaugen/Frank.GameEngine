@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj"/>
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj"/>
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj"/>
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj"/>
-    <ProjectReference Include="..\..\src\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
+    <ProjectReference Include="..\..\src\libraries\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj"/>
+    <ProjectReference Include="..\..\src\libraries\Frank.GameEngine.Core\Frank.GameEngine.Core.csproj"/>
+    <ProjectReference Include="..\..\src\libraries\Frank.GameEngine.Input\Frank.GameEngine.Input.csproj"/>
+    <ProjectReference Include="..\..\src\libraries\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj"/>
+    <ProjectReference Include="..\..\src\libraries\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
   </ItemGroup>
 
   <PropertyGroup Label="Build quality">

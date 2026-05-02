@@ -1,5 +1,5 @@
 <Project>
-  <!-- Per-package NuGet descriptions (imported from src/Directory.Build.props). -->
+  <!-- Per-package NuGet descriptions (imported from repo Directory.Build.props for src/libraries/*). -->
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Frank.GameEngine.Primitives'">
     <Description>Scene graph, transforms, polygons, boards, Rgba32 colors, and camera types for Frank.GameEngine (net10.0).</Description>
   </PropertyGroup>

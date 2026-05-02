@@ -29,8 +29,9 @@ dotnet test --solution Frank.GameEngine.slnx -c Release
 
 | Area | Path |
 |------|------|
-| Core / physics / rendering contracts | `src/Frank.GameEngine.*` |
-| Source generator (Roslyn) | `tools/Frank.GameEngine.Generators.AssetsGenerator` — **net10.0**, same `Microsoft.CodeAnalysis.CSharp` version as tests (central package file); `EnforceExtendedAnalyzerRules` is off with targeted `NoWarn` for legacy `ISourceGenerator` rules |
+| Shipping libraries (NuGet) | `src/libraries/Frank.GameEngine.*` — see `src/libraries/README.md` |
+| Experimental (not packed) | `src/experimental/Frank.GameEngine.Rendering.Experimental` |
+| Source generator (Roslyn) | `tools/Frank.GameEngine.Generators.AssetsGenerator` — referenced by `Frank.GameEngine.Assets`; **net10.0**, same `Microsoft.CodeAnalysis.CSharp` version as tests (central package file); `EnforceExtendedAnalyzerRules` is off with targeted `NoWarn` for legacy `ISourceGenerator` rules |
 | Samples | `samples/*` — shared props in `samples/Directory.Build.props` |
 | Aspire sample orchestration | `dev/Frank.GameEngine.Samples.AppHost` — references sample executables; not packed; avoids inheriting `samples/Directory.Build.props` project references |
 | Tests | `tests/Frank.GameEngine.Tests` — TUnit + **FluentAssertions 7.x** (Apache 2.0; 8+ is Xceed-licensed and problematic for OSS CI) + Moq; folders `Core/`, `Physics/`, `Primitives/`, `Input/`, `Audio/`, `SubPrimitives/`, `Generators/`. Do **not** reference `Microsoft.NET.Test.Sdk` or coverlet — TUnit ships MTP coverage extensions. |

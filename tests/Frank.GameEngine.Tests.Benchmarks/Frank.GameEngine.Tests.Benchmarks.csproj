@@ -18,8 +18,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj"/>
-        <ProjectReference Include="..\..\src\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
+        <ProjectReference Include="..\..\src\libraries\Frank.GameEngine.Assets\Frank.GameEngine.Assets.csproj"/>
+        <ProjectReference Include="..\..\src\libraries\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj"/>
     </ItemGroup>
 
 </Project>

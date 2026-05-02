@@ -25,4 +25,4 @@ Packages land under **`artifacts/package/release/`** (see `Directory.Build.props
 
 ## Scope
 
-Shipping libraries live under `src/Frank.GameEngine.*` with packaging metadata from `build/PackageDescriptions.props`. **Rendering.Experimental** is not packed.
+Shipping libraries live under `src/libraries/Frank.GameEngine.*` with packaging metadata from `build/PackageDescriptions.props`. **Rendering.Experimental** under `src/experimental/` is not packed.

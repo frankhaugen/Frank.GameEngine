@@ -8,4 +8,4 @@ alwaysApply: true
 - Open or build **`Frank.GameEngine.slnx`** (not `.sln`). CLI: `dotnet build Frank.GameEngine.slnx`.
 - **CPM**: package versions only in `Directory.Packages.props`. Do not add `Version=` on `PackageReference` without a team reason.
 - **nuget.config** pins restores to nuget.org with source mapping; do not add unmapped feeds without updating mapping.
-- **Generator** `tools/Frank.GameEngine.Generators.AssetsGenerator` targets **net10.0** (same as the rest of the repo). It uses `ISourceGenerator` with `EnforceExtendedAnalyzerRules` disabled and `NoWarn` for RS1035/RS1041/RS1042 until migrated to `IIncrementalGenerator`.
+- **Generator** `tools/Frank.GameEngine.Generators.AssetsGenerator` targets **net10.0** (same as the rest of the repo). It is referenced from `src/libraries/Frank.GameEngine.Assets`. It uses `ISourceGenerator` with `EnforceExtendedAnalyzerRules` disabled and `NoWarn` for RS1035/RS1041/RS1042 until migrated to `IIncrementalGenerator`.

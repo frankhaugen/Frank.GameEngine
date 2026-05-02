@@ -10,6 +10,7 @@
 
 ## Quick orientation
 
+- Shipping packages (NuGet): projects under `src/libraries/` — see [src/libraries/README.md](../src/libraries/README.md).
 - Simulation physics: Frank.GameEngine.Physics.PhysicsEngine.
 - Raylib plus DI experiment: Frank.GameEngine.Rendering.RayLib — RayLibHostedPhysicsService, AddRayLibHostedPhysics, channels and RenderQueue.
 - Samples: use PhysicsEngine plus GameEngine plus Simulator unless hosting the Raylib worker.

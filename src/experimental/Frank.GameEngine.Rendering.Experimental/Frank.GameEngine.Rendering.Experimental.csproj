@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\libraries\Frank.GameEngine.Physics\Frank.GameEngine.Physics.csproj" />
+      <ProjectReference Include="..\..\libraries\Frank.GameEngine.Primitives\Frank.GameEngine.Primitives.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+    </ItemGroup>
+
+</Project>

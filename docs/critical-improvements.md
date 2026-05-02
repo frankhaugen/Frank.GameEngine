@@ -16,7 +16,7 @@ This document tracks design fixes that were identified in review and how they we
 
 **Fix:** Collect nullable results, then apply `Aggregate` only when `forceContributions.Count > 0`.
 
-**File:** `src/Frank.GameEngine.Physics/PhysicsEngine.cs`
+**File:** `src/libraries/Frank.GameEngine.Physics/PhysicsEngine.cs`
 
 **Regression test:** `tests/Frank.GameEngine.Tests/Physics/PhysicsEngineTests.cs` — all forces return null must not throw.
 
@@ -31,8 +31,8 @@ This document tracks design fixes that were identified in review and how they we
 
 **Files:**
 
-- `src/Frank.GameEngine.Rendering.RayLib/Other/RayLibHostedPhysicsService.cs` (replaces `PhysicsEngine.cs`)
-- `src/Frank.GameEngine.Rendering.RayLib/Other/ServiceCollectionExtensions.cs`
+- `src/libraries/Frank.GameEngine.Rendering.RayLib/Other/RayLibHostedPhysicsService.cs` (replaces `PhysicsEngine.cs`)
+- `src/libraries/Frank.GameEngine.Rendering.RayLib/Other/ServiceCollectionExtensions.cs`
 
 ### 3. `GameEngine` initialization errors
 
@@ -43,7 +43,7 @@ This document tracks design fixes that were identified in review and how they we
 - `Initialize`: `InvalidOperationException` with a clear message if no current scene.
 - `Draw`: `InvalidOperationException` if `Initialize` has not run (`_renderer` is still null). `IRenderer?` removes the uninitialized-field warning on `GameEngine`.
 
-**File:** `src/Frank.GameEngine.Core/GameEngine.cs`
+**File:** `src/libraries/Frank.GameEngine.Core/GameEngine.cs`
 
 ### 4. Documentation
 
@@ -81,5 +81,5 @@ This document tracks design fixes that were identified in review and how they we
 
 ## References
 
-- Raylib hosted pipeline diagram: `src/Frank.GameEngine.Rendering.RayLib/README.md` (update class names to `RayLibHostedPhysicsService` / `AddRayLibHostedPhysics` when editing).
+- Raylib hosted pipeline diagram: `src/libraries/Frank.GameEngine.Rendering.RayLib/README.md` (update class names to `RayLibHostedPhysicsService` / `AddRayLibHostedPhysics` when editing).
 

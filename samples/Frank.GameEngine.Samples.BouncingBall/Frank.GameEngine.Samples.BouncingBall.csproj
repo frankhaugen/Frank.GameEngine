@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj" />
+      <ProjectReference Include="..\..\src\libraries\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj" />
+      <ProjectReference Include="..\..\src\libraries\Frank.GameEngine.Rendering.RayLib\Frank.GameEngine.Rendering.RayLib.csproj" />
     </ItemGroup>
 
 </Project>
