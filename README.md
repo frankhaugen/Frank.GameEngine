@@ -1,3 +1,5 @@
+> **Partially on Novolis:** Novolis.Math.Arrays and Novolis.Math.Geometry live in [novolis-math](https://github.com/Novolis-Platform/novolis-math). Graphics: use [Novolis.Raylib](https://github.com/Novolis-Platform/novolis-raylib). This repo remains the home for samples, engine core, and unmigrated code.
+
 # Frank.GameEngine
 
 This has had many iterations, and has periodically been developed, or tried to be developed using AI tools like ChatGpt,
